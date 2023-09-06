@@ -1,0 +1,108 @@
+time,content,type,sessionID,createdAt
+19:27:27,start a new session,start,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27
+19:27:31,我的机器人个性化服务定制需求：机器人开始巡逻整个办公室，当检测到有人的时候，提醒说：“下班了，快回家。”，然后继续巡逻直到巡逻完整个办公室。 ,authoringNEW-start,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27
+19:27:31,"<require>
+1. 机器人开始巡逻整个办公室。
+2. 当检测到有人的时候，提醒说：“下班了，快回家。”。
+3. 继续巡逻直到巡逻完整个办公室。
+</require>",authoring-finished,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27
+19:27:40,我的机器人个性化服务定制需求：机器人开始巡逻整个办公室，当检测到有人的时候，提醒说：“下班了，快回家。”，然后继续巡逻直到巡逻完整个办公室。 ,authoringNEW-start,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27
+19:27:40,<end>完成</end>,authoring-finished,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27
+19:27:40,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 机器人开始巡逻整个办公室。
+2. 当检测到有人的时候，提醒说：“下班了，快回家。”。
+3. 继续巡逻直到巡逻完整个办公室。
+
+        ",nl2js-start,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27
+19:27:41,"
+  async function patrolOffice() {
+    await robot.userRequest('巡逻办公室');
+    const locations = robot.location;
+  
+    for (let i = 0; i < locations.length; i++) {
+      await robot.goto(locations[i]);
+      const isHumanDetected = await robot.detectHuman();
+  
+      if (isHumanDetected) {
+        await robot.speak('下班了，快回家。');
+      }
+    }
+  
+    await robot.speak('巡逻完成，办公室已经安全。');
+  }
+  
+  patrolOffice();",nl2js-finished,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27
+19:27:41,"
+  async function patrolOffice() {
+    await robot.userRequest('巡逻办公室');
+    const locations = robot.location;
+  
+    for (let i = 0; i < locations.length; i++) {
+      await robot.goto(locations[i]);
+      const isHumanDetected = await robot.detectHuman();
+  
+      if (isHumanDetected) {
+        await robot.speak('下班了，快回家。');
+      }
+    }
+  
+    await robot.speak('巡逻完成，办公室已经安全。');
+  }
+  
+  patrolOffice();",js2NLexplain-start,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27
+19:27:41,"这段代码是一个用于巡逻办公室的函数。函数的执行过程如下：
+
+1. 首先，机器人会接收到用户的巡逻办公室的请求。
+2. 机器人会获取办公室的位置信息。
+3. 接下来，机器人会依次前往每个位置。
+4. 在每个位置，机器人会检测是否有人。
+5. 如果检测到有人，机器人会说出""下班了，快回家""的提示。
+6. 然后，机器人会继续前往下一个位置。
+7. 当所有位置都巡逻完毕后，机器人会说出""巡逻完成，办公室已经安全""的提示。
+
+最后，机器人会自动执行巡逻办公室的函数。",js2NLexplain-finished,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27
+19:27:41,"
+  async function patrolOffice() {
+    await robot.userRequest('巡逻办公室');
+    const locations = robot.location;
+  
+    for (let i = 0; i < locations.length; i++) {
+      await robot.goto(locations[i]);
+      const isHumanDetected = await robot.detectHuman();
+  
+      if (isHumanDetected) {
+        await robot.speak('下班了，快回家。');
+      }
+    }
+  
+    await robot.speak('巡逻完成，办公室已经安全。');
+  }
+  
+  patrolOffice();",js2flow-start,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27
+19:27:41,"
+graph TB
+r_01([""userRequest:巡逻办公室""])
+id_01[""infoDeclare:地点列表""]
+ia_01[""infoAssign:将地点列表赋值为机器人当前位置;地点列表""]
+
+f_01{{""forLoop:地点列表""}}
+g_01[""goto:地点列表[i]""]
+c_01{""condition: 检测到人;人员检测结果""}
+s_01[""speak:告知下班了，快回家""]
+j_01{{""loopEnd:循环结束""}}
+s_02[""speak:告知巡逻完成，办公室已经安全""]
+k_01([""end:服务结束""])
+r_01 --> id_01 
+id_01 --> ia_01
+ia_01 --> f_01
+f_01 --""处理当前position信息""--> g_01
+f_01 --""完成遍历循环""--> j_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> f_01
+c_01 --false--> f_01
+j_01 --> s_02
+s_02 --> k_01
+",js2flow-finished,3a5f0a3b-26cd-49d0-9506-4b82e3d3713d,08-21-19-27-27

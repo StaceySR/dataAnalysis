@@ -1,0 +1,103 @@
+type,time
+start,15:33:10
+authoringNEW-start,15:33:15
+authoring-finished,15:33:25
+authoringNEW-start,15:37:38
+authoring-finished,15:37:49
+authoringNEW-start,15:38:16
+authoring-finished,15:38:18
+nl2js-start,15:38:18
+nl2js-finished,15:38:36
+js2NLexplain-start,15:38:36
+js2NLexplain-finished,15:38:49
+js2flow-start,15:38:49
+js2flow-finished,15:40:06
+nodeClick,15:41:43
+flow2js-start,15:45:42
+flow2js-finished,15:46:16
+explainModifiedJS-start,15:46:16
+explainModifiedJS-finished,15:46:26
+nodeClick,15:46:30
+nodeClick,15:46:36
+nodeClick,15:47:29
+nodeClick,15:47:46
+AutoLayout,15:48:04
+flow2js-start,15:48:13
+flow2js-finished,15:48:47
+explainModifiedJS-start,15:48:47
+explainModifiedJS-finished,15:49:00
+nodeClick,15:55:25
+nodeClick,15:55:29
+nodeClick,15:55:31
+nodeClick,15:55:34
+nodeClick,15:55:40
+nodeClick,15:55:44
+nodeClick,15:55:45
+nodeClick,15:55:46
+Node update,15:55:50
+nodeClick,15:55:55
+nodeClick,15:55:57
+nodeClick,15:55:57
+magicModify-start,15:56:09
+magicModify-finished,15:56:17
+nodeClick,15:56:33
+nodeClick,15:56:52
+nodeClick,15:57:38
+nodeClick,15:57:40
+nodeClick,15:57:43
+newNodeAdd,15:58:24
+newNodeAdd,15:58:24
+nodeClick,15:58:45
+nodeClick,15:58:53
+nodeClick,15:58:54
+nodeClick,15:59:01
+nodeClick,15:59:08
+nodeClick,15:59:08
+Node update,15:59:16
+Node update -- variable,15:59:52
+Node update,15:59:53
+Node update,16:00:01
+magicModifyPhase-start,16:00:22
+magicModifyPhase-finished,16:00:25
+nodeClick,16:02:40
+nodeClick,16:02:40
+nodeClick,16:02:44
+nodeClick,16:02:53
+nodeClick,16:02:56
+nodeClick,16:03:11
+newNodeAdd,16:03:16
+nodeClick,16:03:24
+nodeClick,16:03:26
+nodeClick,16:03:28
+nodeClick,16:03:31
+nodeClick,16:03:37
+magicModify-start,16:03:39
+nodeClick,16:03:50
+magicModify-finished,16:03:51
+nodeClick,16:03:53
+nodeClick,16:04:16
+nodeClick,16:04:17
+nodeClick,16:04:17
+Node update -- variable,16:04:31
+Node update,16:04:33
+nodeClick,16:04:44
+nodeClick,16:04:44
+nodeClick,16:04:50
+nodeClick,16:04:52
+Node update -- variable,16:04:55
+Node update,16:04:58
+nodeClick,16:05:00
+nodeClick,16:05:11
+nodeClick,16:05:11
+nodeClick,16:05:11
+magicModifyPhase-start,16:05:47
+nodeClick,16:05:48
+nodeClick,16:05:48
+nodeClick,16:05:50
+magicModifyPhase-finished,16:05:51
+nodeClick,16:06:09
+nodeClick,16:06:10
+nodeClick,16:06:10
+Node update,16:06:39
+nodeClick,16:06:42
+nodeClick,16:06:43

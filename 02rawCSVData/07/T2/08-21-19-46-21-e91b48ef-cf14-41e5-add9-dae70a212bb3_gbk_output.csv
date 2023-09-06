@@ -1,0 +1,22 @@
+type,time
+start,19:46:21
+authoringNEW-start,19:52:27
+authoring-finished,19:52:33
+authoringNEW-start,19:53:03
+authoring-finished,19:53:05
+nl2js-start,19:53:05
+nl2js-finished,19:53:12
+js2NLexplain-start,19:53:12
+js2NLexplain-finished,19:53:21
+js2flow-start,19:53:21
+js2flow-finished,19:53:52
+nodeClick,19:54:19
+nodeClick,19:54:21
+nodeClick,19:54:21
+Node update,19:54:42
+flow2js-start,19:54:44
+flow2js-finished,19:55:08
+explainModifiedJS-start,19:55:08
+explainModifiedJS-finished,19:55:13
+nl2jswithContext-start,20:06:25
+nl2jswithContext-finished,20:06:43

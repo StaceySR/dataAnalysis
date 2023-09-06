@@ -1,0 +1,34 @@
+type,time
+start,09:15:21
+authoringNEW-start,09:17:05
+authoring-finished,09:17:08
+authoringNEW-start,09:18:18
+authoring-finished,09:18:22
+authoringNEW-start,09:18:32
+authoring-finished,09:18:34
+nl2js-start,09:18:34
+nl2js-finished,09:18:39
+js2NLexplain-start,09:18:39
+js2NLexplain-finished,09:18:46
+js2flow-start,09:18:46
+js2flow-finished,09:19:28
+AutoLayout,09:20:06
+nodeClick,09:20:38
+nodeClick,09:20:39
+Node update,09:20:47
+flow2js-start,09:20:49
+flow2js-finished,09:21:06
+explainModifiedJS-start,09:21:06
+explainModifiedJS-finished,09:21:11
+nodeClick,09:22:51
+nodeClick,09:22:52
+nodeClick,09:22:52
+Node update -- variable,09:22:58
+Node update,09:22:59
+flow2js-start,09:23:02
+flow2js-finished,09:23:23
+explainModifiedJS-start,09:23:23
+explainModifiedJS-finished,09:23:28
+nodeClick,09:26:30
+nodeClick,09:26:32
+nodeClick,09:26:32

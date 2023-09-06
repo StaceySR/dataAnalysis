@@ -1,0 +1,478 @@
+time,content,type,sessionID,createdAt
+19:03:29,start a new session,start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:05:46,我的机器人个性化服务定制需求：检测到附近有人的时候，主动打招呼并且询问是否需要引导服务，如果需要，则根据用户回答，带到指定位置，如果不需要，则回答，好的，祝您参观愉快。,authoringNEW-start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:05:50,"<require>
+1. 当机器人检测到附近有人时，主动打招呼并询问是否需要引导服务。
+2. 如果用户需要引导服务，则根据用户回答，将用户带到指定位置。
+3. 如果用户不需要引导服务，则回答""好的，祝您参观愉快""。
+</require>",authoring-finished,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:06:11,我的机器人个性化服务定制需求：检测到附近有人的时候，主动打招呼并且询问是否需要引导服务，如果需要，则根据用户回答，带到指定位置，如果不需要，则回答，好的，祝您参观愉快。,authoringNEW-start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:06:13,<end>完成</end>,authoring-finished,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:06:13,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 当机器人检测到附近有人时，主动打招呼并询问是否需要引导服务。
+2. 如果用户需要引导服务，则根据用户回答，将用户带到指定位置。
+3. 如果用户不需要引导服务，则回答""好的，祝您参观愉快""。
+
+        ",nl2js-start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:06:19,"
+  await robot.userRequest('引导服务');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('您好，有什么可以帮助您的吗？');
+      const needGuide = await robot.ask('您需要引导服务吗？');
+  
+      if(needGuide==""需要""){
+          const location = await robot.ask('请告诉我您想去的位置');
+          await robot.goto(location);
+          await robot.speak('已经带您到达' + location);
+  
+      }else{
+          await robot.speak('好的，祝您参观愉快');
+      }
+  
+  }else{
+      await robot.speak('附近没有人，祝您参观愉快');
+  }",nl2js-finished,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:06:19,"
+  await robot.userRequest('引导服务');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('您好，有什么可以帮助您的吗？');
+      const needGuide = await robot.ask('您需要引导服务吗？');
+  
+      if(needGuide==""需要""){
+          const location = await robot.ask('请告诉我您想去的位置');
+          await robot.goto(location);
+          await robot.speak('已经带您到达' + location);
+  
+      }else{
+          await robot.speak('好的，祝您参观愉快');
+      }
+  
+  }else{
+      await robot.speak('附近没有人，祝您参观愉快');
+  }",js2NLexplain-start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:06:26,"服务启动关键词：引导服务
+服务流程：
+1. 机器人首先接收到用户要求引导服务的请求。
+2. 机器人会检测周围是否有人。
+3. 如果检测到有人，机器人会向用户打招呼并询问是否需要引导服务。
+4. 如果用户需要引导服务，机器人会询问用户想去的位置。
+5. 得到用户的回答后，机器人会带领用户去指定的位置。
+6. 到达目的地后，机器人会告诉用户已经带他们到达了该位置。
+7. 如果用户不需要引导服务，机器人会告诉用户祝他们参观愉快。
+8. 如果周围没有人，机器人会告诉用户附近没有人，并祝他们参观愉快。",js2NLexplain-finished,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:06:26,"
+  await robot.userRequest('引导服务');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('您好，有什么可以帮助您的吗？');
+      const needGuide = await robot.ask('您需要引导服务吗？');
+  
+      if(needGuide==""需要""){
+          const location = await robot.ask('请告诉我您想去的位置');
+          await robot.goto(location);
+          await robot.speak('已经带您到达' + location);
+  
+      }else{
+          await robot.speak('好的，祝您参观愉快');
+      }
+  
+  }else{
+      await robot.speak('附近没有人，祝您参观愉快');
+  }",js2flow-start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:06:59,"
+graph TB
+r_01([""userRequest:引导服务""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+s_01[""speak:问候用户""]
+a_01[""ask:询问用户是否需要引导服务;用户回复_1""]
+c_02{""condition: 用户需要引导服务;用户回复_1""}
+a_02[""ask:询问用户想去的位置;用户回复_2""]
+g_01[""goto:用户回复_2""]
+s_02[""speak:告知用户已经到达目的地;用户回复_2""]
+s_03[""speak:告知用户祝其参观愉快""]
+s_04[""speak:告知附近没有人，祝其参观愉快""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> k_01
+c_02 --false--> s_03
+s_03 --> k_01
+c_01 --false--> s_04
+s_04 --> k_01
+",js2flow-finished,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:08:32,告知附近没有人，祝其参观愉快,nodeClick,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:08:44,告知用户祝其参观愉快,nodeClick,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:08:46,告知用户已经到达目的地;用户回复_2,nodeClick,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:08:48,"selectedNodes:
+    SPEAK: 告知用户祝其参观愉快,SPEAK: 告知用户已经到达目的地;用户回复_2
+    flow:
+    
+graph TB
+r_01([""userRequest:引导服务""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+s_01[""speak:问候用户""]
+a_01[""ask:询问用户是否需要引导服务;用户回复_1""]
+c_02{""condition: 用户需要引导服务;用户回复_1""}
+a_02[""ask:询问用户想去的位置;用户回复_2""]
+g_01[""goto:用户回复_2""]
+s_02[""speak:告知用户已经到达目的地;用户回复_2""]
+s_03[""speak:告知用户祝其参观愉快""]
+s_04[""speak:告知附近没有人，祝其参观愉快""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> k_01
+c_02 --false--> s_03
+s_03 --> k_01
+c_01 --false--> s_04
+s_04 --> k_01
+
+    jscode:
+    
+  await robot.userRequest('引导服务');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('您好，有什么可以帮助您的吗？');
+      const needGuide = await robot.ask('您需要引导服务吗？');
+  
+      if(needGuide==""需要""){
+          const location = await robot.ask('请告诉我您想去的位置');
+          await robot.goto(location);
+          await robot.speak('已经带您到达' + location);
+  
+      }else{
+          await robot.speak('好的，祝您参观愉快');
+      }
+  
+  }else{
+      await robot.speak('附近没有人，祝您参观愉快');
+  }
+    ",magicModify-start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:08:55,"你所选中的节点包括:""speak:告知用户祝其参观愉快"" 和 ""speak:告知用户已经到达目的地;用户回复_2""
+
+在整个服务中的作用是：
+- ""speak:告知用户祝其参观愉快""节点用于向用户发送祝愿信息，表达机器人对用户参观愉快的祝福。
+- ""speak:告知用户已经到达目的地;用户回复_2""节点用于向用户发送到达目的地的信息，同时也是用户回复_2的节点。
+
+你可以进一步询问我关于这个（这些）节点的信息，我会给你提供更多的信息。或者你可以让我直接修改这些节点的行为。或者结束节点调试。",magicModify-finished,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:09:40,"selectedNodes:
+    SPEAK: 告知用户祝其参观愉快,SPEAK: 告知用户已经到达目的地;用户回复_2
+    flow:
+    
+graph TB
+r_01([""userRequest:引导服务""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+s_01[""speak:问候用户""]
+a_01[""ask:询问用户是否需要引导服务;用户回复_1""]
+c_02{""condition: 用户需要引导服务;用户回复_1""}
+a_02[""ask:询问用户想去的位置;用户回复_2""]
+g_01[""goto:用户回复_2""]
+s_02[""speak:告知用户已经到达目的地;用户回复_2""]
+s_03[""speak:告知用户祝其参观愉快""]
+s_04[""speak:告知附近没有人，祝其参观愉快""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> k_01
+c_02 --false--> s_03
+s_03 --> k_01
+c_01 --false--> s_04
+s_04 --> k_01
+
+    jscode:
+    
+  await robot.userRequest('引导服务');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('您好，有什么可以帮助您的吗？');
+      const needGuide = await robot.ask('您需要引导服务吗？');
+  
+      if(needGuide==""需要""){
+          const location = await robot.ask('请告诉我您想去的位置');
+          await robot.goto(location);
+          await robot.speak('已经带您到达' + location);
+  
+      }else{
+          await robot.speak('好的，祝您参观愉快');
+      }
+  
+  }else{
+      await robot.speak('附近没有人，祝您参观愉快');
+  }
+    ",magicModifyPhase-start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:10:09,"<code>
+  await robot.userRequest('引导服务');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('您好，有什么可以帮助您的吗？');
+      const needGuide = await robot.ask('您需要引导服务吗？');
+  
+      if(needGuide==""需要""){
+          const location = await robot.ask('请告诉我您想去的位置');
+          await robot.goto(location);
+          await robot.speak('已经带您到达' + location);
+          await robot.goto('接待区');
+          await robot.speak('我已经回到接待处');
+  
+      }else{
+          await robot.speak('好的，祝您参观愉快');
+      }
+  
+  }else{
+      await robot.speak('附近没有人，祝您参观愉快');
+  }
+</code>
+
+<description>
+在用户需要引导服务，并且机器人已经带用户到达目的地后，增加了一个节点，使机器人回到接待处，并告知用户已经回到接待处。
+</description>",magicModifyPhase-finished,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:10:09,"
+  await robot.userRequest('引导服务');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('您好，有什么可以帮助您的吗？');
+      const needGuide = await robot.ask('您需要引导服务吗？');
+  
+      if(needGuide==""需要""){
+          const location = await robot.ask('请告诉我您想去的位置');
+          await robot.goto(location);
+          await robot.speak('已经带您到达' + location);
+          await robot.goto('接待区');
+          await robot.speak('我已经回到接待处');
+  
+      }else{
+          await robot.speak('好的，祝您参观愉快');
+      }
+  
+  }else{
+      await robot.speak('附近没有人，祝您参观愉快');
+  }
+",js2flow-start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:10:47,"
+graph TB
+r_01([""userRequest:引导服务""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+s_01[""speak:问候用户""]
+a_01[""ask:询问用户是否需要引导服务;用户回复_1""]
+c_02{""condition: 用户需要引导服务;用户回复_1""}
+a_02[""ask:询问用户想去的位置;用户回复_2""]
+g_01[""goto:用户回复_2""]
+s_02[""speak:告知用户已经到达目的地;用户回复_2""]
+g_02[""goto:接待区""]
+s_03[""speak:告知用户已经回到接待处""]
+s_04[""speak:祝愿用户参观愉快""]
+s_05[""speak:告知用户附近没有人""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+g_02 --> s_03
+s_03 --> k_01
+c_02 --false--> s_04
+s_04 --> k_01
+c_01 --false--> s_05
+s_05 --> k_01
+",js2flow-finished,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:11:23,告知用户附近没有人,nodeClick,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:11:25,告知用户附近没有人,nodeClick,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:11:35,"jscode:
+    
+  await robot.userRequest('引导服务');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('您好，有什么可以帮助您的吗？');
+      const needGuide = await robot.ask('您需要引导服务吗？');
+  
+      if(needGuide==""需要""){
+          const location = await robot.ask('请告诉我您想去的位置');
+          await robot.goto(location);
+          await robot.speak('已经带您到达' + location);
+          await robot.goto('接待区');
+          await robot.speak('我已经回到接待处');
+  
+      }else{
+          await robot.speak('好的，祝您参观愉快');
+      }
+  
+  }else{
+      await robot.speak('附近没有人，祝您参观愉快');
+  }
+
+    oldFlow:
+    
+graph TB
+r_01([""userRequest:引导服务""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+s_01[""speak:问候用户""]
+a_01[""ask:询问用户是否需要引导服务;用户回复_1""]
+c_02{""condition: 用户需要引导服务;用户回复_1""}
+a_02[""ask:询问用户想去的位置;用户回复_2""]
+g_01[""goto:用户回复_2""]
+s_02[""speak:告知用户已经到达目的地;用户回复_2""]
+g_02[""goto:接待区""]
+s_03[""speak:告知用户已经回到接待处""]
+s_04[""speak:祝愿用户参观愉快""]
+s_05[""speak:告知用户附近没有人""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+g_02 --> s_03
+s_03 --> k_01
+c_02 --false--> s_04
+s_04 --> k_01
+c_01 --false--> s_05
+s_05 --> k_01
+
+    newFlow:
+    graph TB
+r_01([""userRequest:引导服务""])
+d_01[""detectHuman""]
+c_01{""condition:检测到人;人员检测结果_1""}
+s_01[""speak:问候用户""]
+a_01[""ask:询问用户是否需要引导服务;用户回复_1""]
+c_02{""condition:用户需要引导服务;用户回复_1""}
+a_02[""ask:询问用户想去的位置;用户回复_2""]
+g_01[""goto:用户回复_2""]
+s_02[""speak:告知用户已经到达目的地;用户回复_2""]
+g_02[""goto:接待区""]
+s_03[""speak:告知用户已经回到接待处""]
+s_04[""speak:祝愿用户参观愉快""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+g_02 --> s_03
+s_03 --> k_01
+c_02 --false--> s_04
+s_04 --> k_01
+
+    ",flow2js-start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:11:58,"await robot.userRequest('引导服务');
+const isHumanDetected = await robot.detectHuman();
+
+if(isHumanDetected){
+    await robot.speak('您好，有什么可以帮助您的吗？');
+    const needGuide = await robot.ask('您需要引导服务吗？');
+
+    if(needGuide==""需要""){
+        const location = await robot.ask('请告诉我您想去的位置');
+        await robot.goto(location);
+        await robot.speak('已经带您到达' + location);
+        await robot.goto('接待区');
+        await robot.speak('我已经回到接待处');
+        await robot.speak('祝您参观愉快');
+
+    }else{
+        await robot.speak('祝您参观愉快');
+    }
+
+}else{
+    await robot.speak('祝您参观愉快');
+}",flow2js-finished,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:11:58,"
+  originalcode:
+  
+  await robot.userRequest('引导服务');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('您好，有什么可以帮助您的吗？');
+      const needGuide = await robot.ask('您需要引导服务吗？');
+  
+      if(needGuide==""需要""){
+          const location = await robot.ask('请告诉我您想去的位置');
+          await robot.goto(location);
+          await robot.speak('已经带您到达' + location);
+          await robot.goto('接待区');
+          await robot.speak('我已经回到接待处');
+  
+      }else{
+          await robot.speak('好的，祝您参观愉快');
+      }
+  
+  }else{
+      await robot.speak('附近没有人，祝您参观愉快');
+  }
+
+  modifiedcode:
+  await robot.userRequest('引导服务');
+const isHumanDetected = await robot.detectHuman();
+
+if(isHumanDetected){
+    await robot.speak('您好，有什么可以帮助您的吗？');
+    const needGuide = await robot.ask('您需要引导服务吗？');
+
+    if(needGuide==""需要""){
+        const location = await robot.ask('请告诉我您想去的位置');
+        await robot.goto(location);
+        await robot.speak('已经带您到达' + location);
+        await robot.goto('接待区');
+        await robot.speak('我已经回到接待处');
+        await robot.speak('祝您参观愉快');
+
+    }else{
+        await robot.speak('祝您参观愉快');
+    }
+
+}else{
+    await robot.speak('祝您参观愉快');
+}
+  ",explainModifiedJS-start,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29
+19:12:04,"修改后的代码在机器人检测到有人时，会先问用户是否需要引导服务。如果用户需要引导服务，机器人会询问用户想去的位置，并将用户带到该位置。然后，机器人会返回到接待区，并说出已经回到接待区的话语。最后，机器人会说出""祝您参观愉快""的话语。
+
+如果用户不需要引导服务，机器人会直接说出""祝您参观愉快""的话语。
+
+如果机器人没有检测到有人，机器人会直接说出""祝您参观愉快""的话语。",explainModifiedJS-finished,3f4e02ba-5a4a-4a32-96ba-047148b17631,08-21-19-03-29

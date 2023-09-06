@@ -1,0 +1,320 @@
+time,content,type,sessionID,createdAt
+15:12:06,start a new session,start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:12:16,我的机器人个性化服务定制需求：办公室巡逻，不需要检测障碍物,authoringNEW-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:12:19,"<require>
+1. 办公室巡逻
+2. 不需要检测障碍物
+</require>",authoring-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:12:43,我的机器人个性化服务定制需求：办公室巡逻，不需要检测障碍物,authoringNEW-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:12:46,"<require>
+1. 办公室巡逻
+2. 不需要检测障碍物
+3. 提醒滞留员工下班后尽快离开办公室
+</require>",authoring-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:13:02,我的机器人个性化服务定制需求：办公室巡逻，不需要检测障碍物,authoringNEW-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:13:05,"<modifiedrequire>
+1. 办公室巡逻
+2. 不需要检测障碍物
+3. 提醒滞留员工下班后尽快离开办公室
+4. 巡查路线经过4个地点
+</modifiedrequire>",authoring-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:13:07,我的机器人个性化服务定制需求：办公室巡逻，不需要检测障碍物,authoringNEW-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:13:08,<end>完成</end>,authoring-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:13:08,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 办公室巡逻
+2. 不需要检测障碍物
+3. 提醒滞留员工下班后尽快离开办公室
+4. 巡查路线经过4个地点
+
+        ",nl2js-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:13:12,"
+  await robot.userRequest('办公室巡逻');
+  
+  await robot.goto('员工办公区');
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+  
+  await robot.goto('会议室');
+  await robot.goto('创作室');
+  await robot.goto('茶水间');
+  
+  await robot.speak('巡逻结束，办公室已巡查完毕。');
+",nl2js-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:13:12,"
+  await robot.userRequest('办公室巡逻');
+  
+  await robot.goto('员工办公区');
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+  
+  await robot.goto('会议室');
+  await robot.goto('创作室');
+  await robot.goto('茶水间');
+  
+  await robot.speak('巡逻结束，办公室已巡查完毕。');
+",js2NLexplain-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:13:19,"服务启动关键词：办公室巡逻
+服务流程：
+1. 机器人接收到用户要进行办公室巡逻的请求。
+2. 机器人首先前往员工办公区。
+3. 到达员工办公区后，机器人会说：“请员工们注意，下班后请尽快离开办公室，谢谢合作。”
+4. 接下来，机器人会前往会议室。
+5. 到达会议室后，机器人会前往创作室。
+6. 到达创作室后，机器人会前往茶水间。
+7. 到达茶水间后，机器人会说：“巡逻结束，办公室已巡查完毕。”",js2NLexplain-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:13:19,"
+  await robot.userRequest('办公室巡逻');
+  
+  await robot.goto('员工办公区');
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+  
+  await robot.goto('会议室');
+  await robot.goto('创作室');
+  await robot.goto('茶水间');
+  
+  await robot.speak('巡逻结束，办公室已巡查完毕。');
+",js2flow-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:13:38,"
+graph TB
+r_01([""userRequest:办公室巡逻""])
+g_01[""goto:员工办公区""]
+s_01[""speak:告知员工下班后尽快离开办公室""]
+g_02[""goto:会议室""]
+g_03[""goto:创作室""]
+g_04[""goto:茶水间""]
+s_02[""speak:告知巡逻结束，办公室已巡查完毕""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> s_01
+s_01 --> g_02
+g_02 --> g_03
+g_03 --> g_04
+g_04 --> s_02
+s_02 --> k_01
+",js2flow-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:14:04,"jscode:
+    
+  await robot.userRequest('办公室巡逻');
+  
+  await robot.goto('员工办公区');
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+  
+  await robot.goto('会议室');
+  await robot.goto('创作室');
+  await robot.goto('茶水间');
+  
+  await robot.speak('巡逻结束，办公室已巡查完毕。');
+
+    oldFlow:
+    
+graph TB
+r_01([""userRequest:办公室巡逻""])
+g_01[""goto:员工办公区""]
+s_01[""speak:告知员工下班后尽快离开办公室""]
+g_02[""goto:会议室""]
+g_03[""goto:创作室""]
+g_04[""goto:茶水间""]
+s_02[""speak:告知巡逻结束，办公室已巡查完毕""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> s_01
+s_01 --> g_02
+g_02 --> g_03
+g_03 --> g_04
+g_04 --> s_02
+s_02 --> k_01
+
+    newFlow:
+    graph TB
+r_01([""userRequest:办公室巡逻""])
+g_01[""goto:员工办公区""]
+s_01[""speak:告知员工下班后尽快离开办公室""]
+g_02[""goto:会议室""]
+g_03[""goto:创作室""]
+g_04[""goto:茶水间""]
+s_02[""speak:告知巡逻结束，办公室已巡查完毕""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> s_01
+s_01 --> g_02
+g_02 --> g_03
+g_03 --> g_04
+g_04 --> s_02
+s_02 --> k_01
+
+    ",flow2js-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:14:17,"await robot.userRequest('办公室巡逻');
+  
+await robot.goto('员工办公区');
+await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+  
+await robot.goto('会议室');
+await robot.goto('创作室');
+await robot.goto('茶水间');
+  
+await robot.speak('巡逻结束，办公室已巡查完毕。');",flow2js-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:14:17,"
+  originalcode:
+  
+  await robot.userRequest('办公室巡逻');
+  
+  await robot.goto('员工办公区');
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+  
+  await robot.goto('会议室');
+  await robot.goto('创作室');
+  await robot.goto('茶水间');
+  
+  await robot.speak('巡逻结束，办公室已巡查完毕。');
+
+  modifiedcode:
+  await robot.userRequest('办公室巡逻');
+  
+await robot.goto('员工办公区');
+await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+  
+await robot.goto('会议室');
+await robot.goto('创作室');
+await robot.goto('茶水间');
+  
+await robot.speak('巡逻结束，办公室已巡查完毕。');
+  ",explainModifiedJS-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:14:21,修改后的代码与原代码相同，没有改变机器人的行为。机器人仍然会根据用户的请求进行办公室巡逻，先去员工办公区提醒员工下班，然后依次去会议室、创作室和茶水间巡查，并最后发表巡逻结束的发言。,explainModifiedJS-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:17:20,"
+  currentCode :
+  await robot.userRequest('办公室巡逻');
+  
+await robot.goto('员工办公区');
+await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+  
+await robot.goto('会议室');
+await robot.goto('创作室');
+await robot.goto('茶水间');
+  
+await robot.speak('巡逻结束，办公室已巡查完毕。');
+  userInput:
+  检测到人时，提醒尽快离开办公室
+  ",nl2jswithContext-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:17:46,"await robot.userRequest('办公室巡逻');
+
+await robot.goto('员工办公区');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.goto('会议室');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.goto('创作室');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.goto('茶水间');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.speak('巡逻结束，办公室已巡查完毕。');",nl2jswithContext-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:17:47,"
+  originalcode:
+  await robot.userRequest('办公室巡逻');
+  
+await robot.goto('员工办公区');
+await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+  
+await robot.goto('会议室');
+await robot.goto('创作室');
+await robot.goto('茶水间');
+  
+await robot.speak('巡逻结束，办公室已巡查完毕。');
+  modifiedcode:
+  await robot.userRequest('办公室巡逻');
+
+await robot.goto('员工办公区');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.goto('会议室');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.goto('创作室');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.goto('茶水间');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.speak('巡逻结束，办公室已巡查完毕。');
+  ",explainModifiedJS-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:17:51,修改后的代码在每次机器人移动到一个新的位置之后，都会检测是否有人存在。如果检测到有人存在，机器人会说出一句话提醒员工下班后尽快离开办公室。这样修改后的代码相比于原代码，增加了机器人在每个位置检测人员的功能，以提醒员工注意下班时间。,explainModifiedJS-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:17:51,"await robot.userRequest('办公室巡逻');
+
+await robot.goto('员工办公区');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.goto('会议室');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.goto('创作室');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.goto('茶水间');
+if(await robot.detectHuman()){
+  await robot.speak('请员工们注意，下班后请尽快离开办公室，谢谢合作。');
+}
+
+await robot.speak('巡逻结束，办公室已巡查完毕。');",js2flow-start,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06
+15:18:41,"
+graph TB
+r_01([""userRequest:办公室巡逻""])
+g_01[""goto:员工办公区""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+s_01[""speak:告知员工下班后尽快离开办公室""]
+g_02[""goto:会议室""]
+c_02{""condition: 检测到人;人员检测结果_2""}
+s_02[""speak:告知员工下班后尽快离开办公室""]
+g_03[""goto:创作室""]
+c_03{""condition: 检测到人;人员检测结果_3""}
+s_03[""speak:告知员工下班后尽快离开办公室""]
+g_04[""goto:茶水间""]
+c_04{""condition: 检测到人;人员检测结果_4""}
+s_04[""speak:告知员工下班后尽快离开办公室""]
+s_05[""speak:告知巡逻结束，办公室已巡查完毕""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> g_02
+c_01 --false--> g_02
+g_02 --> d_02
+d_02 --> c_02
+c_02 --true--> s_02
+s_02 --> g_03
+c_02 --false--> g_03
+g_03 --> d_03
+d_03 --> c_03
+c_03 --true--> s_03
+s_03 --> g_04
+c_03 --false--> g_04
+g_04 --> d_04
+d_04 --> c_04
+c_04 --true--> s_04
+s_04 --> s_05
+c_04 --false--> s_05
+s_05 --> k_01
+",js2flow-finished,095c1c56-4a9f-43d1-8e72-39dbe63dda5c,08-21-15-12-06

@@ -1,0 +1,287 @@
+time,content,type,sessionID,createdAt
+10:50:22,start a new session,start,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:52:58,我的机器人个性化服务定制需求：我想让机器人去到会客厅里面，看一下会客厅里有没有人，有人的话请询问他是否需要导航的帮助，如果他回答了需要，请指引他前往他想去的地方，如果他回答了不需要，请你自己返回充电桩附近,authoringNEW-start,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:53:01,"<require>
+1. 机器人前往会客厅
+2. 检测会客厅是否有人
+3. 如果有人，询问是否需要导航帮助
+4. 如果需要导航帮助，指引前往目的地
+5. 如果不需要导航帮助，机器人返回充电桩附近
+</require>",authoring-finished,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:53:24,我的机器人个性化服务定制需求：我想让机器人去到会客厅里面，看一下会客厅里有没有人，有人的话请询问他是否需要导航的帮助，如果他回答了需要，请指引他前往他想去的地方，如果他回答了不需要，请你自己返回充电桩附近,authoringNEW-start,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:53:26,<end>完成</end>,authoring-finished,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:53:26,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 机器人前往会客厅
+2. 检测会客厅是否有人
+3. 如果有人，询问是否需要导航帮助
+4. 如果需要导航帮助，指引前往目的地
+5. 如果不需要导航帮助，机器人返回充电桩附近
+
+        ",nl2js-start,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:53:31,"
+  await robot.userRequest('导航服务');
+  await robot.goto('会客厅');
+  const isPresent = await robot.detectHuman();
+  
+  if(isPresent){
+      const needNavigation = await robot.ask('您需要导航帮助吗？');
+  
+      if(needNavigation==""需要""){
+          const destination = await robot.ask('请告诉我您的目的地');
+          await robot.speak('好的，我将为您导航前往 ' + destination);
+          await robot.goto(destination);
+          await robot.speak('已到达目的地');
+  
+      }else{
+          await robot.speak('好的，如果您需要导航帮助，请随时告诉我');
+          await robot.goto('充电桩附近');
+      }
+  
+  }else{
+      await robot.speak('会客厅没有人');
+      await robot.goto('充电桩附近');
+  }",nl2js-finished,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:53:31,"
+  await robot.userRequest('导航服务');
+  await robot.goto('会客厅');
+  const isPresent = await robot.detectHuman();
+  
+  if(isPresent){
+      const needNavigation = await robot.ask('您需要导航帮助吗？');
+  
+      if(needNavigation==""需要""){
+          const destination = await robot.ask('请告诉我您的目的地');
+          await robot.speak('好的，我将为您导航前往 ' + destination);
+          await robot.goto(destination);
+          await robot.speak('已到达目的地');
+  
+      }else{
+          await robot.speak('好的，如果您需要导航帮助，请随时告诉我');
+          await robot.goto('充电桩附近');
+      }
+  
+  }else{
+      await robot.speak('会客厅没有人');
+      await robot.goto('充电桩附近');
+  }",js2NLexplain-start,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:53:37,"服务启动关键词：导航服务
+服务流程：
+1. 机器人接收到用户的导航服务请求。
+2. 机器人会前往会客厅。
+3. 到达会客厅后，机器人会检测是否有人在场。
+4. 如果有人在场，机器人会问用户是否需要导航帮助。
+   - 如果用户需要导航帮助，机器人会询问用户的目的地。
+     - 机器人会说：“好的，我将为您导航前往目的地”，然后前往目的地。
+     - 到达目的地后，机器人会说：“已到达目的地”。
+   - 如果用户不需要导航帮助，机器人会说：“好的，如果您需要导航帮助，请随时告诉我”，然后前往充电桩附近。
+5. 如果会客厅没有人在场，机器人会说：“会客厅没有人”，然后前往充电桩附近。",js2NLexplain-finished,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:53:37,"
+  await robot.userRequest('导航服务');
+  await robot.goto('会客厅');
+  const isPresent = await robot.detectHuman();
+  
+  if(isPresent){
+      const needNavigation = await robot.ask('您需要导航帮助吗？');
+  
+      if(needNavigation==""需要""){
+          const destination = await robot.ask('请告诉我您的目的地');
+          await robot.speak('好的，我将为您导航前往 ' + destination);
+          await robot.goto(destination);
+          await robot.speak('已到达目的地');
+  
+      }else{
+          await robot.speak('好的，如果您需要导航帮助，请随时告诉我');
+          await robot.goto('充电桩附近');
+      }
+  
+  }else{
+      await robot.speak('会客厅没有人');
+      await robot.goto('充电桩附近');
+  }",js2flow-start,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:54:03,"
+graph TB
+r_01([""userRequest:导航服务""])
+g_01[""goto:会客厅""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否需要导航帮助;用户回复_1""]
+c_02{""condition: 用户需要导航帮助;用户回复_1""}
+a_02[""ask:询问用户的目的地;用户回复_2""]
+s_01[""speak:告知将为用户导航前往目的地;用户回复_2""]
+g_02[""goto:用户回复_2""]
+s_02[""speak:告知已到达目的地""]
+s_03[""speak:告知如果需要导航帮助，请随时告诉我""]
+g_03[""goto:充电桩附近""]
+s_04[""speak:告知会客厅没有人""]
+g_04[""goto:充电桩附近""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> k_01
+c_02 --false--> s_03
+s_03 --> g_03
+g_03 --> k_01
+c_01 --false--> s_04
+s_04 --> g_04
+g_04 --> k_01
+",js2flow-finished,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:56:02,告知将为用户导航前往目的地;用户回复_2,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:56:02,告知将为用户导航前往目的地;用户回复_2,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:56:14,询问用户的目的地;用户回复_2,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:56:14,询问用户的目的地;用户回复_2,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:56:17,告知将为用户导航前往目的地;用户回复_2,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:56:17,告知将为用户导航前往目的地;用户回复_2,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:56:22,用户回复_2,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:56:22,用户回复_2,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:56:25,告知如果需要导航帮助，请随时告诉我,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:56:25,告知如果需要导航帮助，请随时告诉我,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:59:34,询问是否需要导航帮助;用户回复_1,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:59:34,询问是否需要导航帮助;用户回复_1,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:59:41,询问是否需要导航帮助;用户回复_1,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:59:43,"selectedNodes:
+    ASK: 询问是否需要导航帮助;用户回复_1
+    flow:
+    
+graph TB
+r_01([""userRequest:导航服务""])
+g_01[""goto:会客厅""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否需要导航帮助;用户回复_1""]
+c_02{""condition: 用户需要导航帮助;用户回复_1""}
+a_02[""ask:询问用户的目的地;用户回复_2""]
+s_01[""speak:告知将为用户导航前往目的地;用户回复_2""]
+g_02[""goto:用户回复_2""]
+s_02[""speak:告知已到达目的地""]
+s_03[""speak:告知如果需要导航帮助，请随时告诉我""]
+g_03[""goto:充电桩附近""]
+s_04[""speak:告知会客厅没有人""]
+g_04[""goto:充电桩附近""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> k_01
+c_02 --false--> s_03
+s_03 --> g_03
+g_03 --> k_01
+c_01 --false--> s_04
+s_04 --> g_04
+g_04 --> k_01
+
+    jscode:
+    
+  await robot.userRequest('导航服务');
+  await robot.goto('会客厅');
+  const isPresent = await robot.detectHuman();
+  
+  if(isPresent){
+      const needNavigation = await robot.ask('您需要导航帮助吗？');
+  
+      if(needNavigation==""需要""){
+          const destination = await robot.ask('请告诉我您的目的地');
+          await robot.speak('好的，我将为您导航前往 ' + destination);
+          await robot.goto(destination);
+          await robot.speak('已到达目的地');
+  
+      }else{
+          await robot.speak('好的，如果您需要导航帮助，请随时告诉我');
+          await robot.goto('充电桩附近');
+      }
+  
+  }else{
+      await robot.speak('会客厅没有人');
+      await robot.goto('充电桩附近');
+  }
+    ",magicModify-start,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:59:47,"你所选中的节点包括：""ASK: 询问是否需要导航帮助;用户回复_1"" 
+
+在整个服务中的作用是询问用户是否需要导航帮助，并根据用户的回复进行下一步的判断。具体的参数是询问文本参数：“您需要导航帮助吗？”。
+
+你可以进一步询问我关于这个节点的信息，我会给你提供更多的信息。或者你可以让我直接修改这个节点的行为。或者结束节点调试。",magicModify-finished,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+10:59:59,用户需要导航帮助;用户回复_1,nodeClick,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+11:00:01,"selectedNodes:
+    ASK: 询问是否需要导航帮助;用户回复_1,IF: 用户需要导航帮助;用户回复_1
+    flow:
+    
+graph TB
+r_01([""userRequest:导航服务""])
+g_01[""goto:会客厅""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否需要导航帮助;用户回复_1""]
+c_02{""condition: 用户需要导航帮助;用户回复_1""}
+a_02[""ask:询问用户的目的地;用户回复_2""]
+s_01[""speak:告知将为用户导航前往目的地;用户回复_2""]
+g_02[""goto:用户回复_2""]
+s_02[""speak:告知已到达目的地""]
+s_03[""speak:告知如果需要导航帮助，请随时告诉我""]
+g_03[""goto:充电桩附近""]
+s_04[""speak:告知会客厅没有人""]
+g_04[""goto:充电桩附近""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> k_01
+c_02 --false--> s_03
+s_03 --> g_03
+g_03 --> k_01
+c_01 --false--> s_04
+s_04 --> g_04
+g_04 --> k_01
+
+    jscode:
+    
+  await robot.userRequest('导航服务');
+  await robot.goto('会客厅');
+  const isPresent = await robot.detectHuman();
+  
+  if(isPresent){
+      const needNavigation = await robot.ask('您需要导航帮助吗？');
+  
+      if(needNavigation==""需要""){
+          const destination = await robot.ask('请告诉我您的目的地');
+          await robot.speak('好的，我将为您导航前往 ' + destination);
+          await robot.goto(destination);
+          await robot.speak('已到达目的地');
+  
+      }else{
+          await robot.speak('好的，如果您需要导航帮助，请随时告诉我');
+          await robot.goto('充电桩附近');
+      }
+  
+  }else{
+      await robot.speak('会客厅没有人');
+      await robot.goto('充电桩附近');
+  }
+    ",magicModify-start,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22
+11:00:07,"你所选中的节点包括：""ASK: 询问是否需要导航帮助;用户回复_1"" 和 ""IF: 用户需要导航帮助;用户回复_1""
+
+在整个服务中的作用是询问用户是否需要导航帮助，并根据用户的回复进行判断。
+
+节点 ""ASK: 询问是否需要导航帮助;用户回复_1"" 是一个询问节点，机器人会向用户发起询问，询问用户是否需要导航帮助。该节点的参数是询问的文本内容。
+
+节点 ""IF: 用户需要导航帮助;用户回复_1"" 是一个判断节点，根据用户的回复判断用户是否需要导航帮助。如果用户回复是""需要""，则进入下一步导航流程；如果用户回复是其他内容，则进入另外的流程。
+
+你可以进一步询问我关于这个（这些）节点的信息，我会给你提供更多的信息。或者你可以让我直接修改这些节点的行为。或者结束节点调试。",magicModify-finished,eb3d4a29-a9b2-4d60-8716-7e8d3e7269cd,08-20-10-50-22

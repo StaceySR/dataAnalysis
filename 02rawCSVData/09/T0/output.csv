@@ -1,0 +1,76 @@
+type,time
+start,08:37:34
+nodeClick,08:49:51
+nodeClick,08:49:52
+Node update,08:50:15
+nodeClick,08:50:25
+nodeClick,08:53:00
+nodeClick,08:53:00
+nodeClick,08:53:06
+nodeClick,08:53:07
+magicModify-start,08:53:12
+magicModify-finished,08:53:16
+magicModify-start,08:53:51
+magicModify-finished,08:53:52
+magicModifyPhase-start,08:54:04
+magicModifyPhase-finished,08:54:07
+start,08:55:04
+authoringNEW-start,08:56:21
+authoring-finished,08:56:23
+authoringNEW-start,08:56:42
+authoring-finished,08:56:44
+authoringNEW-start,08:56:55
+authoring-finished,08:56:57
+nl2js-start,08:56:57
+nl2js-finished,08:56:59
+js2NLexplain-start,08:56:59
+js2NLexplain-finished,08:57:03
+js2flow-start,08:57:03
+js2flow-finished,08:57:21
+nodeClick,08:58:28
+nodeClick,08:58:28
+Node update -- variable,08:58:55
+Node update,08:59:02
+flow2js-start,08:59:55
+flow2js-finished,09:00:03
+explainModifiedJS-start,09:00:03
+explainModifiedJS-finished,09:00:07
+nl2jswithContext-start,09:00:54
+explainModifiedJS-start,09:01:01
+nl2jswithContext-finished,09:01:01
+explainModifiedJS-finished,09:01:06
+js2flow-start,09:01:06
+js2flow-finished,09:01:20
+newNodeAdd,09:01:51
+nodeClick,09:02:01
+nodeClick,09:02:02
+nodeClick,09:02:03
+nodeClick,09:02:07
+nodeClick,09:02:09
+nodeClick,09:02:09
+nodeClick,09:02:10
+Node update,09:02:12
+nodeClick,09:02:13
+nodeClick,09:02:15
+nodeClick,09:02:17
+nodeClick,09:02:17
+Node update -- variable,09:02:20
+Node update,09:02:21
+Node update,09:02:24
+nodeClick,09:02:29
+nodeClick,09:02:29
+nodeClick,09:02:33
+nodeClick,09:02:38
+flow2js-start,09:02:47
+flow2js-finished,09:02:55
+explainModifiedJS-start,09:02:55
+explainModifiedJS-finished,09:02:59
+nodeClick,09:06:19
+nodeClick,09:06:21
+nodeClick,09:06:23
+magicModify-start,09:06:26
+magicModify-finished,09:06:30
+magicModifyPhase-start,09:06:50
+magicModifyPhase-finished,09:07:04
+js2flow-start,09:07:04
+js2flow-finished,09:07:21

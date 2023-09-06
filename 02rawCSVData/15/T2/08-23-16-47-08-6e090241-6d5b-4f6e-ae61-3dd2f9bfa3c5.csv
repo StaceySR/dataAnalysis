@@ -1,0 +1,114 @@
+time,content,type,sessionID,createdAt
+16:47:08,start a new session,start,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:47:13,我的机器人个性化服务定制需求：参观介绍,authoringNEW-start,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:47:14,"<require>
+1. 提供机器人参观介绍的语音导览。
+2. 在导览中包含机器人的功能、技术特点和应用场景等信息。
+3. 导览内容需要简洁明了，易于理解。
+</require>",authoring-finished,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:47:19,我的机器人个性化服务定制需求：参观介绍,authoringNEW-start,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:47:30,"<modifiedrequire>
+1. 提供机器人参观介绍的语音导览。
+2. 在导览中包含机器人的功能、技术特点和应用场景等信息。
+3. 导览内容需要简洁明了，易于理解。
+4. 前往接待区检测到人后，说""您好，请让我为您介绍一下公司目前的主要展品""。
+5. 接下来前往作品展示区介绍双臂机器人，它的手臂可以上下移动，并且可以360度旋转身体。
+6. 接下来前往会客厅介绍我公司目前还在开发虚实结合的机器人测试平台，可以满足不同家居场景下的模拟测试。
+7. 最后说""感谢参观""。
+</modifiedrequire>",authoring-finished,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:48:25,我的机器人个性化服务定制需求：参观介绍,authoringNEW-start,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:48:33,"<modifiedrequire>
+1. 前往接待区检测到人后，说""您好，请让我为您介绍一下公司目前的主要展品""。
+2. 接下来前往作品展示区介绍双臂机器人，它的手臂可以上下移动，并且可以360度旋转身体。
+3. 接下来前往会客厅介绍我公司目前还在开发虚实结合的机器人测试平台，可以满足不同家居场景下的模拟测试。
+4. 最后说""感谢参观""。
+</modifiedrequire>",authoring-finished,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:48:45,我的机器人个性化服务定制需求：参观介绍,authoringNEW-start,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:48:47,<end>完成</end>,authoring-finished,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:48:47,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 前往接待区检测到人后，说""您好，请让我为您介绍一下公司目前的主要展品""。
+2. 接下来前往作品展示区介绍双臂机器人，它的手臂可以上下移动，并且可以360度旋转身体。
+3. 接下来前往会客厅介绍我公司目前还在开发虚实结合的机器人测试平台，可以满足不同家居场景下的模拟测试。
+4. 最后说""感谢参观""。
+
+        ",nl2js-start,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:48:56,"
+  await robot.userRequest('公司介绍');
+  await robot.goto('接待区');
+  const isPresent = await robot.detectHuman();
+  if(isPresent){
+      await robot.speak('您好，请让我为您介绍一下公司目前的主要展品');
+      await robot.goto('作品展示区');
+      await robot.speak('这是我们的双臂机器人，它的手臂可以上下移动，并且可以360度旋转身体');
+      await robot.goto('会客厅');
+      await robot.speak('在这里我们正在开发虚实结合的机器人测试平台，可以满足不同家居场景下的模拟测试');
+      await robot.speak('感谢参观');
+  }else{
+      await robot.speak('很抱歉，目前没有人在接待区');
+  }",nl2js-finished,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:48:56,"
+  await robot.userRequest('公司介绍');
+  await robot.goto('接待区');
+  const isPresent = await robot.detectHuman();
+  if(isPresent){
+      await robot.speak('您好，请让我为您介绍一下公司目前的主要展品');
+      await robot.goto('作品展示区');
+      await robot.speak('这是我们的双臂机器人，它的手臂可以上下移动，并且可以360度旋转身体');
+      await robot.goto('会客厅');
+      await robot.speak('在这里我们正在开发虚实结合的机器人测试平台，可以满足不同家居场景下的模拟测试');
+      await robot.speak('感谢参观');
+  }else{
+      await robot.speak('很抱歉，目前没有人在接待区');
+  }",js2NLexplain-start,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:49:06,"服务启动关键词：公司介绍
+服务流程：
+1. 机器人首先接收到用户要了解公司介绍的请求。
+2. 机器人会去接待区。
+3. 到达接待区后，机器人会检测是否有人在接待区。
+4. 如果有人在接待区，机器人会向用户打招呼，并介绍公司目前的主要展品。
+5. 机器人会去作品展示区，并介绍双臂机器人的特点。
+6. 之后，机器人会去会客厅，并介绍正在开发的虚实结合的机器人测试平台。
+7. 最后，机器人会向用户表示感谢，并结束服务。
+8. 如果没有人在接待区，机器人会告诉用户目前没有人在接待区。",js2NLexplain-finished,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:49:06,"
+  await robot.userRequest('公司介绍');
+  await robot.goto('接待区');
+  const isPresent = await robot.detectHuman();
+  if(isPresent){
+      await robot.speak('您好，请让我为您介绍一下公司目前的主要展品');
+      await robot.goto('作品展示区');
+      await robot.speak('这是我们的双臂机器人，它的手臂可以上下移动，并且可以360度旋转身体');
+      await robot.goto('会客厅');
+      await robot.speak('在这里我们正在开发虚实结合的机器人测试平台，可以满足不同家居场景下的模拟测试');
+      await robot.speak('感谢参观');
+  }else{
+      await robot.speak('很抱歉，目前没有人在接待区');
+  }",js2flow-start,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08
+16:49:49,"
+  graph TB
+  r_01([""userRequest:公司介绍""])
+  g_01[""goto:接待区""]
+  d_01[""detectHuman""]
+  c_01{""condition: 检测到人;人员检测结果""}
+  s_01[""speak:告知用户将进行公司介绍""]
+  g_02[""goto:作品展示区""]
+  s_02[""speak:介绍双臂机器人""]
+  g_03[""goto:会客厅""]
+  s_03[""speak:介绍虚实结合的机器人测试平台""]
+  s_04[""speak:感谢参观""]
+  s_05[""speak:告知用户接待区无人""]
+  k_01([""end:服务结束""])
+  r_01 --> g_01
+  g_01 --> d_01
+  d_01 --> c_01
+  c_01 --true--> s_01
+  s_01 --> g_02
+  g_02 --> s_02
+  s_02 --> g_03
+  g_03 --> s_03
+  s_03 --> s_04
+  s_04 --> k_01
+  c_01 --false--> s_05
+  s_05 --> k_01
+",js2flow-finished,6e090241-6d5b-4f6e-ae61-3dd2f9bfa3c5,08-23-16-47-08

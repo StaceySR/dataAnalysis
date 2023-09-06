@@ -1,0 +1,8 @@
+time,content,type,sessionID,createdAt
+18:06:15,start a new session,start,6981029e-7b85-4dba-a65a-5a057787f024,08-23-18-06-15
+18:15:28,GOTO,newNodeAdd,6981029e-7b85-4dba-a65a-5a057787f024,08-23-18-06-15
+18:15:30,前往,nodeClick,6981029e-7b85-4dba-a65a-5a057787f024,08-23-18-06-15
+18:15:30,前往,nodeClick,6981029e-7b85-4dba-a65a-5a057787f024,08-23-18-06-15
+18:15:42,"{'label': '员工办公区', 'name': 'GOTO', 'tooltip': '前往', 'variable': '', 'action': '前往'}",Node update -- variable,6981029e-7b85-4dba-a65a-5a057787f024,08-23-18-06-15
+18:15:44,"{'label': '', 'name': 'GOTO', 'tooltip': '前往', 'variable': '', 'action': '前往'}",Node update,6981029e-7b85-4dba-a65a-5a057787f024,08-23-18-06-15
+18:15:46,员工办公区,nodeClick,6981029e-7b85-4dba-a65a-5a057787f024,08-23-18-06-15

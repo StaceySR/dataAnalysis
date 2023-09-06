@@ -1,0 +1,181 @@
+time,content,type,sessionID,createdAt
+18:31:29,start a new session,start,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29
+18:32:23,"我的机器人个性化服务定制需求：请帮我定制一个办公室巡视的流程，要求如下：1. 获取当前定位
+2. 对办公室进行巡视
+3. 巡视路线为员工办公区，会客厅，会议室，接待区
+4. 进行人物检测：
+每到达一个区域停下来环顾四周，检测区域内是否有人
+5. 如有人则对人说：“已到下班时间，请尽快离开办公室”
+6. 如没有人则直接移动到下一个地点
+7. 最后回到接待区",authoringNEW-start,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29
+18:32:31,"<require>
+1. 获取当前定位
+2. 对办公室进行巡视
+3. 巡视路线为员工办公区，会客厅，会议室，接待区
+4. 进行人物检测：
+每到达一个区域停下来环顾四周，检测区域内是否有人
+5. 如有人则对人说：“已到下班时间，请尽快离开办公室”
+6. 如没有人则直接移动到下一个地点
+7. 最后回到接待区
+</require>",authoring-finished,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29
+18:32:41,"我的机器人个性化服务定制需求：请帮我定制一个办公室巡视的流程，要求如下：1. 获取当前定位
+2. 对办公室进行巡视
+3. 巡视路线为员工办公区，会客厅，会议室，接待区
+4. 进行人物检测：
+每到达一个区域停下来环顾四周，检测区域内是否有人
+5. 如有人则对人说：“已到下班时间，请尽快离开办公室”
+6. 如没有人则直接移动到下一个地点
+7. 最后回到接待区",authoringNEW-start,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29
+18:32:43,<end>完成</end>,authoring-finished,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29
+18:32:43,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 获取当前定位
+2. 对办公室进行巡视
+3. 巡视路线为员工办公区，会客厅，会议室，接待区
+4. 进行人物检测：
+每到达一个区域停下来环顾四周，检测区域内是否有人
+5. 如有人则对人说：“已到下班时间，请尽快离开办公室”
+6. 如没有人则直接移动到下一个地点
+7. 最后回到接待区
+
+        ",nl2js-start,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29
+18:32:53,"
+  async function officePatrol() {
+    const locations = [
+      ""员工办公区"",
+      ""会客厅"",
+      ""会议室"",
+      ""接待区""
+    ];
+  
+    await robot.userRequest('办公室巡视');
+  
+    const currentLocation = await robot.goto(robot.location[0]);
+    await robot.speak('当前位置是' + currentLocation);
+  
+    for (let i = 0; i < locations.length; i++) {
+      const location = locations[i];
+  
+      await robot.goto(location);
+      await robot.speak('已到达' + location);
+  
+      const hasPerson = await robot.detectHuman();
+  
+      if (hasPerson) {
+        await robot.speak('已到下班时间，请尽快离开办公室');
+      }
+    }
+  
+    await robot.goto('接待区');
+    await robot.speak('巡视结束，已回到接待区');
+  }
+  
+  officePatrol();",nl2js-finished,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29
+18:32:53,"
+  async function officePatrol() {
+    const locations = [
+      ""员工办公区"",
+      ""会客厅"",
+      ""会议室"",
+      ""接待区""
+    ];
+  
+    await robot.userRequest('办公室巡视');
+  
+    const currentLocation = await robot.goto(robot.location[0]);
+    await robot.speak('当前位置是' + currentLocation);
+  
+    for (let i = 0; i < locations.length; i++) {
+      const location = locations[i];
+  
+      await robot.goto(location);
+      await robot.speak('已到达' + location);
+  
+      const hasPerson = await robot.detectHuman();
+  
+      if (hasPerson) {
+        await robot.speak('已到下班时间，请尽快离开办公室');
+      }
+    }
+  
+    await robot.goto('接待区');
+    await robot.speak('巡视结束，已回到接待区');
+  }
+  
+  officePatrol();",js2NLexplain-start,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29
+18:33:04,"这段代码实现了一个办公室巡视的功能。具体流程如下：
+
+1. 定义了一个包含不同位置的数组，包括员工办公区、会客厅、会议室和接待区。
+2. 机器人等待用户输入办公室巡视的指令。
+3. 机器人首先前往第一个位置（员工办公区），并将当前位置告知用户。
+4. 通过循环遍历数组中的每个位置，机器人依次前往每个位置。
+5. 在每个位置，机器人会将当前位置告知用户，并检测是否有人在该位置。
+6. 如果有人在该位置，机器人会告知他们已经到了下班时间，请尽快离开办公室。
+7. 循环结束后，机器人会前往接待区，并告知用户巡视结束，已回到接待区。
+
+通过调用officePatrol()函数，可以启动办公室巡视的流程。",js2NLexplain-finished,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29
+18:33:04,"
+  async function officePatrol() {
+    const locations = [
+      ""员工办公区"",
+      ""会客厅"",
+      ""会议室"",
+      ""接待区""
+    ];
+  
+    await robot.userRequest('办公室巡视');
+  
+    const currentLocation = await robot.goto(robot.location[0]);
+    await robot.speak('当前位置是' + currentLocation);
+  
+    for (let i = 0; i < locations.length; i++) {
+      const location = locations[i];
+  
+      await robot.goto(location);
+      await robot.speak('已到达' + location);
+  
+      const hasPerson = await robot.detectHuman();
+  
+      if (hasPerson) {
+        await robot.speak('已到下班时间，请尽快离开办公室');
+      }
+    }
+  
+    await robot.goto('接待区');
+    await robot.speak('巡视结束，已回到接待区');
+  }
+  
+  officePatrol();",js2flow-start,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29
+18:33:41,"
+graph TB
+r_01([""userRequest:办公室巡视""])
+id_01[""infoDeclare:地点列表""]
+ia_01[""infoAssign:将地点列表赋值为“员工办公区，会客厅，会议室，接待区”;地点列表""]
+g_01[""goto:机器人的初始位置""]
+s_01[""speak:告知当前位置;机器人的初始位置""]
+f_01{{""forLoop:地点列表""}}
+g_02[""goto:地点列表[i]""]
+s_02[""speak:告知已到达当前位置;地点列表[i]""]
+c_01{""condition: 检测到人;人员检测结果""}
+s_03[""speak:告知已到下班时间，请尽快离开办公室""]
+j_01{{""loopEnd:循环结束""}}
+g_03[""goto:接待区""]
+s_04[""speak:告知巡视结束，已回到接待区""]
+k_01([""end:服务结束""])
+r_01 --> id_01 
+id_01 --> ia_01
+ia_01 --> g_01
+g_01 --> s_01
+s_01 --> f_01
+f_01 --""处理当前position信息""--> g_02
+g_02 --> s_02
+s_02 --> d_01
+d_01 --> c_01
+c_01 --true--> s_03
+s_03 --> f_01
+c_01 --false--> f_01
+f_01 --""完成遍历循环""--> j_01
+j_01 --> g_03
+g_03 --> s_04
+s_04 --> k_01
+",js2flow-finished,b6cef3fd-08b6-45e5-8d74-712c87927d76,08-23-18-31-29

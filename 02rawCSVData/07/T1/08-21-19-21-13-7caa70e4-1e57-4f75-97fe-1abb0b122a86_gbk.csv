@@ -1,0 +1,135 @@
+time,content,type,sessionID,createdAt
+19:21:13,start a new session,start,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:26,我的机器人个性化服务定制需求： 在晚上八点以后，机器人开始巡逻整个办公室，当检测到有人的时候，提醒说：“下班了，快回家。”，然后继续巡逻直到巡逻完整个办公室。 ,authoringNEW-start,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:27,"<require>
+1. 在晚上八点以后，机器人开始巡逻整个办公室。
+2. 当检测到有人的时候，提醒说：“下班了，快回家。”
+3. 继续巡逻直到巡逻完整个办公室。
+</require>",authoring-finished,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:34,我的机器人个性化服务定制需求： 在晚上八点以后，机器人开始巡逻整个办公室，当检测到有人的时候，提醒说：“下班了，快回家。”，然后继续巡逻直到巡逻完整个办公室。 ,authoringNEW-start,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:34,<end>完成</end>,authoring-finished,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:34,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 在晚上八点以后，机器人开始巡逻整个办公室。
+2. 当检测到有人的时候，提醒说：“下班了，快回家。”
+3. 继续巡逻直到巡逻完整个办公室。
+
+        ",nl2js-start,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:35,"
+  async function patrolOffice() {
+    await robot.userRequest('晚间巡逻');
+    const currentTime = new Date().getHours();
+    
+    if (currentTime >= 20) {
+      const locations = robot.location;
+      for (let i = 0; i < locations.length; i++) {
+        await robot.goto(locations[i]);
+        const isHumanDetected = await robot.detectHuman();
+        if (isHumanDetected) {
+          await robot.speak('下班了，快回家。');
+        }
+      }
+    }
+    
+    await robot.speak('巡逻完整个办公室。');
+  }
+  
+  patrolOffice();",nl2js-finished,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:35,"
+  async function patrolOffice() {
+    await robot.userRequest('晚间巡逻');
+    const currentTime = new Date().getHours();
+    
+    if (currentTime >= 20) {
+      const locations = robot.location;
+      for (let i = 0; i < locations.length; i++) {
+        await robot.goto(locations[i]);
+        const isHumanDetected = await robot.detectHuman();
+        if (isHumanDetected) {
+          await robot.speak('下班了，快回家。');
+        }
+      }
+    }
+    
+    await robot.speak('巡逻完整个办公室。');
+  }
+  
+  patrolOffice();",js2NLexplain-start,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:35,"这段代码是一个用于晚间巡逻办公室的函数。函数的执行流程如下：
+
+1. 首先，机器人会接收到用户发出的晚间巡逻的请求。
+2. 然后，机器人会获取当前的时间。
+3. 如果当前时间大于等于20点，机器人会获取办公室的所有位置。
+4. 接下来，机器人会依次前往每个位置。
+5. 在每个位置，机器人会检测是否有人。
+6. 如果检测到有人，机器人会说出""下班了，快回家""的提示。
+7. 循环结束后，机器人会说出""巡逻完整个办公室""的提示。
+8. 最后，函数会自动执行patrolOffice()函数，开始晚间巡逻。",js2NLexplain-finished,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:35,"
+  async function patrolOffice() {
+    await robot.userRequest('晚间巡逻');
+    const currentTime = new Date().getHours();
+    
+    if (currentTime >= 20) {
+      const locations = robot.location;
+      for (let i = 0; i < locations.length; i++) {
+        await robot.goto(locations[i]);
+        const isHumanDetected = await robot.detectHuman();
+        if (isHumanDetected) {
+          await robot.speak('下班了，快回家。');
+        }
+      }
+    }
+    
+    await robot.speak('巡逻完整个办公室。');
+  }
+  
+  patrolOffice();",js2flow-start,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:36,"
+graph TB
+r_01([""userRequest:晚间巡逻""])
+id_01[""infoDeclare:当前时间""]
+ia_01[""infoAssign:将当前时间赋值为当前小时数;当前时间""]
+c_01{""condition: 当前时间大于等于20;当前时间""}
+id_02[""infoDeclare:地点列表""]
+ia_02[""infoAssign:将地点列表赋值为机器人的位置信息;地点列表""]
+f_01{{""forLoop:地点列表""}}
+g_01[""goto:地点列表[i]""]
+c_02{""condition: 检测到人;人员检测结果""}
+s_01[""speak:告知下班了，快回家""]
+j_01{{""loopEnd:循环结束""}}
+s_02[""speak:告知巡逻完整个办公室""]
+k_01([""end:服务结束""])
+r_01 --> id_01 
+id_01 --> ia_01
+ia_01 --> c_01
+c_01 --true--> id_02
+c_01 --false--> s_02
+id_02 --> ia_02
+ia_02 --> f_01
+f_01 --""处理当前position信息""--> g_01
+f_01 --""完成遍历循环""--> j_01
+g_01 --> d_01
+d_01 --> c_02
+c_02 --true--> s_01
+s_01 --> f_01
+c_02 --false--> f_01
+j_01 --> s_02
+s_02 --> k_01
+",js2flow-finished,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:48,告知巡逻完整个办公室,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:48,告知巡逻完整个办公室,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:51,循环结束,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:52,循环结束,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:53,循环结束,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:21:54,地点列表,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:22:20,告知巡逻完整个办公室,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:22:22,告知巡逻完整个办公室,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:22:22,告知巡逻完整个办公室,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:22:24,告知巡逻完整个办公室,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:22:27,地点列表,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:22:27,地点列表,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:22:35,告知巡逻完整个办公室,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:22:36,告知巡逻完整个办公室,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:22:37,服务结束,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13
+19:22:38,服务结束,nodeClick,7caa70e4-1e57-4f75-97fe-1abb0b122a86,08-21-19-21-13

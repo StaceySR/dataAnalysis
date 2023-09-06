@@ -1,0 +1,164 @@
+time,content,type,sessionID,createdAt
+21:02:05,start a new session,start,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05
+21:04:54,我的机器人个性化服务定制需求：按照顺序巡查四个地点，从接待区出发，到员工办公区，再到会客厅，然后到会议室，最后回到接待区。每个区域都查看是否有人，如果有人的话提醒他离开，没人的话到下一个地点，最后回到接待区,authoringNEW-start,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05
+21:04:59,"<require>
+1. 按照顺序巡查四个地点：接待区，员工办公区，会客厅，会议室。
+2. 从接待区出发，到员工办公区，再到会客厅，然后到会议室，最后回到接待区。
+3. 每个区域都查看是否有人，如果有人的话提醒他离开，没人的话到下一个地点。
+4. 最后回到接待区。
+</require>",authoring-finished,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05
+21:05:12,我的机器人个性化服务定制需求：按照顺序巡查四个地点，从接待区出发，到员工办公区，再到会客厅，然后到会议室，最后回到接待区。每个区域都查看是否有人，如果有人的话提醒他离开，没人的话到下一个地点，最后回到接待区,authoringNEW-start,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05
+21:05:13,<end>完成</end>,authoring-finished,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05
+21:05:13,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 按照顺序巡查四个地点：接待区，员工办公区，会客厅，会议室。
+2. 从接待区出发，到员工办公区，再到会客厅，然后到会议室，最后回到接待区。
+3. 每个区域都查看是否有人，如果有人的话提醒他离开，没人的话到下一个地点。
+4. 最后回到接待区。
+
+        ",nl2js-start,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05
+21:05:20,"
+  await robot.userRequest('巡查服务');
+  
+  await robot.goto('接待区');
+  const isPresent1 = await robot.detectHuman();
+  if(isPresent1){
+      await robot.speak('请离开接待区');
+  }
+  
+  await robot.goto('员工办公区');
+  const isPresent2 = await robot.detectHuman();
+  if(isPresent2){
+      await robot.speak('请离开员工办公区');
+  }
+  
+  await robot.goto('会客厅');
+  const isPresent3 = await robot.detectHuman();
+  if(isPresent3){
+      await robot.speak('请离开会客厅');
+  }
+  
+  await robot.goto('会议室');
+  const isPresent4 = await robot.detectHuman();
+  if(isPresent4){
+      await robot.speak('请离开会议室');
+  }
+  
+  await robot.goto('接待区');
+  await robot.speak('巡查服务结束');",nl2js-finished,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05
+21:05:20,"
+  await robot.userRequest('巡查服务');
+  
+  await robot.goto('接待区');
+  const isPresent1 = await robot.detectHuman();
+  if(isPresent1){
+      await robot.speak('请离开接待区');
+  }
+  
+  await robot.goto('员工办公区');
+  const isPresent2 = await robot.detectHuman();
+  if(isPresent2){
+      await robot.speak('请离开员工办公区');
+  }
+  
+  await robot.goto('会客厅');
+  const isPresent3 = await robot.detectHuman();
+  if(isPresent3){
+      await robot.speak('请离开会客厅');
+  }
+  
+  await robot.goto('会议室');
+  const isPresent4 = await robot.detectHuman();
+  if(isPresent4){
+      await robot.speak('请离开会议室');
+  }
+  
+  await robot.goto('接待区');
+  await robot.speak('巡查服务结束');",js2NLexplain-start,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05
+21:05:28,"服务启动关键词：巡查服务
+服务流程：
+1. 机器人首先接收到用户要进行巡查服务的请求。
+2. 机器人会先去接待区进行巡查。
+   - 如果发现有人在接待区，机器人会告诉他们请离开接待区。
+3. 机器人会去员工办公区进行巡查。
+   - 如果发现有人在员工办公区，机器人会告诉他们请离开员工办公区。
+4. 机器人会去会客厅进行巡查。
+   - 如果发现有人在会客厅，机器人会告诉他们请离开会客厅。
+5. 机器人会去会议室进行巡查。
+   - 如果发现有人在会议室，机器人会告诉他们请离开会议室。
+6. 机器人会再次回到接待区，并告诉用户巡查服务结束。",js2NLexplain-finished,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05
+21:05:28,"
+  await robot.userRequest('巡查服务');
+  
+  await robot.goto('接待区');
+  const isPresent1 = await robot.detectHuman();
+  if(isPresent1){
+      await robot.speak('请离开接待区');
+  }
+  
+  await robot.goto('员工办公区');
+  const isPresent2 = await robot.detectHuman();
+  if(isPresent2){
+      await robot.speak('请离开员工办公区');
+  }
+  
+  await robot.goto('会客厅');
+  const isPresent3 = await robot.detectHuman();
+  if(isPresent3){
+      await robot.speak('请离开会客厅');
+  }
+  
+  await robot.goto('会议室');
+  const isPresent4 = await robot.detectHuman();
+  if(isPresent4){
+      await robot.speak('请离开会议室');
+  }
+  
+  await robot.goto('接待区');
+  await robot.speak('巡查服务结束');",js2flow-start,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05
+21:06:19,"
+graph TB
+r_01([""userRequest:巡查服务""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果1""}
+s_01[""speak:告知请离开接待区""]
+g_02[""goto:员工办公区""]
+d_02[""detectHuman""]
+c_02{""condition: 检测到人;人员检测结果2""}
+s_02[""speak:告知请离开员工办公区""]
+g_03[""goto:会客厅""]
+d_03[""detectHuman""]
+c_03{""condition: 检测到人;人员检测结果3""}
+s_03[""speak:告知请离开会客厅""]
+g_04[""goto:会议室""]
+d_04[""detectHuman""]
+c_04{""condition: 检测到人;人员检测结果4""}
+s_04[""speak:告知请离开会议室""]
+g_05[""goto:接待区""]
+s_05[""speak:告知巡查服务结束""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> g_02
+c_01 --false--> g_02
+g_02 --> d_02
+d_02 --> c_02
+c_02 --true--> s_02
+s_02 --> g_03
+c_02 --false--> g_03
+g_03 --> d_03
+d_03 --> c_03
+c_03 --true--> s_03
+s_03 --> g_04
+c_03 --false--> g_04
+g_04 --> d_04
+d_04 --> c_04
+c_04 --true--> s_04
+s_04 --> g_05
+c_04 --false--> g_05
+g_05 --> s_05
+s_05 --> k_01
+",js2flow-finished,c6d9d181-b9a1-46bc-b059-3a7f9a427384,08-22-21-02-05

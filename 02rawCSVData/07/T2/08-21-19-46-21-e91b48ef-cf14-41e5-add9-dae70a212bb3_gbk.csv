@@ -1,0 +1,296 @@
+time,content,type,sessionID,createdAt
+19:46:21,start a new session,start,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:52:27,我的机器人个性化服务定制需求：引导参观，人物检测，检测到人了以后说，你好，我是叮当，现在让我来带您参观办公室。说完之后，前往作品展示区，然后开始介绍说：“目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。”然后再前往创作区介绍说：“这里是公司的创作区，现在在开发虚实结合的机器人测试平台。” 最后返回接待区说：“参观结束，谢谢。”,authoringNEW-start,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:52:33,"<require>
+1. 引导参观
+2. 人物检测
+3. 检测到人后，说：“你好，我是叮当，现在让我来带您参观办公室。”
+4. 前往作品展示区，介绍：“目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。”
+5. 前往创作区，介绍：“这里是公司的创作区，现在在开发虚实结合的机器人测试平台。”
+6. 返回接待区，说：“参观结束，谢谢。”
+</require>",authoring-finished,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:53:03,我的机器人个性化服务定制需求：引导参观，人物检测，检测到人了以后说，你好，我是叮当，现在让我来带您参观办公室。说完之后，前往作品展示区，然后开始介绍说：“目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。”然后再前往创作区介绍说：“这里是公司的创作区，现在在开发虚实结合的机器人测试平台。” 最后返回接待区说：“参观结束，谢谢。”,authoringNEW-start,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:53:05,<end>完成</end>,authoring-finished,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:53:05,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 引导参观
+2. 人物检测
+3. 检测到人后，说：“你好，我是叮当，现在让我来带您参观办公室。”
+4. 前往作品展示区，介绍：“目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。”
+5. 前往创作区，介绍：“这里是公司的创作区，现在在开发虚实结合的机器人测试平台。”
+6. 返回接待区，说：“参观结束，谢谢。”
+
+        ",nl2js-start,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:53:12,"
+  await robot.userRequest('参观办公室');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      await robot.speak('你好，我是叮当，现在让我来带您参观办公室。');
+  
+      await robot.goto('作品展示区');
+      await robot.speak('目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。');
+  
+      await robot.goto('创作室');
+      await robot.speak('这里是公司的创作区，现在在开发虚实结合的机器人测试平台。');
+  
+      await robot.goto('接待区');
+      await robot.speak('参观结束，谢谢。');
+  
+  }else{
+      await robot.speak('很抱歉，没有检测到人员。');
+  }",nl2js-finished,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:53:12,"
+  await robot.userRequest('参观办公室');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      await robot.speak('你好，我是叮当，现在让我来带您参观办公室。');
+  
+      await robot.goto('作品展示区');
+      await robot.speak('目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。');
+  
+      await robot.goto('创作室');
+      await robot.speak('这里是公司的创作区，现在在开发虚实结合的机器人测试平台。');
+  
+      await robot.goto('接待区');
+      await robot.speak('参观结束，谢谢。');
+  
+  }else{
+      await robot.speak('很抱歉，没有检测到人员。');
+  }",js2NLexplain-start,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:53:21,"服务启动关键词：参观办公室
+服务流程：
+1. 机器人接收到用户要参观办公室的请求。
+2. 机器人会检测是否有人在附近。
+3. 如果检测到有人，机器人会向用户打招呼，并告诉用户自己是叮当，然后开始带用户参观办公室。
+4. 机器人会带用户去作品展示区，并介绍展示的内容，例如一个双臂机器人，它的手臂可以上下移动并且可以360度旋转身体。
+5. 接着，机器人会带用户去创作室，并告诉用户这是公司的创作区，目前正在开发虚实结合的机器人测试平台。
+6. 最后，机器人会带用户去接待区，并告诉用户参观结束，感谢参观。
+7. 如果没有检测到人员，机器人会告诉用户很抱歉，没有检测到人员。
+注意：以上流程中的具体位置和介绍内容仅为示例，实际情况可能有所不同。",js2NLexplain-finished,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:53:21,"
+  await robot.userRequest('参观办公室');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      await robot.speak('你好，我是叮当，现在让我来带您参观办公室。');
+  
+      await robot.goto('作品展示区');
+      await robot.speak('目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。');
+  
+      await robot.goto('创作室');
+      await robot.speak('这里是公司的创作区，现在在开发虚实结合的机器人测试平台。');
+  
+      await robot.goto('接待区');
+      await robot.speak('参观结束，谢谢。');
+  
+  }else{
+      await robot.speak('很抱歉，没有检测到人员。');
+  }",js2flow-start,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:53:52,"
+graph TB
+r_01([""userRequest:参观办公室""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果""}
+s_01[""speak:向用户介绍自己并告知将带领参观办公室""]
+g_01[""goto:作品展示区""]
+s_02[""speak:介绍作品展示区的内容""]
+g_02[""goto:创作室""]
+s_03[""speak:介绍创作室的内容""]
+g_03[""goto:接待区""]
+s_04[""speak:告知参观结束""]
+s_05[""speak:告知没有检测到人员""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+g_02 --> s_03
+s_03 --> g_03
+g_03 --> s_04
+s_04 --> k_01
+c_01 --false--> s_05
+s_05 --> k_01
+",js2flow-finished,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:54:19,告知没有检测到人员,nodeClick,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:54:21,告知没有检测到人员,nodeClick,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:54:21,告知没有检测到人员,nodeClick,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:54:42,"{'label': '', 'name': 'SPEAK', 'tooltip': '告知没有检测到人员', 'variable': '', 'action': '告知没有检测到人员，请离我近一些'}",Node update,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:54:44,"jscode:
+    
+  await robot.userRequest('参观办公室');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      await robot.speak('你好，我是叮当，现在让我来带您参观办公室。');
+  
+      await robot.goto('作品展示区');
+      await robot.speak('目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。');
+  
+      await robot.goto('创作室');
+      await robot.speak('这里是公司的创作区，现在在开发虚实结合的机器人测试平台。');
+  
+      await robot.goto('接待区');
+      await robot.speak('参观结束，谢谢。');
+  
+  }else{
+      await robot.speak('很抱歉，没有检测到人员。');
+  }
+    oldFlow:
+    
+graph TB
+r_01([""userRequest:参观办公室""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果""}
+s_01[""speak:向用户介绍自己并告知将带领参观办公室""]
+g_01[""goto:作品展示区""]
+s_02[""speak:介绍作品展示区的内容""]
+g_02[""goto:创作室""]
+s_03[""speak:介绍创作室的内容""]
+g_03[""goto:接待区""]
+s_04[""speak:告知参观结束""]
+s_05[""speak:告知没有检测到人员""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+g_02 --> s_03
+s_03 --> g_03
+g_03 --> s_04
+s_04 --> k_01
+c_01 --false--> s_05
+s_05 --> k_01
+
+    newFlow:
+    graph TB
+r_01([""userRequest:参观办公室""])
+d_01[""detectHuman""]
+c_01{""condition:检测到人;人员检测结果""}
+s_01[""speak:向用户介绍自己并告知将带领参观办公室""]
+g_01[""goto:作品展示区""]
+s_02[""speak:介绍作品展示区的内容""]
+g_02[""goto:创作室""]
+s_03[""speak:介绍创作室的内容""]
+g_03[""goto:接待区""]
+s_04[""speak:告知参观结束""]
+s_05[""speak:告知没有检测到人员，请离我近一些;""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+g_02 --> s_03
+s_03 --> g_03
+g_03 --> s_04
+s_04 --> k_01
+c_01 --false--> s_05
+s_05 --> k_01
+
+    ",flow2js-start,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:55:08,"await robot.userRequest('参观办公室');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    await robot.speak('你好，我是叮当，现在让我来带您参观办公室。');
+
+    await robot.goto('作品展示区');
+    await robot.speak('目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。');
+
+    await robot.goto('创作室');
+    await robot.speak('这里是公司的创作区，现在在开发虚实结合的机器人测试平台。');
+
+    await robot.goto('接待区');
+    await robot.speak('参观结束，谢谢。');
+
+}else{
+    await robot.speak('很抱歉，没有检测到人员，请离我近一些。');
+}",flow2js-finished,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:55:08,"
+  originalcode:
+  
+  await robot.userRequest('参观办公室');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      await robot.speak('你好，我是叮当，现在让我来带您参观办公室。');
+  
+      await robot.goto('作品展示区');
+      await robot.speak('目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。');
+  
+      await robot.goto('创作室');
+      await robot.speak('这里是公司的创作区，现在在开发虚实结合的机器人测试平台。');
+  
+      await robot.goto('接待区');
+      await robot.speak('参观结束，谢谢。');
+  
+  }else{
+      await robot.speak('很抱歉，没有检测到人员。');
+  }
+  modifiedcode:
+  await robot.userRequest('参观办公室');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    await robot.speak('你好，我是叮当，现在让我来带您参观办公室。');
+
+    await robot.goto('作品展示区');
+    await robot.speak('目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。');
+
+    await robot.goto('创作室');
+    await robot.speak('这里是公司的创作区，现在在开发虚实结合的机器人测试平台。');
+
+    await robot.goto('接待区');
+    await robot.speak('参观结束，谢谢。');
+
+}else{
+    await robot.speak('很抱歉，没有检测到人员，请离我近一些。');
+}
+  ",explainModifiedJS-start,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+19:55:13,"修改后的代码在检测到没有人员时，机器人会说出不同的话语。原来的代码中，机器人会说""很抱歉，没有检测到人员。""，而修改后的代码中，机器人会说""很抱歉，没有检测到人员，请离我近一些。""。这样修改后的代码会更友好地提醒用户离机器人近一些，以便机器人能够更好地检测到人员。",explainModifiedJS-finished,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+20:06:25,"
+  currentCode :
+  await robot.userRequest('参观办公室');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    await robot.speak('你好，我是叮当，现在让我来带您参观办公室。');
+
+    await robot.goto('作品展示区');
+    await robot.speak('目前这里主要展示的是一个双臂机器人，他的手臂可以上下移动，并且可以三百六十度旋转身体。');
+
+    await robot.goto('创作室');
+    await robot.speak('这里是公司的创作区，现在在开发虚实结合的机器人测试平台。');
+
+    await robot.goto('接待区');
+    await robot.speak('参观结束，谢谢。');
+
+}else{
+    await robot.speak('很抱歉，没有检测到人员，请离我近一些。');
+}
+  userInput:
+  员工提前录入即将要来的访客信息为张师傅和其需要去的地点为会议室， 引导参观，人物检测，检测到人了以后说，你好，我是叮当，请问您的名字是。访客说完名字之后，核对是否为张师傅， 如果访客说的名字是张师傅，就说，您好，张师傅，现在请跟随我去会议室。如果不是张师傅，则说：抱歉，您没有进入权限，请联系工作人员。
+ 
+  ",nl2jswithContext-start,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21
+20:06:43,"await robot.userRequest('引导参观');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    await robot.speak('你好，我是叮当，请问您的名字是？');
+    const name = await robot.ask('请问您的名字是？');
+    if(name === '张师傅'){
+        await robot.speak('您好，张师傅，现在请跟随我去会议室。');
+        await robot.goto('会议室');
+    }else{
+        await robot.speak('抱歉，您没有进入权限，请联系工作人员。');
+    }
+}else{
+    await robot.speak('很抱歉，没有检测到人员，请离我近一些。');
+}",nl2jswithContext-finished,e91b48ef-cf14-41e5-add9-dae70a212bb3,08-21-19-46-21

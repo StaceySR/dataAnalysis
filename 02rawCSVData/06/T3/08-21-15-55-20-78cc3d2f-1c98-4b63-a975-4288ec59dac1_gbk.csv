@@ -1,0 +1,138 @@
+time,content,type,sessionID,createdAt
+15:55:20,start a new session,start,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:57:46,"我的机器人个性化服务定制需求：导引服务，需求:1. 机器人首先接收到员工所说的访客姓名 2. 访客到来，机器人确认访客姓名是否为员工录入的访客姓名。
+3. 得到用户的回答后，如果是预约的访客，那么机器人会问用户访客要去哪个地点，否则，结束。
+4. 得到用户的回答后，机器人会告诉用户“好的，让我带领[访客姓名]去[访客要去的地点]”。
+5. 如果访客的姓名是""未知""，机器人会告诉用户“对不起，我无法处理未知访客，请您亲自接待”。
+6. 否则，机器人会去访客要去的地点，并告诉访客“[访客姓名]，这里是[访客要去的地点]，请跟我来”。
+7. 最后，机器人会结束服务。 ",authoringNEW-start,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:57:54,"<require>
+1. 机器人首先接收到员工所说的访客姓名
+2. 访客到来，机器人确认访客姓名是否为员工录入的访客姓名。
+3. 得到用户的回答后，如果是预约的访客，那么机器人会问用户访客要去哪个地点，否则，结束。
+4. 得到用户的回答后，机器人会告诉用户“好的，让我带领[访客姓名]去[访客要去的地点]”。
+5. 如果访客的姓名是""未知""，机器人会告诉用户“对不起，我无法处理未知访客，请您亲自接待”。
+6. 否则，机器人会去访客要去的地点，并告诉访客“[访客姓名]，这里是[访客要去的地点]，请跟我来”。
+7. 最后，机器人会结束服务。
+</require>",authoring-finished,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:57:58,"我的机器人个性化服务定制需求：导引服务，需求:1. 机器人首先接收到员工所说的访客姓名 2. 访客到来，机器人确认访客姓名是否为员工录入的访客姓名。
+3. 得到用户的回答后，如果是预约的访客，那么机器人会问用户访客要去哪个地点，否则，结束。
+4. 得到用户的回答后，机器人会告诉用户“好的，让我带领[访客姓名]去[访客要去的地点]”。
+5. 如果访客的姓名是""未知""，机器人会告诉用户“对不起，我无法处理未知访客，请您亲自接待”。
+6. 否则，机器人会去访客要去的地点，并告诉访客“[访客姓名]，这里是[访客要去的地点]，请跟我来”。
+7. 最后，机器人会结束服务。 ",authoringNEW-start,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:57:59,<end>完成</end>,authoring-finished,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:57:59,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 机器人首先接收到员工所说的访客姓名
+2. 访客到来，机器人确认访客姓名是否为员工录入的访客姓名。
+3. 得到用户的回答后，如果是预约的访客，那么机器人会问用户访客要去哪个地点，否则，结束。
+4. 得到用户的回答后，机器人会告诉用户“好的，让我带领[访客姓名]去[访客要去的地点]”。
+5. 如果访客的姓名是""未知""，机器人会告诉用户“对不起，我无法处理未知访客，请您亲自接待”。
+6. 否则，机器人会去访客要去的地点，并告诉访客“[访客姓名]，这里是[访客要去的地点]，请跟我来”。
+7. 最后，机器人会结束服务。
+
+        ",nl2js-start,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:58:06,"
+  await robot.userRequest('访客服务');
+  const visitorName = await robot.ask('请告诉我访客的姓名');
+  
+  if(visitorName === '未知'){
+      await robot.speak('对不起，我无法处理未知访客，请您亲自接待');
+  }else{
+      const isVisitorRegistered = await robot.ask('您是预约的访客吗？');
+  
+      if(isVisitorRegistered === '是'){
+          const visitorLocation = await robot.ask('访客要去哪个地点？');
+          await robot.speak('好的，让我带领' + visitorName + '去' + visitorLocation);
+          await robot.goto(visitorLocation);
+          await robot.speak(visitorName + '，这里是' + visitorLocation + '，请跟我来');
+      }else{
+          await robot.speak('结束服务');
+      }
+  }",nl2js-finished,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:58:06,"
+  await robot.userRequest('访客服务');
+  const visitorName = await robot.ask('请告诉我访客的姓名');
+  
+  if(visitorName === '未知'){
+      await robot.speak('对不起，我无法处理未知访客，请您亲自接待');
+  }else{
+      const isVisitorRegistered = await robot.ask('您是预约的访客吗？');
+  
+      if(isVisitorRegistered === '是'){
+          const visitorLocation = await robot.ask('访客要去哪个地点？');
+          await robot.speak('好的，让我带领' + visitorName + '去' + visitorLocation);
+          await robot.goto(visitorLocation);
+          await robot.speak(visitorName + '，这里是' + visitorLocation + '，请跟我来');
+      }else{
+          await robot.speak('结束服务');
+      }
+  }",js2NLexplain-start,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:58:15,"服务启动关键词：访客服务
+服务流程：
+1. 机器人接收到用户的访客服务请求。
+2. 机器人会问用户访客的姓名。
+3. 得到用户的回答后，机器人会判断访客的姓名是否为""未知""。
+   - 如果是""未知""，机器人会说无法处理未知访客，请用户亲自接待。
+   - 如果不是""未知""，机器人会继续询问用户是否是预约的访客。
+4. 得到用户的回答后，机器人会判断是否是预约的访客。
+   - 如果是预约的访客，机器人会继续询问访客要去哪个地点。
+     - 机器人会说好的，并告诉用户让他带领访客去指定地点。
+     - 机器人会移动到指定地点，并告诉访客他们已经到达目的地，并请访客跟随机器人。
+   - 如果不是预约的访客，机器人会说结束服务。
+5. 无论是预约的访客还是非预约的访客，机器人都会结束服务。",js2NLexplain-finished,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:58:15,"
+  await robot.userRequest('访客服务');
+  const visitorName = await robot.ask('请告诉我访客的姓名');
+  
+  if(visitorName === '未知'){
+      await robot.speak('对不起，我无法处理未知访客，请您亲自接待');
+  }else{
+      const isVisitorRegistered = await robot.ask('您是预约的访客吗？');
+  
+      if(isVisitorRegistered === '是'){
+          const visitorLocation = await robot.ask('访客要去哪个地点？');
+          await robot.speak('好的，让我带领' + visitorName + '去' + visitorLocation);
+          await robot.goto(visitorLocation);
+          await robot.speak(visitorName + '，这里是' + visitorLocation + '，请跟我来');
+      }else{
+          await robot.speak('结束服务');
+      }
+  }",js2flow-start,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:58:46,"
+graph TB
+r_01([""userRequest:访客服务""])
+a_01[""ask:询问访客姓名;用户回复1""]
+c_01{""condition: 访客姓名是否为未知;用户回复1""}
+s_01[""speak:告知无法处理未知访客""]
+a_02[""ask:询问访客是否预约;用户回复2""]
+c_02{""condition: 访客是否预约;用户回复2""}
+a_03[""ask:询问访客要去的地点;用户回复3""]
+s_02[""speak:告知将带领访客去指定地点;用户回复1;用户回复3""]
+g_01[""goto:用户回复3""]
+s_03[""speak:告知访客已到达指定地点;用户回复1;用户回复3""]
+s_04[""speak:告知结束服务""]
+k_01([""end:服务结束""])
+r_01 --> a_01
+a_01 --> c_01
+c_01 --true--> s_01
+s_01 --> k_01
+c_01 --false--> a_02
+a_02 --> c_02
+c_02 --true--> a_03
+a_03 --> s_02
+s_02 --> g_01
+g_01 --> s_03
+s_03 --> k_01
+c_02 --false--> s_04
+s_04 --> k_01
+",js2flow-finished,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:59:19,询问访客姓名;用户回复1,nodeClick,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:59:21,询问访客姓名;用户回复1,nodeClick,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:59:26,询问访客姓名;用户回复1,nodeClick,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:59:26,询问访客姓名;用户回复1,nodeClick,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+15:59:48,访客姓名是否为未知;用户回复1,nodeClick,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+16:03:19,询问访客是否预约;用户回复2,nodeClick,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+16:03:46,访客是否预约;用户回复2,nodeClick,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20
+16:04:00,询问访客要去的地点;用户回复3,nodeClick,78cc3d2f-1c98-4b63-a975-4288ec59dac1,08-21-15-55-20

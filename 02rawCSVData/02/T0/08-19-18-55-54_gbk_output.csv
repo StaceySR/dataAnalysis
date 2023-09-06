@@ -1,0 +1,47 @@
+type,time
+start,18:55:54
+authoringNEW-start,18:57:57
+authoring-finished,18:58:00
+authoringNEW-start,18:58:55
+authoring-finished,18:58:59
+authoringNEW-start,18:59:10
+authoring-finished,18:59:12
+nl2js-start,18:59:12
+nl2js-finished,18:59:17
+js2NLexplain-start,18:59:17
+js2NLexplain-finished,18:59:24
+js2flow-start,18:59:24
+js2flow-finished,18:59:48
+nodeClick,19:01:17
+nodeClick,19:01:17
+Node update,19:01:31
+Node update,19:01:37
+flow2js-start,19:01:40
+flow2js-finished,19:01:54
+explainModifiedJS-start,19:01:54
+explainModifiedJS-finished,19:02:00
+nodeClick,19:02:13
+magicModify-start,19:02:15
+magicModify-finished,19:02:20
+nodeClick,19:03:36
+nodeClick,19:03:38
+nodeClick,19:03:38
+Node update,19:03:45
+nodeClick,19:04:03
+nodeClick,19:04:04
+nodeClick,19:04:04
+flow2js-start,19:04:23
+flow2js-finished,19:04:38
+explainModifiedJS-start,19:04:38
+explainModifiedJS-finished,19:04:41
+nodeClick,19:08:04
+nodeClick,19:08:28
+nodeClick,19:08:30
+nodeClick,19:08:30
+nodeClick,19:08:46
+nodeClick,19:08:46
+nodeClick,19:08:48
+nodeClick,19:08:58
+nodeClick,19:08:59
+nodeClick,19:08:59
+nodeClick,19:09:02

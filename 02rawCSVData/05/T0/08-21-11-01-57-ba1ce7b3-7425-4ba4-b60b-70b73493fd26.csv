@@ -1,0 +1,85 @@
+time,content,type,sessionID,createdAt
+11:01:57,start a new session,start,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:03:18,我的机器人个性化服务定制需求：我想设计一个导引服务，让机器人从接待区取好一个外卖前往会议室，并且等到会议室有人拍了拍机器人的脑袋后，返回接待区,authoringNEW-start,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:03:21,"<require>
+1. 导引服务：机器人从接待区取外卖前往会议室。
+2. 机器人等待会议室有人拍了拍机器人的脑袋后，返回接待区。
+</require>",authoring-finished,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:03:54,我的机器人个性化服务定制需求：我想设计一个导引服务，让机器人从接待区取好一个外卖前往会议室，并且等到会议室有人拍了拍机器人的脑袋后，返回接待区,authoringNEW-start,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:03:57,"<modifiedrequire>
+1. 导引服务：机器人从接待区取外卖前往会议室。
+2. 机器人等待会议室有人拍了拍机器人的脑袋后，再前往会议室。
+</modifiedrequire>",authoring-finished,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:04:11,我的机器人个性化服务定制需求：我想设计一个导引服务，让机器人从接待区取好一个外卖前往会议室，并且等到会议室有人拍了拍机器人的脑袋后，返回接待区,authoringNEW-start,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:04:13,<end>完成</end>,authoring-finished,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:04:13,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 导引服务：机器人从接待区取外卖前往会议室。
+2. 机器人等待会议室有人拍了拍机器人的脑袋后，再前往会议室。
+
+        ",nl2js-start,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:04:16,"
+  await robot.userRequest('导引服务');
+  await robot.goto('接待区');
+  await robot.goto('会议室');
+  
+  await robot.detectHuman();
+  await robot.speak('请拍一下我的脑袋');
+  await robot.detectHuman();
+  
+  await robot.goto('会议室');
+  await robot.speak('已到达会议室');",nl2js-finished,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:04:16,"
+  await robot.userRequest('导引服务');
+  await robot.goto('接待区');
+  await robot.goto('会议室');
+  
+  await robot.detectHuman();
+  await robot.speak('请拍一下我的脑袋');
+  await robot.detectHuman();
+  
+  await robot.goto('会议室');
+  await robot.speak('已到达会议室');",js2NLexplain-start,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:04:24,"服务启动关键词：导引服务
+服务流程：
+1. 机器人接收到用户的导引服务请求。
+2. 机器人会先去接待区。
+3. 到达接待区后，机器人会继续前往会议室。
+4. 到达会议室后，机器人会检测是否有人在场。
+5. 机器人会说：“请拍一下我的脑袋”，并等待5秒钟来检测是否有人在场。
+6. 如果有人在场，机器人会继续前往会议室，并说：“已到达会议室”。
+7. 如果没有人在场，机器人会直接说：“已到达会议室”。
+注意：在第5步和第6步之间，机器人会等待5秒钟来检测是否有人在场。",js2NLexplain-finished,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:04:24,"
+  await robot.userRequest('导引服务');
+  await robot.goto('接待区');
+  await robot.goto('会议室');
+  
+  await robot.detectHuman();
+  await robot.speak('请拍一下我的脑袋');
+  await robot.detectHuman();
+  
+  await robot.goto('会议室');
+  await robot.speak('已到达会议室');",js2flow-start,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:04:41,"
+graph TB
+r_01([""userRequest:导引服务""])
+g_01[""goto:接待区""]
+g_02[""goto:会议室""]
+d_01[""detectHuman""]
+s_01[""speak:请拍一下我的脑袋""]
+d_02[""detectHuman""]
+g_03[""goto:会议室""]
+s_02[""speak:已到达会议室""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> g_02
+g_02 --> d_01
+d_01 --> s_01
+s_01 --> d_02
+d_02 --> g_03
+g_03 --> s_02
+s_02 --> k_01
+",js2flow-finished,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:05:08,导引服务,nodeClick,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57
+11:05:10,接待区,nodeClick,ba1ce7b3-7425-4ba4-b60b-70b73493fd26,08-21-11-01-57

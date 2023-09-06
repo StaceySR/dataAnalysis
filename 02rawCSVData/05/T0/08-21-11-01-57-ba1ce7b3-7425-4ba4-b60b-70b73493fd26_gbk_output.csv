@@ -1,0 +1,16 @@
+type,time
+start,11:01:57
+authoringNEW-start,11:03:18
+authoring-finished,11:03:21
+authoringNEW-start,11:03:54
+authoring-finished,11:03:57
+authoringNEW-start,11:04:11
+authoring-finished,11:04:13
+nl2js-start,11:04:13
+nl2js-finished,11:04:16
+js2NLexplain-start,11:04:16
+js2NLexplain-finished,11:04:24
+js2flow-start,11:04:24
+js2flow-finished,11:04:41
+nodeClick,11:05:08
+nodeClick,11:05:10

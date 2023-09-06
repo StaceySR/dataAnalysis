@@ -1,0 +1,89 @@
+type,time
+start,14:24:57
+authoringNEW-start,14:27:02
+authoring-finished,14:27:05
+authoringNEW-start,14:28:03
+authoring-finished,14:28:08
+authoringNEW-start,14:28:21
+authoring-finished,14:28:23
+nl2js-start,14:28:23
+nl2js-finished,14:28:33
+js2NLexplain-start,14:28:33
+js2NLexplain-finished,14:28:46
+js2flow-start,14:28:46
+js2flow-finished,14:29:19
+nodeClick,14:29:43
+magicModify-start,14:29:44
+magicModify-finished,14:29:53
+magicModifyPhase-start,14:30:39
+magicModifyPhase-finished,14:31:16
+js2flow-start,14:31:16
+js2flow-finished,14:32:12
+nodeClick,14:32:47
+nodeClick,14:32:52
+nodeClick,14:32:53
+nodeClick,14:32:57
+nodeClick,14:33:00
+nodeClick,14:33:26
+nodeClick,14:33:27
+nodeClick,14:33:29
+nodeClick,14:33:33
+newNodeAdd,14:33:39
+nodeClick,14:33:52
+nodeClick,14:33:58
+newNodeAdd,14:34:02
+nodeClick,14:34:09
+nodeClick,14:34:10
+Node update,14:34:28
+nodeClick,14:34:52
+nodeClick,14:35:01
+nodeClick,14:35:03
+nodeClick,14:35:03
+nodeClick,14:35:03
+Node update,14:35:11
+nodeClick,14:35:15
+magicModify-start,14:35:17
+magicModify-finished,14:35:25
+magicModifyPhase-start,14:35:48
+nodeClick,14:35:56
+nodeClick,14:35:57
+nodeClick,14:35:57
+nodeClick,14:35:58
+nodeClick,14:36:01
+nodeClick,14:36:01
+nodeClick,14:36:01
+magicModifyPhase-finished,14:36:19
+js2flow-start,14:36:19
+Node update,14:36:21
+nodeClick,14:36:28
+nodeClick,14:36:29
+Node update,14:36:32
+Node update,14:36:34
+nodeClick,14:36:43
+nodeClick,14:36:43
+Node update,14:36:46
+nodeClick,14:36:48
+nodeClick,14:36:48
+Node update,14:36:50
+nodeClick,14:37:01
+nodeClick,14:37:01
+Node update,14:37:03
+js2flow-finished,14:37:13
+flow2js-start,14:37:18
+flow2js-finished,14:37:46
+explainModifiedJS-start,14:37:46
+explainModifiedJS-finished,14:37:53
+nodeClick,14:38:31
+nodeClick,14:38:31
+Node update,14:38:39
+nodeClick,14:38:41
+nodeClick,14:38:44
+nodeClick,14:38:44
+flow2js-start,14:38:54
+flow2js-finished,14:39:11
+explainModifiedJS-start,14:39:11
+explainModifiedJS-finished,14:39:16
+flow2js-start,14:39:58
+flow2js-finished,14:40:20
+explainModifiedJS-start,14:40:20
+explainModifiedJS-finished,14:40:27

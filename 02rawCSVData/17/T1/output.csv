@@ -1,0 +1,197 @@
+type,time
+start,13:43:10
+newNodeAdd,13:45:08
+nodeClick,13:45:10
+nodeClick,13:45:10
+Node update -- variable,13:45:33
+Node update,13:45:36
+newNodeAdd,13:45:43
+nodeClick,13:45:47
+nodeClick,13:45:47
+Node update,13:46:24
+Node update,13:47:01
+Node update,13:47:02
+Node update,13:47:04
+newNodeAdd,13:47:13
+nodeClick,13:47:17
+nodeClick,13:47:24
+nodeClick,13:47:28
+nodeClick,13:47:28
+AutoLayout,13:47:32
+newNodeAdd,13:47:44
+nodeClick,13:47:50
+nodeClick,13:47:51
+nodeClick,13:48:04
+nodeClick,13:48:04
+Node update,13:48:12
+newNodeAdd,13:48:18
+newNodeAdd,13:48:26
+nodeClick,13:48:28
+nodeClick,13:48:28
+Node update -- variable,13:48:35
+nodeClick,13:48:38
+nodeClick,13:48:39
+nodeClick,13:48:49
+nodeClick,13:48:49
+Node update,13:48:53
+newNodeAdd,13:49:07
+nodeClick,13:49:10
+nodeClick,13:49:13
+nodeClick,13:49:20
+nodeClick,13:49:30
+nodeClick,13:49:35
+nodeClick,13:49:44
+nodeClick,13:49:47
+nodeClick,13:50:10
+nodeClick,13:50:10
+newNodeAdd,13:51:08
+AutoLayout,13:51:23
+nodeClick,13:52:12
+magicModify-start,13:52:16
+nodeClick,13:52:28
+magicModify-finished,13:52:28
+nodeClick,13:52:32
+nodeClick,13:52:33
+magicModifyPhase-start,13:53:14
+magicModifyPhase-finished,13:53:28
+js2flow-start,13:53:28
+js2flow-finished,13:53:36
+nl2jswithContext-start,13:54:21
+nl2jswithContext-finished,13:54:28
+explainModifiedJS-start,13:54:28
+js2flow-start,13:54:36
+explainModifiedJS-finished,13:54:36
+js2flow-finished,13:54:50
+nodeClick,13:55:42
+nodeClick,13:55:43
+Node update,13:55:51
+flow2js-start,13:55:59
+flow2js-finished,13:56:06
+explainModifiedJS-start,13:56:06
+explainModifiedJS-finished,13:56:12
+newNodeAdd,13:59:08
+nodeClick,13:59:11
+nodeClick,13:59:12
+nodeClick,13:59:26
+magicModify-start,13:59:32
+magicModify-finished,13:59:40
+magicModifyPhase-start,14:00:12
+magicModifyPhase-finished,14:00:24
+js2flow-start,14:00:24
+js2flow-finished,14:00:44
+nodeClick,14:00:51
+nodeClick,14:01:00
+flow2js-start,14:01:09
+explainModifiedJS-start,14:01:16
+flow2js-finished,14:01:16
+explainModifiedJS-start,14:01:23
+explainModifiedJS-finished,14:01:33
+AutoLayout,14:01:33
+flow2js-start,14:02:25
+flow2js-finished,14:02:34
+explainModifiedJS-start,14:02:34
+explainModifiedJS-finished,14:02:41
+nodeClick,14:04:53
+nodeClick,14:04:58
+nodeClick,14:05:00
+nodeClick,14:05:01
+nodeClick,14:05:02
+nodeClick,14:05:04
+AutoLayout,14:05:59
+flow2js-start,14:18:51
+nodeClick,14:19:44
+nodeClick,14:19:45
+nodeClick,14:19:47
+nodeClick,14:19:49
+nodeClick,14:19:55
+nodeClick,14:24:37
+magicModify-start,14:24:42
+magicModify-finished,14:24:52
+start,14:24:57
+authoringNEW-start,14:27:02
+authoring-finished,14:27:05
+authoringNEW-start,14:28:03
+authoring-finished,14:28:08
+authoringNEW-start,14:28:21
+authoring-finished,14:28:23
+nl2js-start,14:28:23
+nl2js-finished,14:28:33
+js2NLexplain-start,14:28:33
+js2NLexplain-finished,14:28:46
+js2flow-start,14:28:46
+js2flow-finished,14:29:19
+nodeClick,14:29:43
+magicModify-start,14:29:44
+magicModify-finished,14:29:53
+magicModifyPhase-start,14:30:39
+magicModifyPhase-finished,14:31:16
+js2flow-start,14:31:16
+js2flow-finished,14:32:12
+nodeClick,14:32:47
+nodeClick,14:32:52
+nodeClick,14:32:53
+nodeClick,14:32:57
+nodeClick,14:33:00
+nodeClick,14:33:26
+nodeClick,14:33:27
+nodeClick,14:33:29
+nodeClick,14:33:33
+newNodeAdd,14:33:39
+nodeClick,14:33:52
+nodeClick,14:33:58
+newNodeAdd,14:34:02
+nodeClick,14:34:09
+nodeClick,14:34:10
+Node update,14:34:28
+nodeClick,14:34:52
+nodeClick,14:35:01
+nodeClick,14:35:03
+nodeClick,14:35:03
+nodeClick,14:35:03
+Node update,14:35:11
+nodeClick,14:35:15
+magicModify-start,14:35:17
+magicModify-finished,14:35:25
+magicModifyPhase-start,14:35:48
+nodeClick,14:35:56
+nodeClick,14:35:57
+nodeClick,14:35:57
+nodeClick,14:35:58
+nodeClick,14:36:01
+nodeClick,14:36:01
+nodeClick,14:36:01
+magicModifyPhase-finished,14:36:19
+js2flow-start,14:36:19
+Node update,14:36:21
+nodeClick,14:36:28
+nodeClick,14:36:29
+Node update,14:36:32
+Node update,14:36:34
+nodeClick,14:36:43
+nodeClick,14:36:43
+Node update,14:36:46
+nodeClick,14:36:48
+nodeClick,14:36:48
+Node update,14:36:50
+nodeClick,14:37:01
+nodeClick,14:37:01
+Node update,14:37:03
+js2flow-finished,14:37:13
+flow2js-start,14:37:18
+flow2js-finished,14:37:46
+explainModifiedJS-start,14:37:46
+explainModifiedJS-finished,14:37:53
+nodeClick,14:38:31
+nodeClick,14:38:31
+Node update,14:38:39
+nodeClick,14:38:41
+nodeClick,14:38:44
+nodeClick,14:38:44
+flow2js-start,14:38:54
+flow2js-finished,14:39:11
+explainModifiedJS-start,14:39:11
+explainModifiedJS-finished,14:39:16
+flow2js-start,14:39:58
+explainModifiedJS-start,14:40:20
+flow2js-finished,14:40:20
+explainModifiedJS-finished,14:40:27

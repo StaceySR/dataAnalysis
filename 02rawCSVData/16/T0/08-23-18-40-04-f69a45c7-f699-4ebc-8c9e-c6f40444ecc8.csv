@@ -1,0 +1,10 @@
+time,content,type,sessionID,createdAt
+18:40:04,start a new session,start,f69a45c7-f699-4ebc-8c9e-c6f40444ecc8,08-23-18-40-04
+18:41:39,GOTO,newNodeAdd,f69a45c7-f699-4ebc-8c9e-c6f40444ecc8,08-23-18-40-04
+18:41:41,前往,nodeClick,f69a45c7-f699-4ebc-8c9e-c6f40444ecc8,08-23-18-40-04
+18:41:42,前往,nodeClick,f69a45c7-f699-4ebc-8c9e-c6f40444ecc8,08-23-18-40-04
+18:41:42,前往,nodeClick,f69a45c7-f699-4ebc-8c9e-c6f40444ecc8,08-23-18-40-04
+18:41:46,前往,nodeClick,f69a45c7-f699-4ebc-8c9e-c6f40444ecc8,08-23-18-40-04
+18:41:48,前往,nodeClick,f69a45c7-f699-4ebc-8c9e-c6f40444ecc8,08-23-18-40-04
+18:41:49,前往,nodeClick,f69a45c7-f699-4ebc-8c9e-c6f40444ecc8,08-23-18-40-04
+18:41:57,"{'label': [], 'name': 'GOTO', 'tooltip': '前往', 'variable': '', 'action': '前往'}",Node update -- variable,f69a45c7-f699-4ebc-8c9e-c6f40444ecc8,08-23-18-40-04

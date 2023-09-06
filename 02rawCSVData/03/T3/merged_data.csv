@@ -1,0 +1,1378 @@
+time,content,type,sessionID,createdAt
+12:18:58,start a new session,start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:21:04,我的机器人个性化服务定制需求：首先请前往办公区，检测是否有人，有人的话询问他：“是否需要导入访客信息？”如果员工回答不需要，请返回充电桩，如果员工回答需要，请询问：“访客的姓名是什么？”再询问：“访客来这里干什么？”再询问：“需要我指引访客到哪里呢？”记录三个问题的答案，第一个是访客名，第二个是访客目的，第三个是访客目的地。在询问完成后回复：“已经导入，请放心！”之后回到充电桩附近等待，10秒后前往接待区，检测是否有人，如果没人的话请返回充电桩附近，10秒后重复回到接待区重新检测，直到检测到有人。如果检测到有人，请询问：“您好，欢迎来到问们公司，请问您的姓名是？”如果访客的回复与员工导入的访客名相同，则回答：”您好，您已预约过.....“省略号处请更换成员工回复的访客目的。在回复之后，请指引访客前往员工导入的访客目的地。指引结束后，返回充电桩附近并重复之前的每隔10秒前往接待区检测是否有人的行为。整个流程在持续1小时后可以停止,authoringNEW-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:21:13,"<require>
+1. 前往办公区，检测是否有人。
+2. 如果有人，询问是否需要导入访客信息。
+3. 如果不需要导入访客信息，返回充电桩。
+4. 如果需要导入访客信息，询问访客的姓名。
+5. 询问访客来这里干什么。
+6. 询问需要指引访客到哪里。
+7. 记录三个问题的答案：访客姓名、访客目的、访客目的地。
+8. 回复：“已经导入，请放心！”
+9. 返回充电桩附近等待10秒。
+10. 前往接待区，检测是否有人。
+11. 如果没有人，返回充电桩附近，等待10秒后重复回到接待区重新检测，直到检测到有人。
+12. 如果检测到有人，询问访客的姓名。
+13. 如果访客的回复与员工导入的访客名相同，回答：“您好，您已预约过...”（省略号处请更换成员工回复的访客目的）。
+14. 指引访客前往员工导入的访客目的地。
+15. 指引结束后，返回充电桩附近并重复之前的每隔10秒前往接待区检测是否有人的行为。
+16. 整个流程持续1小时后可以停止。
+</require>",authoring-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:21:24,我的机器人个性化服务定制需求：首先请前往办公区，检测是否有人，有人的话询问他：“是否需要导入访客信息？”如果员工回答不需要，请返回充电桩，如果员工回答需要，请询问：“访客的姓名是什么？”再询问：“访客来这里干什么？”再询问：“需要我指引访客到哪里呢？”记录三个问题的答案，第一个是访客名，第二个是访客目的，第三个是访客目的地。在询问完成后回复：“已经导入，请放心！”之后回到充电桩附近等待，10秒后前往接待区，检测是否有人，如果没人的话请返回充电桩附近，10秒后重复回到接待区重新检测，直到检测到有人。如果检测到有人，请询问：“您好，欢迎来到问们公司，请问您的姓名是？”如果访客的回复与员工导入的访客名相同，则回答：”您好，您已预约过.....“省略号处请更换成员工回复的访客目的。在回复之后，请指引访客前往员工导入的访客目的地。指引结束后，返回充电桩附近并重复之前的每隔10秒前往接待区检测是否有人的行为。整个流程在持续1小时后可以停止,authoringNEW-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:21:25,<end>完成</end>,authoring-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:21:25,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 前往办公区，检测是否有人。
+2. 如果有人，询问是否需要导入访客信息。
+3. 如果不需要导入访客信息，返回充电桩。
+4. 如果需要导入访客信息，询问访客的姓名。
+5. 询问访客来这里干什么。
+6. 询问需要指引访客到哪里。
+7. 记录三个问题的答案：访客姓名、访客目的、访客目的地。
+8. 回复：“已经导入，请放心！”
+9. 返回充电桩附近等待10秒。
+10. 前往接待区，检测是否有人。
+11. 如果没有人，返回充电桩附近，等待10秒后重复回到接待区重新检测，直到检测到有人。
+12. 如果检测到有人，询问访客的姓名。
+13. 如果访客的回复与员工导入的访客名相同，回答：“您好，您已预约过...”（省略号处请更换成员工回复的访客目的）。
+14. 指引访客前往员工导入的访客目的地。
+15. 指引结束后，返回充电桩附近并重复之前的每隔10秒前往接待区检测是否有人的行为。
+16. 整个流程持续1小时后可以停止。
+
+        ",nl2js-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:21:35,"
+  let visitorName;
+  let visitorPurpose;
+  let visitorDestination;
+  
+  await robot.userRequest('访客服务');
+  
+  while(true){
+      await robot.goto('员工办公区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const needImport = await robot.ask('您需要导入访客信息吗？');
+  
+          if(needImport==""不需要""){
+              await robot.goto('充电桩');
+              await robot.speak('已返回充电桩');
+              await robot.wait(10000);
+              continue;
+          }else{
+              visitorName = await robot.ask('请问访客的姓名是？');
+              visitorPurpose = await robot.ask('请问访客来这里干什么？');
+              visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+  
+              await robot.speak('已经导入，请放心！');
+              await robot.goto('充电桩');
+              await robot.speak('已返回充电桩');
+              await robot.wait(10000);
+              continue;
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.speak('已返回充电桩');
+          await robot.wait(10000);
+          continue;
+      }
+  }
+  
+  while(true){
+      await robot.goto('接待区');
+      const isPresent = await robot.detectHuman();
+  
+      if(!isPresent){
+          await robot.goto('充电桩');
+          await robot.wait(10000);
+          continue;
+      }else{
+          const visitorReply = await robot.ask('请问您的姓名是？');
+  
+          if(visitorReply==visitorName){
+              await robot.speak('您好，您已预约过' + visitorPurpose);
+              await robot.goto(visitorDestination);
+              await robot.speak('请跟我来');
+              await robot.goto('充电桩');
+              await robot.wait(10000);
+              continue;
+          }else{
+              await robot.goto('充电桩');
+              await robot.wait(10000);
+              continue;
+          }
+      }
+  }",nl2js-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:21:35,"
+  let visitorName;
+  let visitorPurpose;
+  let visitorDestination;
+  
+  await robot.userRequest('访客服务');
+  
+  while(true){
+      await robot.goto('员工办公区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const needImport = await robot.ask('您需要导入访客信息吗？');
+  
+          if(needImport==""不需要""){
+              await robot.goto('充电桩');
+              await robot.speak('已返回充电桩');
+              await robot.wait(10000);
+              continue;
+          }else{
+              visitorName = await robot.ask('请问访客的姓名是？');
+              visitorPurpose = await robot.ask('请问访客来这里干什么？');
+              visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+  
+              await robot.speak('已经导入，请放心！');
+              await robot.goto('充电桩');
+              await robot.speak('已返回充电桩');
+              await robot.wait(10000);
+              continue;
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.speak('已返回充电桩');
+          await robot.wait(10000);
+          continue;
+      }
+  }
+  
+  while(true){
+      await robot.goto('接待区');
+      const isPresent = await robot.detectHuman();
+  
+      if(!isPresent){
+          await robot.goto('充电桩');
+          await robot.wait(10000);
+          continue;
+      }else{
+          const visitorReply = await robot.ask('请问您的姓名是？');
+  
+          if(visitorReply==visitorName){
+              await robot.speak('您好，您已预约过' + visitorPurpose);
+              await robot.goto(visitorDestination);
+              await robot.speak('请跟我来');
+              await robot.goto('充电桩');
+              await robot.wait(10000);
+              continue;
+          }else{
+              await robot.goto('充电桩');
+              await robot.wait(10000);
+              continue;
+          }
+      }
+  }",js2NLexplain-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:21:44,"服务启动关键词：访客服务
+服务流程：
+1. 机器人首先接收到用户要进行访客服务的请求。
+2. 机器人会一直去员工办公区检查是否有人。
+   - 如果有人，机器人会问用户是否需要导入访客信息。
+     - 如果用户说不需要，机器人会去充电桩并说已返回充电桩，然后等待10秒后继续检查员工办公区。
+     - 如果用户说需要，机器人会问访客的姓名、来访目的和需要指引到哪里。
+       - 机器人会告诉用户已经导入信息，并去充电桩并说已返回充电桩，然后等待10秒后继续检查员工办公区。
+   - 如果没有人，机器人会去充电桩并说已返回充电桩，然后等待10秒后继续检查员工办公区。
+3. 机器人会一直去接待区检查是否有人。
+   - 如果没有人，机器人会去充电桩并等待10秒后继续检查接待区。
+   - 如果有人，机器人会问访客的姓名。
+     - 如果访客的姓名和之前导入的访客姓名一致，机器人会告诉访客他已经预约过来访的目的，并带领访客去指定的地点，然后去充电桩并等待10秒后继续检查接待区。
+     - 如果访客的姓名和之前导入的访客姓名不一致，机器人会去充电桩并等待10秒后继续检查接待区。",js2NLexplain-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:21:44,"
+  let visitorName;
+  let visitorPurpose;
+  let visitorDestination;
+  
+  await robot.userRequest('访客服务');
+  
+  while(true){
+      await robot.goto('员工办公区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const needImport = await robot.ask('您需要导入访客信息吗？');
+  
+          if(needImport==""不需要""){
+              await robot.goto('充电桩');
+              await robot.speak('已返回充电桩');
+              await robot.wait(10000);
+              continue;
+          }else{
+              visitorName = await robot.ask('请问访客的姓名是？');
+              visitorPurpose = await robot.ask('请问访客来这里干什么？');
+              visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+  
+              await robot.speak('已经导入，请放心！');
+              await robot.goto('充电桩');
+              await robot.speak('已返回充电桩');
+              await robot.wait(10000);
+              continue;
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.speak('已返回充电桩');
+          await robot.wait(10000);
+          continue;
+      }
+  }
+  
+  while(true){
+      await robot.goto('接待区');
+      const isPresent = await robot.detectHuman();
+  
+      if(!isPresent){
+          await robot.goto('充电桩');
+          await robot.wait(10000);
+          continue;
+      }else{
+          const visitorReply = await robot.ask('请问您的姓名是？');
+  
+          if(visitorReply==visitorName){
+              await robot.speak('您好，您已预约过' + visitorPurpose);
+              await robot.goto(visitorDestination);
+              await robot.speak('请跟我来');
+              await robot.goto('充电桩');
+              await robot.wait(10000);
+              continue;
+          }else{
+              await robot.goto('充电桩');
+              await robot.wait(10000);
+              continue;
+          }
+      }
+  }",js2flow-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:22:41,"
+graph TB
+r_01([""userRequest:访客服务""])
+id_01[""infoDeclare:访客姓名""]
+id_02[""infoDeclare:访客目的""]
+id_03[""infoDeclare:访客目的地""]
+
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否需要导入访客信息;用户回复_1""]
+c_02{""condition: 用户回复是否需要导入访客信息;用户回复_1""}
+a_02[""ask:询问访客姓名;用户回复_2""]
+ia_01[""infoAssign:将用户回复赋值给访客姓名;访客姓名;用户回复_2""]
+a_03[""ask:询问访客目的;用户回复_3""]
+ia_02[""infoAssign:将用户回复赋值给访客目的;访客目的;用户回复_3""]
+a_04[""ask:询问访客目的地;用户回复_4""]
+ia_03[""infoAssign:将用户回复赋值给访客目的地;访客目的地;用户回复_4""]
+s_01[""speak:告知已导入访客信息""]
+g_01[""goto:充电桩""]
+s_02[""speak:告知已返回充电桩""]
+j_01{{""loopEnd:循环结束""}}
+
+c_03{""condition: 检测到人;人员检测结果_2""}
+a_05[""ask:询问访客姓名;用户回复_5""]
+c_04{""condition: 用户回复是否与访客姓名相同;用户回复_5;访客姓名""}
+s_03[""speak:告知访客已预约;访客目的""]
+g_02[""goto:访客目的地""]
+s_04[""speak:告知访客跟随前往目的地""]
+g_03[""goto:充电桩""]
+j_02{{""loopEnd:循环结束""}}
+
+r_01 --> id_01
+id_01 --> id_02
+id_02 --> id_03
+id_03 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --""不需要""--> g_01
+c_02 --""需要""--> a_02
+a_02 --> ia_01
+ia_01 --> a_03
+a_03 --> ia_02
+ia_02 --> a_04
+a_04 --> ia_03
+ia_03 --> s_01
+s_01 --> g_01
+g_01 --> s_02
+s_02 --> j_01
+c_01 --false--> g_01
+
+g_03 --> d_02
+d_02 --> c_03
+c_03 --true--> a_05
+a_05 --> c_04
+c_04 --true--> s_03
+s_03 --> g_02
+g_02 --> s_04
+s_04 --> g_03
+g_03 --> j_02
+c_04 --false--> g_03
+c_03 --false--> g_03
+",js2flow-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:23:12,访客目的地,nodeClick,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:23:13,访客目的地,nodeClick,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:23:15,访客目的,nodeClick,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:23:16,访客目的,nodeClick,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:23:17,访客姓名,nodeClick,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:23:17,访客姓名,nodeClick,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:23:21,检测到人;人员检测结果_1,nodeClick,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:23:42,访客姓名,nodeClick,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:23:45,访客服务,nodeClick,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:30:55,"
+  currentCode :
+  
+  let visitorName;
+  let visitorPurpose;
+  let visitorDestination;
+  
+  await robot.userRequest('访客服务');
+  
+  while(true){
+      await robot.goto('员工办公区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const needImport = await robot.ask('您需要导入访客信息吗？');
+  
+          if(needImport==""不需要""){
+              await robot.goto('充电桩');
+              await robot.speak('已返回充电桩');
+              await robot.wait(10000);
+              continue;
+          }else{
+              visitorName = await robot.ask('请问访客的姓名是？');
+              visitorPurpose = await robot.ask('请问访客来这里干什么？');
+              visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+  
+              await robot.speak('已经导入，请放心！');
+              await robot.goto('充电桩');
+              await robot.speak('已返回充电桩');
+              await robot.wait(10000);
+              continue;
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.speak('已返回充电桩');
+          await robot.wait(10000);
+          continue;
+      }
+  }
+  
+  while(true){
+      await robot.goto('接待区');
+      const isPresent = await robot.detectHuman();
+  
+      if(!isPresent){
+          await robot.goto('充电桩');
+          await robot.wait(10000);
+          continue;
+      }else{
+          const visitorReply = await robot.ask('请问您的姓名是？');
+  
+          if(visitorReply==visitorName){
+              await robot.speak('您好，您已预约过' + visitorPurpose);
+              await robot.goto(visitorDestination);
+              await robot.speak('请跟我来');
+              await robot.goto('充电桩');
+              await robot.wait(10000);
+              continue;
+          }else{
+              await robot.goto('充电桩');
+              await robot.wait(10000);
+              continue;
+          }
+      }
+  }
+  userInput:
+  把所有等待时间的参数改为10，并且在录入完访客信息之后经过10个单位的时间后应该前往“接待区”检测是否有人而非员工办公区
+  ",nl2jswithContext-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:31:27,"let visitorName;
+let visitorPurpose;
+let visitorDestination;
+
+await robot.userRequest('访客服务');
+
+while(true){
+    await robot.goto('员工办公区');
+    const isPresent = await robot.detectHuman();
+
+    if(isPresent){
+        const needImport = await robot.ask('您需要导入访客信息吗？');
+
+        if(needImport==""不需要""){
+            await robot.goto('充电桩');
+            await robot.speak('已返回充电桩');
+            await robot.wait(10);
+            continue;
+        }else{
+            visitorName = await robot.ask('请问访客的姓名是？');
+            visitorPurpose = await robot.ask('请问访客来这里干什么？');
+            visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+
+            await robot.speak('已经导入，请放心！');
+            await robot.goto('充电桩');
+            await robot.speak('已返回充电桩');
+            await robot.wait(10);
+            continue;
+        }
+
+    }else{
+        await robot.goto('充电桩');
+        await robot.speak('已返回充电桩');
+        await robot.wait(10);
+        continue;
+    }
+}
+
+while(true){
+    await robot.wait(10);
+    await robot.goto('接待区');
+    const isPresent = await robot.detectHuman();
+
+    if(!isPresent){
+        await robot.goto('充电桩');
+        await robot.wait(10);
+        continue;
+    }else{
+        const visitorReply = await robot.ask('请问您的姓名是？');
+
+        if(visitorReply==visitorName){
+            await robot.speak('您好，您已预约过' + visitorPurpose);
+            await robot.goto(visitorDestination);
+            await robot.speak('请跟我来');
+            await robot.goto('充电桩');
+            await robot.wait(10);
+            continue;
+        }else{
+            await robot.goto('充电桩');
+            await robot.wait(10);
+            continue;
+        }
+    }
+}",nl2jswithContext-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:31:27,"
+  originalcode:
+  
+  let visitorName;
+  let visitorPurpose;
+  let visitorDestination;
+  
+  await robot.userRequest('访客服务');
+  
+  while(true){
+      await robot.goto('员工办公区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const needImport = await robot.ask('您需要导入访客信息吗？');
+  
+          if(needImport==""不需要""){
+              await robot.goto('充电桩');
+              await robot.speak('已返回充电桩');
+              await robot.wait(10000);
+              continue;
+          }else{
+              visitorName = await robot.ask('请问访客的姓名是？');
+              visitorPurpose = await robot.ask('请问访客来这里干什么？');
+              visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+  
+              await robot.speak('已经导入，请放心！');
+              await robot.goto('充电桩');
+              await robot.speak('已返回充电桩');
+              await robot.wait(10000);
+              continue;
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.speak('已返回充电桩');
+          await robot.wait(10000);
+          continue;
+      }
+  }
+  
+  while(true){
+      await robot.goto('接待区');
+      const isPresent = await robot.detectHuman();
+  
+      if(!isPresent){
+          await robot.goto('充电桩');
+          await robot.wait(10000);
+          continue;
+      }else{
+          const visitorReply = await robot.ask('请问您的姓名是？');
+  
+          if(visitorReply==visitorName){
+              await robot.speak('您好，您已预约过' + visitorPurpose);
+              await robot.goto(visitorDestination);
+              await robot.speak('请跟我来');
+              await robot.goto('充电桩');
+              await robot.wait(10000);
+              continue;
+          }else{
+              await robot.goto('充电桩');
+              await robot.wait(10000);
+              continue;
+          }
+      }
+  }
+  modifiedcode:
+  let visitorName;
+let visitorPurpose;
+let visitorDestination;
+
+await robot.userRequest('访客服务');
+
+while(true){
+    await robot.goto('员工办公区');
+    const isPresent = await robot.detectHuman();
+
+    if(isPresent){
+        const needImport = await robot.ask('您需要导入访客信息吗？');
+
+        if(needImport==""不需要""){
+            await robot.goto('充电桩');
+            await robot.speak('已返回充电桩');
+            await robot.wait(10);
+            continue;
+        }else{
+            visitorName = await robot.ask('请问访客的姓名是？');
+            visitorPurpose = await robot.ask('请问访客来这里干什么？');
+            visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+
+            await robot.speak('已经导入，请放心！');
+            await robot.goto('充电桩');
+            await robot.speak('已返回充电桩');
+            await robot.wait(10);
+            continue;
+        }
+
+    }else{
+        await robot.goto('充电桩');
+        await robot.speak('已返回充电桩');
+        await robot.wait(10);
+        continue;
+    }
+}
+
+while(true){
+    await robot.wait(10);
+    await robot.goto('接待区');
+    const isPresent = await robot.detectHuman();
+
+    if(!isPresent){
+        await robot.goto('充电桩');
+        await robot.wait(10);
+        continue;
+    }else{
+        const visitorReply = await robot.ask('请问您的姓名是？');
+
+        if(visitorReply==visitorName){
+            await robot.speak('您好，您已预约过' + visitorPurpose);
+            await robot.goto(visitorDestination);
+            await robot.speak('请跟我来');
+            await robot.goto('充电桩');
+            await robot.wait(10);
+            continue;
+        }else{
+            await robot.goto('充电桩');
+            await robot.wait(10);
+            continue;
+        }
+    }
+}
+  ",explainModifiedJS-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:31:37,"修改后的代码在机器人行为上没有明显的改变。代码仍然是一个循环，首先机器人会前往员工办公区，检测是否有人在那里。如果有人在那里，机器人会询问是否需要导入访客信息。如果不需要导入，机器人会返回充电桩并等待10秒钟，然后继续下一次循环。如果需要导入访客信息，机器人会依次询问访客的姓名、访客的目的和访客需要前往的地点，并告知访客信息已导入。然后机器人会返回充电桩并等待10秒钟，然后继续下一次循环。
+
+接下来，机器人会前往接待区，检测是否有人在那里。如果没有人在那里，机器人会返回充电桩并等待10秒钟，然后继续下一次循环。如果有人在那里，机器人会询问访客的姓名。如果访客的回答与之前记录的访客姓名相同，机器人会告知访客已预约过访客目的，并前往访客需要前往的地点，并告知访客跟随。然后机器人会返回充电桩并等待10秒钟，然后继续下一次循环。如果访客的回答与之前记录的访客姓名不同，机器人会返回充电桩并等待10秒钟，然后继续下一次循环。
+
+总之，修改后的代码与原始代码在机器人行为上没有明显的改变。机器人仍然会根据访客的需求进行导入和引导，并在完成任务后返回充电桩等待下一次任务。",explainModifiedJS-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:31:37,"let visitorName;
+let visitorPurpose;
+let visitorDestination;
+
+await robot.userRequest('访客服务');
+
+while(true){
+    await robot.goto('员工办公区');
+    const isPresent = await robot.detectHuman();
+
+    if(isPresent){
+        const needImport = await robot.ask('您需要导入访客信息吗？');
+
+        if(needImport==""不需要""){
+            await robot.goto('充电桩');
+            await robot.speak('已返回充电桩');
+            await robot.wait(10);
+            continue;
+        }else{
+            visitorName = await robot.ask('请问访客的姓名是？');
+            visitorPurpose = await robot.ask('请问访客来这里干什么？');
+            visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+
+            await robot.speak('已经导入，请放心！');
+            await robot.goto('充电桩');
+            await robot.speak('已返回充电桩');
+            await robot.wait(10);
+            continue;
+        }
+
+    }else{
+        await robot.goto('充电桩');
+        await robot.speak('已返回充电桩');
+        await robot.wait(10);
+        continue;
+    }
+}
+
+while(true){
+    await robot.wait(10);
+    await robot.goto('接待区');
+    const isPresent = await robot.detectHuman();
+
+    if(!isPresent){
+        await robot.goto('充电桩');
+        await robot.wait(10);
+        continue;
+    }else{
+        const visitorReply = await robot.ask('请问您的姓名是？');
+
+        if(visitorReply==visitorName){
+            await robot.speak('您好，您已预约过' + visitorPurpose);
+            await robot.goto(visitorDestination);
+            await robot.speak('请跟我来');
+            await robot.goto('充电桩');
+            await robot.wait(10);
+            continue;
+        }else{
+            await robot.goto('充电桩');
+            await robot.wait(10);
+            continue;
+        }
+    }
+}",js2flow-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:32:21,"
+graph TB
+r_01([""userRequest:访客服务""])
+id_01[""infoDeclare:访客姓名""]
+id_02[""infoDeclare:访客目的""]
+id_03[""infoDeclare:访客目的地""]
+
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否需要导入访客信息;用户回复_1""]
+c_02{""condition: 用户回复为不需要;用户回复_1""}
+g_01[""goto:充电桩""]
+s_01[""speak:告知已返回充电桩""]
+a_02[""ask:询问访客姓名;用户回复_2""]
+a_03[""ask:询问访客目的;用户回复_3""]
+a_04[""ask:询问访客目的地;用户回复_4""]
+ia_01[""infoAssign:将用户回复赋值给访客姓名;访客姓名;用户回复_2""]
+ia_02[""infoAssign:将用户回复赋值给访客目的;访客目的;用户回复_3""]
+ia_03[""infoAssign:将用户回复赋值给访客目的地;访客目的地;用户回复_4""]
+s_02[""speak:告知已导入访客信息""]
+
+c_03{""condition: 检测到人;人员检测结果_2""}
+a_05[""ask:询问访客姓名;用户回复_5""]
+c_04{""condition: 用户回复与访客姓名相同;用户回复_5;访客姓名""}
+s_03[""speak:告知访客已预约;访客目的""]
+g_02[""goto:访客目的地""]
+s_04[""speak:告知访客跟随前往目的地""]
+
+r_01 --> id_01
+id_01 --> id_02
+id_02 --> id_03
+id_03 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+c_01 --false--> g_01
+a_01 --> c_02
+c_02 --true--> g_01
+c_02 --false--> a_02
+a_02 --> a_03
+a_03 --> a_04
+a_04 --> ia_01
+ia_01 --> ia_02
+ia_02 --> ia_03
+ia_03 --> s_02
+s_02 --> g_01
+g_01 --> c_03
+c_03 --true--> a_05
+c_03 --false--> g_01
+a_05 --> c_04
+c_04 --true--> s_03
+c_04 --false--> g_01
+s_03 --> g_02
+g_02 --> s_04
+s_04 --> g_01
+g_01 --> k_01([""end:服务结束""])",js2flow-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:33:43,"
+  currentCode :
+  let visitorName;
+let visitorPurpose;
+let visitorDestination;
+
+await robot.userRequest('访客服务');
+
+while(true){
+    await robot.goto('员工办公区');
+    const isPresent = await robot.detectHuman();
+
+    if(isPresent){
+        const needImport = await robot.ask('您需要导入访客信息吗？');
+
+        if(needImport==""不需要""){
+            await robot.goto('充电桩');
+            await robot.speak('已返回充电桩');
+            await robot.wait(10);
+            continue;
+        }else{
+            visitorName = await robot.ask('请问访客的姓名是？');
+            visitorPurpose = await robot.ask('请问访客来这里干什么？');
+            visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+
+            await robot.speak('已经导入，请放心！');
+            await robot.goto('充电桩');
+            await robot.speak('已返回充电桩');
+            await robot.wait(10);
+            continue;
+        }
+
+    }else{
+        await robot.goto('充电桩');
+        await robot.speak('已返回充电桩');
+        await robot.wait(10);
+        continue;
+    }
+}
+
+while(true){
+    await robot.wait(10);
+    await robot.goto('接待区');
+    const isPresent = await robot.detectHuman();
+
+    if(!isPresent){
+        await robot.goto('充电桩');
+        await robot.wait(10);
+        continue;
+    }else{
+        const visitorReply = await robot.ask('请问您的姓名是？');
+
+        if(visitorReply==visitorName){
+            await robot.speak('您好，您已预约过' + visitorPurpose);
+            await robot.goto(visitorDestination);
+            await robot.speak('请跟我来');
+            await robot.goto('充电桩');
+            await robot.wait(10);
+            continue;
+        }else{
+            await robot.goto('充电桩');
+            await robot.wait(10);
+            continue;
+        }
+    }
+}
+  userInput:
+  显示服务流程
+  ",nl2jswithContext-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:34:08,"await robot.userRequest('显示服务流程');
+
+await robot.speak('服务流程如下：');
+await robot.speak('1. 机器人首先会前往员工办公区。');
+await robot.speak('2. 如果检测到有人，机器人会询问是否需要导入访客信息。');
+await robot.speak('3. 如果不需要，机器人会返回充电桩并等待10秒。');
+await robot.speak('4. 如果需要，机器人会询问访客的姓名、访问目的和目的地，并将这些信息导入系统。然后，机器人会返回充电桩并等待10秒。');
+await robot.speak('5. 机器人每10秒会前往接待区检测是否有人。');
+await robot.speak('6. 如果没有人，机器人会返回充电桩并等待10秒。');
+await robot.speak('7. 如果有人，机器人会询问访客的姓名。');
+await robot.speak('8. 如果访客的姓名与系统中的信息匹配，机器人会告诉访客他们已经预约了访问，并引导他们前往目的地。然后，机器人会返回充电桩并等待10秒。');
+await robot.speak('9. 如果访客的姓名与系统中的信息不匹配，机器人会返回充电桩并等待10秒。');
+await robot.speak('以上就是服务流程。');",nl2jswithContext-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:34:08,"
+  originalcode:
+  let visitorName;
+let visitorPurpose;
+let visitorDestination;
+
+await robot.userRequest('访客服务');
+
+while(true){
+    await robot.goto('员工办公区');
+    const isPresent = await robot.detectHuman();
+
+    if(isPresent){
+        const needImport = await robot.ask('您需要导入访客信息吗？');
+
+        if(needImport==""不需要""){
+            await robot.goto('充电桩');
+            await robot.speak('已返回充电桩');
+            await robot.wait(10);
+            continue;
+        }else{
+            visitorName = await robot.ask('请问访客的姓名是？');
+            visitorPurpose = await robot.ask('请问访客来这里干什么？');
+            visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+
+            await robot.speak('已经导入，请放心！');
+            await robot.goto('充电桩');
+            await robot.speak('已返回充电桩');
+            await robot.wait(10);
+            continue;
+        }
+
+    }else{
+        await robot.goto('充电桩');
+        await robot.speak('已返回充电桩');
+        await robot.wait(10);
+        continue;
+    }
+}
+
+while(true){
+    await robot.wait(10);
+    await robot.goto('接待区');
+    const isPresent = await robot.detectHuman();
+
+    if(!isPresent){
+        await robot.goto('充电桩');
+        await robot.wait(10);
+        continue;
+    }else{
+        const visitorReply = await robot.ask('请问您的姓名是？');
+
+        if(visitorReply==visitorName){
+            await robot.speak('您好，您已预约过' + visitorPurpose);
+            await robot.goto(visitorDestination);
+            await robot.speak('请跟我来');
+            await robot.goto('充电桩');
+            await robot.wait(10);
+            continue;
+        }else{
+            await robot.goto('充电桩');
+            await robot.wait(10);
+            continue;
+        }
+    }
+}
+  modifiedcode:
+  await robot.userRequest('显示服务流程');
+
+await robot.speak('服务流程如下：');
+await robot.speak('1. 机器人首先会前往员工办公区。');
+await robot.speak('2. 如果检测到有人，机器人会询问是否需要导入访客信息。');
+await robot.speak('3. 如果不需要，机器人会返回充电桩并等待10秒。');
+await robot.speak('4. 如果需要，机器人会询问访客的姓名、访问目的和目的地，并将这些信息导入系统。然后，机器人会返回充电桩并等待10秒。');
+await robot.speak('5. 机器人每10秒会前往接待区检测是否有人。');
+await robot.speak('6. 如果没有人，机器人会返回充电桩并等待10秒。');
+await robot.speak('7. 如果有人，机器人会询问访客的姓名。');
+await robot.speak('8. 如果访客的姓名与系统中的信息匹配，机器人会告诉访客他们已经预约了访问，并引导他们前往目的地。然后，机器人会返回充电桩并等待10秒。');
+await robot.speak('9. 如果访客的姓名与系统中的信息不匹配，机器人会返回充电桩并等待10秒。');
+await robot.speak('以上就是服务流程。');
+  ",explainModifiedJS-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:34:11,修改后的代码主要是将原来的机器人行为改为了机器人的语音提示服务流程的行为。机器人首先会询问用户是否需要显示服务流程，然后依次用语音提示的方式介绍了整个服务流程的步骤。这样修改后的代码不再涉及机器人的移动和与用户的交互，而是将机器人的行为转变为了提供信息的语音提示服务。,explainModifiedJS-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:34:11,"await robot.userRequest('显示服务流程');
+
+await robot.speak('服务流程如下：');
+await robot.speak('1. 机器人首先会前往员工办公区。');
+await robot.speak('2. 如果检测到有人，机器人会询问是否需要导入访客信息。');
+await robot.speak('3. 如果不需要，机器人会返回充电桩并等待10秒。');
+await robot.speak('4. 如果需要，机器人会询问访客的姓名、访问目的和目的地，并将这些信息导入系统。然后，机器人会返回充电桩并等待10秒。');
+await robot.speak('5. 机器人每10秒会前往接待区检测是否有人。');
+await robot.speak('6. 如果没有人，机器人会返回充电桩并等待10秒。');
+await robot.speak('7. 如果有人，机器人会询问访客的姓名。');
+await robot.speak('8. 如果访客的姓名与系统中的信息匹配，机器人会告诉访客他们已经预约了访问，并引导他们前往目的地。然后，机器人会返回充电桩并等待10秒。');
+await robot.speak('9. 如果访客的姓名与系统中的信息不匹配，机器人会返回充电桩并等待10秒。');
+await robot.speak('以上就是服务流程。');",js2flow-start,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:34:45,"graph TB
+r_01([""userRequest:显示服务流程""])
+s_01[""speak:告知服务流程开始""]
+s_02[""speak:告知机器人首先会前往员工办公区""]
+s_03[""speak:告知如果检测到有人，机器人会询问是否需要导入访客信息""]
+s_04[""speak:告知如果不需要，机器人会返回充电桩并等待10秒""]
+s_05[""speak:告知如果需要，机器人会询问访客的姓名、访问目的和目的地，并将这些信息导入系统。然后，机器人会返回充电桩并等待10秒""]
+s_06[""speak:告知机器人每10秒会前往接待区检测是否有人""]
+s_07[""speak:告知如果没有人，机器人会返回充电桩并等待10秒""]
+s_08[""speak:告知如果有人，机器人会询问访客的姓名""]
+s_09[""speak:告知如果访客的姓名与系统中的信息匹配，机器人会告诉访客他们已经预约了访问，并引导他们前往目的地。然后，机器人会返回充电桩并等待10秒""]
+s_10[""speak:告知如果访客的姓名与系统中的信息不匹配，机器人会返回充电桩并等待10秒""]
+s_11[""speak:告知以上就是服务流程""]
+k_01([""end:服务结束""])
+r_01 --> s_01
+s_01 --> s_02
+s_02 --> s_03
+s_03 --> s_04
+s_04 --> s_05
+s_05 --> s_06
+s_06 --> s_07
+s_07 --> s_08
+s_08 --> s_09
+s_09 --> s_10
+s_10 --> s_11
+s_11 --> k_01
+",js2flow-finished,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:34:48,自动布局,AutoLayout,9b7c047a-705e-401a-a32d-2d809ea1118e,08-20-12-18-58
+12:35:07,start a new session,start,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:36:11,我的机器人个性化服务定制需求： 首先请前往办公区，检测是否有人，有人的话询问他：“是否需要导入访客信息？”如果员工回答不需要，请返回充电桩，如果员工回答需要，请询问：“访客的姓名是什么？”再询问：“访客来这里干什么？”再询问：“需要我指引访客到哪里呢？”记录三个问题的答案，第一个是访客名，第二个是访客目的，第三个是访客目的地。在询问完成后回复：“已经导入，请放心！”之后回到充电桩附近等待，0.01秒后前往“接待区”，检测是否有人，如果没人的话请返回充电桩附近，0.01秒后重复回到接待区重新检测，直到检测到有人。如果检测到有人，请询问：“您好，欢迎来到问们公司，请问您的姓名是？”如果访客的回复与员工导入的访客名相同，则回答：”您好，您已预约过.....“省略号处请更换成员工回复的访客目的。在回复之后，请指引访客前往员工导入的访客目的地。指引结束后，返回充电桩附近并重复之前的每隔0.01秒前往接待区检测是否有人的行为。整个流程在持续10秒后可以停止,authoringNEW-start,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:36:20,"<require>
+1. 前往办公区，检测是否有人。
+2. 如果有人，询问是否需要导入访客信息。
+3. 如果员工回答不需要，返回充电桩。
+4. 如果员工回答需要，询问访客的姓名。
+5. 询问访客来这里干什么。
+6. 询问需要指引访客到哪里。
+7. 记录三个问题的答案：访客姓名、访客目的、访客目的地。
+8. 回复：“已经导入，请放心！”
+9. 返回充电桩附近等待0.01秒。
+10. 前往接待区，检测是否有人。
+11. 如果没人，请返回充电桩附近，0.01秒后重复回到接待区重新检测，直到检测到有人。
+12. 如果检测到有人，请询问访客的姓名。
+13. 如果访客的回复与员工导入的访客名相同，回答：“您好，您已预约过...”（省略号处请更换成员工回复的访客目的）。
+14. 指引访客前往员工导入的访客目的地。
+15. 指引结束后，返回充电桩附近并重复之前的每隔0.01秒前往接待区检测是否有人的行为。
+16. 整个流程持续10秒后可以停止。
+</require>",authoring-finished,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:36:48,我的机器人个性化服务定制需求： 首先请前往办公区，检测是否有人，有人的话询问他：“是否需要导入访客信息？”如果员工回答不需要，请返回充电桩，如果员工回答需要，请询问：“访客的姓名是什么？”再询问：“访客来这里干什么？”再询问：“需要我指引访客到哪里呢？”记录三个问题的答案，第一个是访客名，第二个是访客目的，第三个是访客目的地。在询问完成后回复：“已经导入，请放心！”之后回到充电桩附近等待，0.01秒后前往“接待区”，检测是否有人，如果没人的话请返回充电桩附近，0.01秒后重复回到接待区重新检测，直到检测到有人。如果检测到有人，请询问：“您好，欢迎来到问们公司，请问您的姓名是？”如果访客的回复与员工导入的访客名相同，则回答：”您好，您已预约过.....“省略号处请更换成员工回复的访客目的。在回复之后，请指引访客前往员工导入的访客目的地。指引结束后，返回充电桩附近并重复之前的每隔0.01秒前往接待区检测是否有人的行为。整个流程在持续10秒后可以停止,authoringNEW-start,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:36:49,<end>完成</end>,authoring-finished,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:36:49,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 前往办公区，检测是否有人。
+2. 如果有人，询问是否需要导入访客信息。
+3. 如果员工回答不需要，返回充电桩。
+4. 如果员工回答需要，询问访客的姓名。
+5. 询问访客来这里干什么。
+6. 询问需要指引访客到哪里。
+7. 记录三个问题的答案：访客姓名、访客目的、访客目的地。
+8. 回复：“已经导入，请放心！”
+9. 返回充电桩附近等待0.01秒。
+10. 前往接待区，检测是否有人。
+11. 如果没人，请返回充电桩附近，0.01秒后重复回到接待区重新检测，直到检测到有人。
+12. 如果检测到有人，请询问访客的姓名。
+13. 如果访客的回复与员工导入的访客名相同，回答：“您好，您已预约过...”（省略号处请更换成员工回复的访客目的）。
+14. 指引访客前往员工导入的访客目的地。
+15. 指引结束后，返回充电桩附近并重复之前的每隔0.01秒前往接待区检测是否有人的行为。
+16. 整个流程持续10秒后可以停止。
+
+        ",nl2js-start,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:36:58,"
+  let visitorName;
+  let visitorPurpose;
+  let visitorDestination;
+  
+  await robot.userRequest('访客服务');
+  
+  while(true){
+      await robot.goto('员工办公区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const needImport = await robot.ask('您需要导入访客信息吗？');
+  
+          if(needImport==""不需要""){
+              await robot.goto('充电桩');
+              await robot.speak('好的，感谢您的回答');
+              break;
+  
+          }else{
+              visitorName = await robot.ask('请问访客的姓名是？');
+              visitorPurpose = await robot.ask('请问访客来这里干什么？');
+              visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+  
+              await robot.speak('已经导入，请放心！');
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+              break;
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.wait(0.01);
+      }
+  }
+  
+  while(true){
+      await robot.goto('接待区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const visitor = await robot.ask('请问您的姓名是？');
+  
+          if(visitor==visitorName){
+              await robot.speak('您好，您已预约过' + visitorPurpose);
+              await robot.goto(visitorDestination);
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+  
+          }else{
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.wait(0.01);
+      }
+  
+      if(robot.getTime()>10){
+          break;
+      }
+  }",nl2js-finished,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:36:58,"
+  let visitorName;
+  let visitorPurpose;
+  let visitorDestination;
+  
+  await robot.userRequest('访客服务');
+  
+  while(true){
+      await robot.goto('员工办公区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const needImport = await robot.ask('您需要导入访客信息吗？');
+  
+          if(needImport==""不需要""){
+              await robot.goto('充电桩');
+              await robot.speak('好的，感谢您的回答');
+              break;
+  
+          }else{
+              visitorName = await robot.ask('请问访客的姓名是？');
+              visitorPurpose = await robot.ask('请问访客来这里干什么？');
+              visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+  
+              await robot.speak('已经导入，请放心！');
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+              break;
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.wait(0.01);
+      }
+  }
+  
+  while(true){
+      await robot.goto('接待区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const visitor = await robot.ask('请问您的姓名是？');
+  
+          if(visitor==visitorName){
+              await robot.speak('您好，您已预约过' + visitorPurpose);
+              await robot.goto(visitorDestination);
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+  
+          }else{
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.wait(0.01);
+      }
+  
+      if(robot.getTime()>10){
+          break;
+      }
+  }",js2NLexplain-start,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:37:07,"服务启动关键词：访客服务
+服务流程：
+1. 机器人首先接收到用户要进行访客服务的请求。
+2. 机器人会一直去员工办公区检查是否有人。
+3. 如果有人，机器人会问用户是否需要导入访客信息。
+   - 如果用户说不需要，机器人会去充电桩并告诉用户感谢回答，然后结束服务。
+   - 如果用户说需要，机器人会问用户访客的姓名、来访目的和需要指引到哪里。
+     - 机器人会告诉用户已经导入信息，请放心。
+     - 机器人会去充电桩并等待一段时间，然后结束服务。
+4. 如果没有人，机器人会去充电桩并等待一段时间。
+5. 接下来，机器人会一直去接待区检查是否有人。
+6. 如果有人，机器人会问访客的姓名。
+   - 如果访客的姓名和之前导入的访客姓名一致，机器人会告诉访客他已经预约过来访的目的，并指引访客到指定地点，然后去充电桩并等待一段时间。
+   - 如果访客的姓名和之前导入的访客姓名不一致，机器人会去充电桩并等待一段时间。
+7. 如果没有人，机器人会去充电桩并等待一段时间。
+8. 如果机器人的服务时间超过了10分钟，服务将结束。",js2NLexplain-finished,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:37:07,"
+  let visitorName;
+  let visitorPurpose;
+  let visitorDestination;
+  
+  await robot.userRequest('访客服务');
+  
+  while(true){
+      await robot.goto('员工办公区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const needImport = await robot.ask('您需要导入访客信息吗？');
+  
+          if(needImport==""不需要""){
+              await robot.goto('充电桩');
+              await robot.speak('好的，感谢您的回答');
+              break;
+  
+          }else{
+              visitorName = await robot.ask('请问访客的姓名是？');
+              visitorPurpose = await robot.ask('请问访客来这里干什么？');
+              visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+  
+              await robot.speak('已经导入，请放心！');
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+              break;
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.wait(0.01);
+      }
+  }
+  
+  while(true){
+      await robot.goto('接待区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const visitor = await robot.ask('请问您的姓名是？');
+  
+          if(visitor==visitorName){
+              await robot.speak('您好，您已预约过' + visitorPurpose);
+              await robot.goto(visitorDestination);
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+  
+          }else{
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.wait(0.01);
+      }
+  
+      if(robot.getTime()>10){
+          break;
+      }
+  }",js2flow-start,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:37:55,"
+graph TB
+r_01([""userRequest:访客服务""])
+id_01[""infoDeclare:访客姓名""]
+id_02[""infoDeclare:访客目的""]
+id_03[""infoDeclare:访客目的地""]
+
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否需要导入访客信息;用户回复_1""]
+c_02{""condition: 用户回复是否为“不需要”;用户回复_1""}
+s_01[""speak:告知感谢回答""]
+a_02[""ask:询问访客姓名;用户回复_2""]
+a_03[""ask:询问访客目的;用户回复_3""]
+a_04[""ask:询问访客目的地;用户回复_4""]
+ia_01[""infoAssign:将用户回复赋值给访客姓名;访客姓名;用户回复_2""]
+ia_02[""infoAssign:将用户回复赋值给访客目的;访客目的;用户回复_3""]
+ia_03[""infoAssign:将用户回复赋值给访客目的地;访客目的地;用户回复_4""]
+s_02[""speak:告知已经导入信息""]
+
+c_03{""condition: 检测到人;人员检测结果_2""}
+a_05[""ask:询问访客姓名;用户回复_5""]
+c_04{""condition: 用户回复是否为访客姓名;用户回复_5;访客姓名""}
+s_03[""speak:告知已预约过访客目的;访客目的""]
+c_05{""condition: 当前时间是否超过10""}
+
+r_01 --> id_01
+id_01 --> id_02
+id_02 --> id_03
+id_03 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+c_01 --false--> g_02
+a_01 --> c_02
+c_02 --true--> s_01
+c_02 --false--> a_02
+s_01 --> j_01
+a_02 --> ia_01
+ia_01 --> a_03
+a_03 --> ia_02
+ia_02 --> a_04
+a_04 --> ia_03
+ia_03 --> s_02
+s_02 --> g_03
+g_03 --> j_01
+j_01 --> g_04
+g_04 --> d_02
+d_02 --> c_03
+c_03 --true--> a_05
+c_03 --false--> g_05
+a_05 --> c_04
+c_04 --true--> s_03
+c_04 --false--> g_06
+s_03 --> g_07
+g_07 --> g_08
+g_08 --> c_05
+c_05 --true--> k_01
+c_05 --false--> g_04
+g_05 --> g_09
+g_09 --> c_05
+g_06 --> g_10
+g_10 --> c_05
+",js2flow-finished,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:52:33,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:52:38,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:52:42,询问是否需要导入访客信息;用户回复_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:52:50,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:52:56,询问是否需要导入访客信息;用户回复_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:53:21,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:53:36,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:53:41,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:53:46,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:53:49,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:53:49,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:53:59,询问访客姓名;用户回复_2,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:53:59,询问访客姓名;用户回复_2,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:54:06,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+12:54:06,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+13:01:20,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+13:01:24,检测到人;人员检测结果_1,nodeClick,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+13:01:25,"selectedNodes:
+    IF: 检测到人;人员检测结果_1
+    flow:
+    
+graph TB
+r_01([""userRequest:访客服务""])
+id_01[""infoDeclare:访客姓名""]
+id_02[""infoDeclare:访客目的""]
+id_03[""infoDeclare:访客目的地""]
+
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否需要导入访客信息;用户回复_1""]
+c_02{""condition: 用户回复是否为“不需要”;用户回复_1""}
+s_01[""speak:告知感谢回答""]
+a_02[""ask:询问访客姓名;用户回复_2""]
+a_03[""ask:询问访客目的;用户回复_3""]
+a_04[""ask:询问访客目的地;用户回复_4""]
+ia_01[""infoAssign:将用户回复赋值给访客姓名;访客姓名;用户回复_2""]
+ia_02[""infoAssign:将用户回复赋值给访客目的;访客目的;用户回复_3""]
+ia_03[""infoAssign:将用户回复赋值给访客目的地;访客目的地;用户回复_4""]
+s_02[""speak:告知已经导入信息""]
+
+c_03{""condition: 检测到人;人员检测结果_2""}
+a_05[""ask:询问访客姓名;用户回复_5""]
+c_04{""condition: 用户回复是否为访客姓名;用户回复_5;访客姓名""}
+s_03[""speak:告知已预约过访客目的;访客目的""]
+c_05{""condition: 当前时间是否超过10""}
+
+r_01 --> id_01
+id_01 --> id_02
+id_02 --> id_03
+id_03 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+c_01 --false--> g_02
+a_01 --> c_02
+c_02 --true--> s_01
+c_02 --false--> a_02
+s_01 --> j_01
+a_02 --> ia_01
+ia_01 --> a_03
+a_03 --> ia_02
+ia_02 --> a_04
+a_04 --> ia_03
+ia_03 --> s_02
+s_02 --> g_03
+g_03 --> j_01
+j_01 --> g_04
+g_04 --> d_02
+d_02 --> c_03
+c_03 --true--> a_05
+c_03 --false--> g_05
+a_05 --> c_04
+c_04 --true--> s_03
+c_04 --false--> g_06
+s_03 --> g_07
+g_07 --> g_08
+g_08 --> c_05
+c_05 --true--> k_01
+c_05 --false--> g_04
+g_05 --> g_09
+g_09 --> c_05
+g_06 --> g_10
+g_10 --> c_05
+
+    jscode:
+    
+  let visitorName;
+  let visitorPurpose;
+  let visitorDestination;
+  
+  await robot.userRequest('访客服务');
+  
+  while(true){
+      await robot.goto('员工办公区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const needImport = await robot.ask('您需要导入访客信息吗？');
+  
+          if(needImport==""不需要""){
+              await robot.goto('充电桩');
+              await robot.speak('好的，感谢您的回答');
+              break;
+  
+          }else{
+              visitorName = await robot.ask('请问访客的姓名是？');
+              visitorPurpose = await robot.ask('请问访客来这里干什么？');
+              visitorDestination = await robot.ask('请问需要指引访客到哪里？');
+  
+              await robot.speak('已经导入，请放心！');
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+              break;
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.wait(0.01);
+      }
+  }
+  
+  while(true){
+      await robot.goto('接待区');
+      const isPresent = await robot.detectHuman();
+  
+      if(isPresent){
+          const visitor = await robot.ask('请问您的姓名是？');
+  
+          if(visitor==visitorName){
+              await robot.speak('您好，您已预约过' + visitorPurpose);
+              await robot.goto(visitorDestination);
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+  
+          }else{
+              await robot.goto('充电桩');
+              await robot.wait(0.01);
+          }
+  
+      }else{
+          await robot.goto('充电桩');
+          await robot.wait(0.01);
+      }
+  
+      if(robot.getTime()>10){
+          break;
+      }
+  }
+    ",magicModify-start,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07
+13:01:30,"你所选中的节点包括：""IF: 检测到人;人员检测结果_1"" 
+
+在整个服务中的作用是根据机器人检测到人的结果进行判断。具体的判断条件是检测到人的结果是否为真。如果检测到人的结果为真，则机器人会询问用户是否需要导入访客信息；如果检测到人的结果为假，则机器人会前往充电桩并等待一段时间。这个节点的作用是根据检测到人的结果来决定机器人下一步的行为。
+
+你可以进一步询问我关于这个节点的信息，我会给你提供更多的信息。或者你可以让我直接修改这个节点的行为。或者结束节点调试。",magicModify-finished,0ae3d4c5-e32e-4e20-8f7f-b744f2ec43ab,08-20-12-35-07

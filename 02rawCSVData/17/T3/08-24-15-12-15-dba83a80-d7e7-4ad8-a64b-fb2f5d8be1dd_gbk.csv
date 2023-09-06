@@ -1,0 +1,323 @@
+time,content,type,sessionID,createdAt
+15:12:15,start a new session,start,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:24:22,我的机器人个性化服务定制需求：若听到“登记访客”，则回复：“请登记访客的姓名和需要引导的地点”，并对访客姓名和引导地点进行记录；若听到“访客来访”，则回复：“请问您叫什么名字？”待对方回答后，判断在已登记的访客姓名中是否存在，若存在，则说：“请跟我来”，并引导访客前往此前已存档的引导地点，若不存在，则询问：“您的姓名？您要去哪里？”带对方回答后对回答做登记，并引导对方前往指定地点,authoringNEW-start,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:24:32,"<require>
+1. 若听到“登记访客”，则回复：“请登记访客的姓名和需要引导的地点”，并对访客姓名和引导地点进行记录。
+2. 若听到“访客来访”，则回复：“请问您叫什么名字？”待对方回答后，判断在已登记的访客姓名中是否存在，若存在，则说：“请跟我来”，并引导访客前往此前已存档的引导地点，若不存在，则询问：“您的姓名？您要去哪里？”带对方回答后对回答做登记，并引导对方前往指定地点。
+</require>",authoring-finished,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:24:59,我的机器人个性化服务定制需求：若听到“登记访客”，则回复：“请登记访客的姓名和需要引导的地点”，并对访客姓名和引导地点进行记录；若听到“访客来访”，则回复：“请问您叫什么名字？”待对方回答后，判断在已登记的访客姓名中是否存在，若存在，则说：“请跟我来”，并引导访客前往此前已存档的引导地点，若不存在，则询问：“您的姓名？您要去哪里？”带对方回答后对回答做登记，并引导对方前往指定地点,authoringNEW-start,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:25:01,<end>完成</end>,authoring-finished,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:25:01,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 若听到“登记访客”，则回复：“请登记访客的姓名和需要引导的地点”，并对访客姓名和引导地点进行记录。
+2. 若听到“访客来访”，则回复：“请问您叫什么名字？”待对方回答后，判断在已登记的访客姓名中是否存在，若存在，则说：“请跟我来”，并引导访客前往此前已存档的引导地点，若不存在，则询问：“您的姓名？您要去哪里？”带对方回答后对回答做登记，并引导对方前往指定地点。
+
+        ",nl2js-start,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:25:16,"
+  let visitorName;
+  let guideLocation;
+  const visitorRecords = {};
+
+  while (true) {
+    await robot.userRequest('登记访客');
+    await robot.speak('请登记访客的姓名和需要引导的地点');
+    const visitorInfo = await robot.ask('请告诉我访客的姓名和需要引导的地点');
+    const [name, location] = visitorInfo.split(' ');
+    visitorRecords[name] = location;
+    await robot.speak('已记录访客信息');
+
+    await robot.userRequest('访客来访');
+    const visitorName = await robot.ask('请问您叫什么名字？');
+    if (visitorName in visitorRecords) {
+      guideLocation = visitorRecords[visitorName];
+      await robot.speak('请跟我来');
+      await robot.goto(guideLocation);
+    } else {
+      await robot.speak('您的姓名？您要去哪里？');
+      const visitorInfo = await robot.ask('请告诉我您的姓名和需要去的地点');
+      const [name, location] = visitorInfo.split(' ');
+      visitorRecords[name] = location;
+      await robot.speak('已记录访客信息');
+      await robot.goto(location);
+    }
+  }",nl2js-finished,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:25:16,"
+  let visitorName;
+  let guideLocation;
+  const visitorRecords = {};
+
+  while (true) {
+    await robot.userRequest('登记访客');
+    await robot.speak('请登记访客的姓名和需要引导的地点');
+    const visitorInfo = await robot.ask('请告诉我访客的姓名和需要引导的地点');
+    const [name, location] = visitorInfo.split(' ');
+    visitorRecords[name] = location;
+    await robot.speak('已记录访客信息');
+
+    await robot.userRequest('访客来访');
+    const visitorName = await robot.ask('请问您叫什么名字？');
+    if (visitorName in visitorRecords) {
+      guideLocation = visitorRecords[visitorName];
+      await robot.speak('请跟我来');
+      await robot.goto(guideLocation);
+    } else {
+      await robot.speak('您的姓名？您要去哪里？');
+      const visitorInfo = await robot.ask('请告诉我您的姓名和需要去的地点');
+      const [name, location] = visitorInfo.split(' ');
+      visitorRecords[name] = location;
+      await robot.speak('已记录访客信息');
+      await robot.goto(location);
+    }
+  }",js2NLexplain-start,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:25:34,"服务启动关键词：登记访客
+服务流程：
+1. 机器人会一直等待用户发出""登记访客""的请求。
+2. 当收到请求后，机器人会要求用户提供访客的姓名和需要引导的地点。
+3. 用户会被要求告诉机器人访客的姓名和需要引导的地点。
+4. 机器人会将访客的姓名和地点记录在访客记录中。
+5. 机器人会告诉用户已经记录了访客信息。
+6. 机器人会一直等待用户发出""访客来访""的请求。
+7. 当收到请求后，机器人会询问访客的姓名。
+8. 如果访客的姓名在访客记录中存在，机器人会得到访客需要引导的地点。
+9. 机器人会告诉访客""请跟我来""，并引导访客去指定的地点。
+10. 如果访客的姓名在访客记录中不存在，机器人会询问访客的姓名和需要去的地点。
+11. 机器人会将访客的姓名和地点记录在访客记录中。
+12. 机器人会告诉用户已经记录了访客信息。
+13. 机器人会引导访客去指定的地点。
+14. 服务会一直循环执行以上步骤。",js2NLexplain-finished,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:25:34,"
+  let visitorName;
+  let guideLocation;
+  const visitorRecords = {};
+
+  while (true) {
+    await robot.userRequest('登记访客');
+    await robot.speak('请登记访客的姓名和需要引导的地点');
+    const visitorInfo = await robot.ask('请告诉我访客的姓名和需要引导的地点');
+    const [name, location] = visitorInfo.split(' ');
+    visitorRecords[name] = location;
+    await robot.speak('已记录访客信息');
+
+    await robot.userRequest('访客来访');
+    const visitorName = await robot.ask('请问您叫什么名字？');
+    if (visitorName in visitorRecords) {
+      guideLocation = visitorRecords[visitorName];
+      await robot.speak('请跟我来');
+      await robot.goto(guideLocation);
+    } else {
+      await robot.speak('您的姓名？您要去哪里？');
+      const visitorInfo = await robot.ask('请告诉我您的姓名和需要去的地点');
+      const [name, location] = visitorInfo.split(' ');
+      visitorRecords[name] = location;
+      await robot.speak('已记录访客信息');
+      await robot.goto(location);
+    }
+  }",js2flow-start,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:26:41,"
+graph TB
+r_01([""userRequest:登记访客""])
+id_01[""infoDeclare:访客姓名""]
+id_02[""infoDeclare:引导地点""]
+id_03[""infoDeclare:访客记录""]
+s_01[""speak:告知需要登记访客的姓名和需要引导的地点""]
+a_01[""ask:询问访客的姓名和需要引导的地点;用户回复_1""]
+ia_01[""infoAssign:将用户回复_1的姓名和地点分别赋值给访客姓名和引导地点;访客姓名;引导地点""]
+ia_02[""infoAssign:将访客姓名和引导地点添加到访客记录中;访客记录""]
+s_02[""speak:告知已记录访客信息""]
+r_02([""userRequest:访客来访""])
+a_02[""ask:询问访客的姓名;用户回复_2""]
+ia_03[""infoAssign:将用户回复_2赋值给访客姓名;访客姓名""]
+c_01{""condition: 访客姓名是否在访客记录中;访客姓名""}
+s_03[""speak:告知访客跟随机器人""]
+g_01[""goto:引导地点""]
+s_04[""speak:询问访客的姓名和需要去的地点""]
+a_03[""ask:询问访客的姓名和需要去的地点;用户回复_3""]
+ia_04[""infoAssign:将用户回复_3的姓名和地点分别赋值给访客姓名和引导地点;访客姓名;引导地点""]
+ia_05[""infoAssign:将访客姓名和引导地点添加到访客记录中;访客记录""]
+s_05[""speak:告知已记录访客信息""]
+g_02[""goto:引导地点""]
+k_01([""end:服务结束""])
+r_01 --> s_01
+s_01 --> a_01
+a_01 --> ia_01
+ia_01 --> ia_02
+ia_02 --> s_02
+s_02 --> r_02
+r_02 --> a_02
+a_02 --> ia_03
+ia_03 --> c_01
+c_01 --true--> s_03
+s_03 --> g_01
+g_01 --> r_01
+c_01 --false--> s_04
+s_04 --> a_03
+a_03 --> ia_04
+ia_04 --> ia_05
+ia_05 --> s_05
+s_05 --> g_02
+g_02 --> r_01
+",js2flow-finished,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:30:19,访客来访,nodeClick,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:30:27,访客来访,nodeClick,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:30:27,访客来访,nodeClick,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:30:29,"selectedNodes:
+    USERREQUEST: 访客来访
+    flow:
+    
+graph TB
+r_01([""userRequest:登记访客""])
+id_01[""infoDeclare:访客姓名""]
+id_02[""infoDeclare:引导地点""]
+id_03[""infoDeclare:访客记录""]
+s_01[""speak:告知需要登记访客的姓名和需要引导的地点""]
+a_01[""ask:询问访客的姓名和需要引导的地点;用户回复_1""]
+ia_01[""infoAssign:将用户回复_1的姓名和地点分别赋值给访客姓名和引导地点;访客姓名;引导地点""]
+ia_02[""infoAssign:将访客姓名和引导地点添加到访客记录中;访客记录""]
+s_02[""speak:告知已记录访客信息""]
+r_02([""userRequest:访客来访""])
+a_02[""ask:询问访客的姓名;用户回复_2""]
+ia_03[""infoAssign:将用户回复_2赋值给访客姓名;访客姓名""]
+c_01{""condition: 访客姓名是否在访客记录中;访客姓名""}
+s_03[""speak:告知访客跟随机器人""]
+g_01[""goto:引导地点""]
+s_04[""speak:询问访客的姓名和需要去的地点""]
+a_03[""ask:询问访客的姓名和需要去的地点;用户回复_3""]
+ia_04[""infoAssign:将用户回复_3的姓名和地点分别赋值给访客姓名和引导地点;访客姓名;引导地点""]
+ia_05[""infoAssign:将访客姓名和引导地点添加到访客记录中;访客记录""]
+s_05[""speak:告知已记录访客信息""]
+g_02[""goto:引导地点""]
+k_01([""end:服务结束""])
+r_01 --> s_01
+s_01 --> a_01
+a_01 --> ia_01
+ia_01 --> ia_02
+ia_02 --> s_02
+s_02 --> r_02
+r_02 --> a_02
+a_02 --> ia_03
+ia_03 --> c_01
+c_01 --true--> s_03
+s_03 --> g_01
+g_01 --> r_01
+c_01 --false--> s_04
+s_04 --> a_03
+a_03 --> ia_04
+ia_04 --> ia_05
+ia_05 --> s_05
+s_05 --> g_02
+g_02 --> r_01
+
+    jscode:
+    
+  let visitorName;
+  let guideLocation;
+  const visitorRecords = {};
+
+  while (true) {
+    await robot.userRequest('登记访客');
+    await robot.speak('请登记访客的姓名和需要引导的地点');
+    const visitorInfo = await robot.ask('请告诉我访客的姓名和需要引导的地点');
+    const [name, location] = visitorInfo.split(' ');
+    visitorRecords[name] = location;
+    await robot.speak('已记录访客信息');
+
+    await robot.userRequest('访客来访');
+    const visitorName = await robot.ask('请问您叫什么名字？');
+    if (visitorName in visitorRecords) {
+      guideLocation = visitorRecords[visitorName];
+      await robot.speak('请跟我来');
+      await robot.goto(guideLocation);
+    } else {
+      await robot.speak('您的姓名？您要去哪里？');
+      const visitorInfo = await robot.ask('请告诉我您的姓名和需要去的地点');
+      const [name, location] = visitorInfo.split(' ');
+      visitorRecords[name] = location;
+      await robot.speak('已记录访客信息');
+      await robot.goto(location);
+    }
+  }
+    ",magicModify-start,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:30:37,"你所选中的节点包括:""访客来访"" 
+
+在整个服务中的作用是根据访客的姓名判断是否在访客记录中，如果在则告知访客跟随机器人前往引导地点，如果不在则询问访客的姓名和需要去的地点，并记录到访客记录中。
+
+你可以进一步询问我关于这个节点的信息，我会给你提供更多的信息。或者你可以让我直接修改这个节点的行为。或者结束节点调试。",magicModify-finished,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:30:49,访客来访,nodeClick,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:31:33,"selectedNodes:
+    USERREQUEST: 访客来访
+    flow:
+    
+graph TB
+r_01([""userRequest:登记访客""])
+id_01[""infoDeclare:访客姓名""]
+id_02[""infoDeclare:引导地点""]
+id_03[""infoDeclare:访客记录""]
+s_01[""speak:告知需要登记访客的姓名和需要引导的地点""]
+a_01[""ask:询问访客的姓名和需要引导的地点;用户回复_1""]
+ia_01[""infoAssign:将用户回复_1的姓名和地点分别赋值给访客姓名和引导地点;访客姓名;引导地点""]
+ia_02[""infoAssign:将访客姓名和引导地点添加到访客记录中;访客记录""]
+s_02[""speak:告知已记录访客信息""]
+r_02([""userRequest:访客来访""])
+a_02[""ask:询问访客的姓名;用户回复_2""]
+ia_03[""infoAssign:将用户回复_2赋值给访客姓名;访客姓名""]
+c_01{""condition: 访客姓名是否在访客记录中;访客姓名""}
+s_03[""speak:告知访客跟随机器人""]
+g_01[""goto:引导地点""]
+s_04[""speak:询问访客的姓名和需要去的地点""]
+a_03[""ask:询问访客的姓名和需要去的地点;用户回复_3""]
+ia_04[""infoAssign:将用户回复_3的姓名和地点分别赋值给访客姓名和引导地点;访客姓名;引导地点""]
+ia_05[""infoAssign:将访客姓名和引导地点添加到访客记录中;访客记录""]
+s_05[""speak:告知已记录访客信息""]
+g_02[""goto:引导地点""]
+k_01([""end:服务结束""])
+r_01 --> s_01
+s_01 --> a_01
+a_01 --> ia_01
+ia_01 --> ia_02
+ia_02 --> s_02
+s_02 --> r_02
+r_02 --> a_02
+a_02 --> ia_03
+ia_03 --> c_01
+c_01 --true--> s_03
+s_03 --> g_01
+g_01 --> r_01
+c_01 --false--> s_04
+s_04 --> a_03
+a_03 --> ia_04
+ia_04 --> ia_05
+ia_05 --> s_05
+s_05 --> g_02
+g_02 --> r_01
+
+    jscode:
+    
+  let visitorName;
+  let guideLocation;
+  const visitorRecords = {};
+
+  while (true) {
+    await robot.userRequest('登记访客');
+    await robot.speak('请登记访客的姓名和需要引导的地点');
+    const visitorInfo = await robot.ask('请告诉我访客的姓名和需要引导的地点');
+    const [name, location] = visitorInfo.split(' ');
+    visitorRecords[name] = location;
+    await robot.speak('已记录访客信息');
+
+    await robot.userRequest('访客来访');
+    const visitorName = await robot.ask('请问您叫什么名字？');
+    if (visitorName in visitorRecords) {
+      guideLocation = visitorRecords[visitorName];
+      await robot.speak('请跟我来');
+      await robot.goto(guideLocation);
+    } else {
+      await robot.speak('您的姓名？您要去哪里？');
+      const visitorInfo = await robot.ask('请告诉我您的姓名和需要去的地点');
+      const [name, location] = visitorInfo.split(' ');
+      visitorRecords[name] = location;
+      await robot.speak('已记录访客信息');
+      await robot.goto(location);
+    }
+  }
+    ",magicModifyPhase-start,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15
+15:31:36,<end>结束对节点的调试</end>,magicModifyPhase-finished,dba83a80-d7e7-4ad8-a64b-fb2f5d8be1dd,08-24-15-12-15

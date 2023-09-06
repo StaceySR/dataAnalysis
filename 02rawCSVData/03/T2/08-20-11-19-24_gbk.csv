@@ -1,0 +1,1639 @@
+time,content,type,sessionID,createdAt
+11:19:24,start a new session,start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:28:34,我的机器人个性化服务定制需求：我需要你先在接待区看一下是否有人，如果有人的话请询问他们是否是来公司参观的人员，如果他们的回答为“是”的话，说自己可以带领他们参观一下作品展示区，并带他们前往作品展示区，为他们介绍作品展示区里的内容。如果他们回答不是的话，请返回充电桩。介绍作品展示区的内容时请说“这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。”在介绍结束之后，请为他们介绍“公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？”如果他们的回复是“好的”，请指引他们前往创作室，并介绍“自己看吧，我也不懂！”，然后等待10秒钟后，主动询问“差不多了，撤退！”，并指引他们回到充电桩。,authoringNEW-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:28:39,"<require>
+1. 在接待区检查是否有人
+2. 如果有人，询问是否是来公司参观的人员
+3. 如果是参观人员，带领他们参观作品展示区
+4. 在作品展示区介绍双臂机器人的特点
+5. 介绍公司正在开发的虚实结合机器人平台
+6. 如果对创作室感兴趣，带领他们前往创作室
+7. 在创作室介绍自己不懂，并询问是否差不多了
+8. 引导他们回到充电桩
+</require>",authoring-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:28:53,我的机器人个性化服务定制需求：我需要你先在接待区看一下是否有人，如果有人的话请询问他们是否是来公司参观的人员，如果他们的回答为“是”的话，说自己可以带领他们参观一下作品展示区，并带他们前往作品展示区，为他们介绍作品展示区里的内容。如果他们回答不是的话，请返回充电桩。介绍作品展示区的内容时请说“这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。”在介绍结束之后，请为他们介绍“公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？”如果他们的回复是“好的”，请指引他们前往创作室，并介绍“自己看吧，我也不懂！”，然后等待10秒钟后，主动询问“差不多了，撤退！”，并指引他们回到充电桩。,authoringNEW-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:28:55,<end>完成</end>,authoring-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:28:55,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 在接待区检查是否有人
+2. 如果有人，询问是否是来公司参观的人员
+3. 如果是参观人员，带领他们参观作品展示区
+4. 在作品展示区介绍双臂机器人的特点
+5. 介绍公司正在开发的虚实结合机器人平台
+6. 如果对创作室感兴趣，带领他们前往创作室
+7. 在创作室介绍自己不懂，并询问是否差不多了
+8. 引导他们回到充电桩
+
+        ",nl2js-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:29:03,"
+  await robot.userRequest('公司参观');
+  const isPresent = await robot.detectHuman();
+  
+  if(isPresent){
+      const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+  
+      if(isVisitor==""是的""){
+          await robot.goto('作品展示区');
+          await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+          await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+  
+          const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+  
+          if(isInterested==""是的""){
+              await robot.goto('创作室');
+              await robot.speak('这是我们的创作室，我们的工程师们在这里进行机器人的研发和创新。');
+              await robot.ask('这里的环境还差不多了吗？');
+          }
+  
+          await robot.goto('充电桩');
+          await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+  
+      }else{
+          await robot.speak('很抱歉，您不是来公司参观的人员。');
+      }
+  
+  }else{
+      await robot.speak('很抱歉，目前接待区没有人。');
+  }",nl2js-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:29:03,"
+  await robot.userRequest('公司参观');
+  const isPresent = await robot.detectHuman();
+  
+  if(isPresent){
+      const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+  
+      if(isVisitor==""是的""){
+          await robot.goto('作品展示区');
+          await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+          await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+  
+          const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+  
+          if(isInterested==""是的""){
+              await robot.goto('创作室');
+              await robot.speak('这是我们的创作室，我们的工程师们在这里进行机器人的研发和创新。');
+              await robot.ask('这里的环境还差不多了吗？');
+          }
+  
+          await robot.goto('充电桩');
+          await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+  
+      }else{
+          await robot.speak('很抱歉，您不是来公司参观的人员。');
+      }
+  
+  }else{
+      await robot.speak('很抱歉，目前接待区没有人。');
+  }",js2NLexplain-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:29:11,"服务启动关键词：公司参观
+服务流程：
+1. 机器人首先接收到用户要参观公司的请求。
+2. 机器人会检测接待区是否有人。
+3. 如果接待区有人，机器人会问用户是否是来公司参观的人员。
+   - 如果用户回答是，机器人会带领用户去作品展示区，并向用户介绍公司的双臂机器人的特点和功能。
+   - 机器人还会告诉用户，公司正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。
+   - 机器人会问用户是否对公司的创作室感兴趣。
+     - 如果用户回答是，机器人会带领用户去创作室，并向用户介绍工程师们在这里进行机器人的研发和创新。
+     - 机器人还会询问用户创作室的环境是否满意。
+   - 最后，机器人会带领用户去充电桩，并感谢用户的参观。如果用户还有其他问题，机器人会随时回答。
+   - 如果用户回答不是，机器人会告诉用户很抱歉，他不是来公司参观的人员。
+4. 如果接待区没有人，机器人会告诉用户很抱歉，目前接待区没有人。",js2NLexplain-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:29:11,"
+  await robot.userRequest('公司参观');
+  const isPresent = await robot.detectHuman();
+  
+  if(isPresent){
+      const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+  
+      if(isVisitor==""是的""){
+          await robot.goto('作品展示区');
+          await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+          await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+  
+          const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+  
+          if(isInterested==""是的""){
+              await robot.goto('创作室');
+              await robot.speak('这是我们的创作室，我们的工程师们在这里进行机器人的研发和创新。');
+              await robot.ask('这里的环境还差不多了吗？');
+          }
+  
+          await robot.goto('充电桩');
+          await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+  
+      }else{
+          await robot.speak('很抱歉，您不是来公司参观的人员。');
+      }
+  
+  }else{
+      await robot.speak('很抱歉，目前接待区没有人。');
+  }",js2flow-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:29:40,"
+graph TB
+r_01([""userRequest:公司参观""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_01[""goto:作品展示区""]
+s_01[""speak:介绍作品展示区""]
+s_02[""speak:介绍公司正在开发的项目""]
+a_02[""ask:询问是否对创作室感兴趣;用户回复_2""]
+c_03{""condition: 对创作室感兴趣;用户回复_2""}
+g_02[""goto:创作室""]
+s_03[""speak:介绍创作室""]
+a_03[""ask:询问对创作室环境的评价""]
+g_03[""goto:充电桩""]
+s_04[""speak:结束参观""]
+s_05[""speak:告知不是参观人员""]
+s_06[""speak:告知接待区无人""]
+k_01([""end:服务结束""])
+
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+c_01 --false--> s_06
+s_06 --> k_01
+a_01 --> c_02
+c_02 --true--> g_01
+c_02 --false--> s_05
+s_05 --> k_01
+g_01 --> s_01
+s_01 --> s_02
+s_02 --> a_02
+a_02 --> c_03
+c_03 --true--> g_02
+c_03 --false--> g_03
+g_02 --> s_03
+s_03 --> a_03
+a_03 --> g_03
+g_03 --> s_04
+s_04 --> k_01
+",js2flow-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:31:13,"
+  currentCode :
+  
+  await robot.userRequest('公司参观');
+  const isPresent = await robot.detectHuman();
+  
+  if(isPresent){
+      const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+  
+      if(isVisitor==""是的""){
+          await robot.goto('作品展示区');
+          await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+          await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+  
+          const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+  
+          if(isInterested==""是的""){
+              await robot.goto('创作室');
+              await robot.speak('这是我们的创作室，我们的工程师们在这里进行机器人的研发和创新。');
+              await robot.ask('这里的环境还差不多了吗？');
+          }
+  
+          await robot.goto('充电桩');
+          await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+  
+      }else{
+          await robot.speak('很抱歉，您不是来公司参观的人员。');
+      }
+  
+  }else{
+      await robot.speak('很抱歉，目前接待区没有人。');
+  }
+  userInput:
+  介绍创作室时请说：“我也不懂，自己看吧！”，并且不要询问对创作室环境是否满意，停留十秒后，主动说“差不多了，撤退吧”
+  ",nl2jswithContext-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:31:39,"await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+        await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""是的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}",nl2jswithContext-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:31:39,"
+  originalcode:
+  
+  await robot.userRequest('公司参观');
+  const isPresent = await robot.detectHuman();
+  
+  if(isPresent){
+      const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+  
+      if(isVisitor==""是的""){
+          await robot.goto('作品展示区');
+          await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+          await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+  
+          const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+  
+          if(isInterested==""是的""){
+              await robot.goto('创作室');
+              await robot.speak('这是我们的创作室，我们的工程师们在这里进行机器人的研发和创新。');
+              await robot.ask('这里的环境还差不多了吗？');
+          }
+  
+          await robot.goto('充电桩');
+          await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+  
+      }else{
+          await robot.speak('很抱歉，您不是来公司参观的人员。');
+      }
+  
+  }else{
+      await robot.speak('很抱歉，目前接待区没有人。');
+  }
+  modifiedcode:
+  await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+        await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""是的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+  ",explainModifiedJS-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:31:44,修改后的代码在原有的基础上，对机器人在创作室的行为进行了修改。修改后的代码中，机器人在询问用户对创作室是否感兴趣后，不再等待用户的回答，而是直接前往创作室。在创作室中，机器人会先说一句“我也不懂，自己看吧！”，然后等待10秒钟，最后再说一句“差不多了，撤退吧”。这样修改后的代码使得机器人在创作室的行为更加灵活，不再依赖用户的回答，而是自主进行一段时间的观察后再进行下一步行动。,explainModifiedJS-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:31:44,"await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+        await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""是的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}",js2flow-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:32:19,"
+graph TB
+r_01([""userRequest:公司参观""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_01[""goto:作品展示区""]
+s_01[""speak:介绍作品展示区""]
+s_02[""speak:介绍公司正在开发的项目""]
+a_02[""ask:询问是否对创作室感兴趣;用户回复_2""]
+c_03{""condition: 对创作室感兴趣;用户回复_2""}
+g_02[""goto:创作室""]
+s_03[""speak:告知自己不懂，让用户自己看""]
+s_04[""speak:告知时间差不多了，准备撤退""]
+g_03[""goto:充电桩""]
+s_05[""speak:感谢参观，询问是否有其他问题""]
+s_06[""speak:告知用户不是来参观的人员""]
+s_07[""speak:告知接待区没有人""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+c_01 --false--> s_07
+s_07 --> k_01
+a_01 --> c_02
+c_02 --true--> g_01
+c_02 --false--> s_06
+s_06 --> k_01
+g_01 --> s_01
+s_01 --> s_02
+s_02 --> a_02
+a_02 --> c_03
+c_03 --true--> g_02
+c_03 --false--> g_03
+g_02 --> s_03
+s_03 --> s_04
+s_04 --> g_03
+g_03 --> s_05
+s_05 --> k_01
+",js2flow-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:32:42,对创作室感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:32:47,"selectedNodes:
+    IF: 对创作室感兴趣;用户回复_2
+    flow:
+    
+graph TB
+r_01([""userRequest:公司参观""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_01[""goto:作品展示区""]
+s_01[""speak:介绍作品展示区""]
+s_02[""speak:介绍公司正在开发的项目""]
+a_02[""ask:询问是否对创作室感兴趣;用户回复_2""]
+c_03{""condition: 对创作室感兴趣;用户回复_2""}
+g_02[""goto:创作室""]
+s_03[""speak:告知自己不懂，让用户自己看""]
+s_04[""speak:告知时间差不多了，准备撤退""]
+g_03[""goto:充电桩""]
+s_05[""speak:感谢参观，询问是否有其他问题""]
+s_06[""speak:告知用户不是来参观的人员""]
+s_07[""speak:告知接待区没有人""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+c_01 --false--> s_07
+s_07 --> k_01
+a_01 --> c_02
+c_02 --true--> g_01
+c_02 --false--> s_06
+s_06 --> k_01
+g_01 --> s_01
+s_01 --> s_02
+s_02 --> a_02
+a_02 --> c_03
+c_03 --true--> g_02
+c_03 --false--> g_03
+g_02 --> s_03
+s_03 --> s_04
+s_04 --> g_03
+g_03 --> s_05
+s_05 --> k_01
+
+    jscode:
+    await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+        await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""是的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+    ",magicModify-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:32:55,"你所选中的节点包括：""对创作室感兴趣;用户回复_2"" 
+
+在整个服务中的作用是根据用户回复判断是否对创作室感兴趣。具体的逻辑是在用户回复为""是的""时，机器人会前往创作室，并向用户发起询问是否对创作室感兴趣。如果用户回复为""是的""，机器人会告知自己不懂，让用户自己看，并等待10秒后告知时间差不多了，准备撤退。如果用户回复为""否""，机器人会前往充电桩，并感谢用户的参观，询问是否有其他问题。如果用户回复为其他内容，机器人会告知自己不懂，让用户自己看，并等待10秒后告知时间差不多了，准备撤退。
+
+你可以进一步询问我关于这个节点的信息，我会给你提供更多的信息。或者你可以让我直接修改这个节点的行为。或者结束节点调试。",magicModify-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:33:56,对创作室感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:34:11,"selectedNodes:
+    IF: 对创作室感兴趣;用户回复_2
+    flow:
+    
+graph TB
+r_01([""userRequest:公司参观""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_01[""goto:作品展示区""]
+s_01[""speak:介绍作品展示区""]
+s_02[""speak:介绍公司正在开发的项目""]
+a_02[""ask:询问是否对创作室感兴趣;用户回复_2""]
+c_03{""condition: 对创作室感兴趣;用户回复_2""}
+g_02[""goto:创作室""]
+s_03[""speak:告知自己不懂，让用户自己看""]
+s_04[""speak:告知时间差不多了，准备撤退""]
+g_03[""goto:充电桩""]
+s_05[""speak:感谢参观，询问是否有其他问题""]
+s_06[""speak:告知用户不是来参观的人员""]
+s_07[""speak:告知接待区没有人""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+c_01 --false--> s_07
+s_07 --> k_01
+a_01 --> c_02
+c_02 --true--> g_01
+c_02 --false--> s_06
+s_06 --> k_01
+g_01 --> s_01
+s_01 --> s_02
+s_02 --> a_02
+a_02 --> c_03
+c_03 --true--> g_02
+c_03 --false--> g_03
+g_02 --> s_03
+s_03 --> s_04
+s_04 --> g_03
+g_03 --> s_05
+s_05 --> k_01
+
+    jscode:
+    await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+        await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""是的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+    ",magicModifyPhase-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:34:25,"<explain> 
+在这个流程中，""IF: 对创作室感兴趣;用户回复_2""是一个条件判断节点。这个节点的作用是判断用户是否对创作室感兴趣。如果用户回答""是的""，那么机器人将会带领用户去创作室，并告诉用户自己不懂创作室的内容，让用户自己看。然后机器人会告诉用户时间差不多了，准备撤退。如果用户回答""不是""，那么机器人将会直接带领用户去充电桩，并感谢用户的参观，询问用户是否还有其他问题。
+</explain>",magicModifyPhase-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:40:46,"selectedNodes:
+    IF: 对创作室感兴趣;用户回复_2
+    flow:
+    
+graph TB
+r_01([""userRequest:公司参观""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_01[""goto:作品展示区""]
+s_01[""speak:介绍作品展示区""]
+s_02[""speak:介绍公司正在开发的项目""]
+a_02[""ask:询问是否对创作室感兴趣;用户回复_2""]
+c_03{""condition: 对创作室感兴趣;用户回复_2""}
+g_02[""goto:创作室""]
+s_03[""speak:告知自己不懂，让用户自己看""]
+s_04[""speak:告知时间差不多了，准备撤退""]
+g_03[""goto:充电桩""]
+s_05[""speak:感谢参观，询问是否有其他问题""]
+s_06[""speak:告知用户不是来参观的人员""]
+s_07[""speak:告知接待区没有人""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+c_01 --false--> s_07
+s_07 --> k_01
+a_01 --> c_02
+c_02 --true--> g_01
+c_02 --false--> s_06
+s_06 --> k_01
+g_01 --> s_01
+s_01 --> s_02
+s_02 --> a_02
+a_02 --> c_03
+c_03 --true--> g_02
+c_03 --false--> g_03
+g_02 --> s_03
+s_03 --> s_04
+s_04 --> g_03
+g_03 --> s_05
+s_05 --> k_01
+
+    jscode:
+    await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('欢迎参观作品展示区，这里展示了我们公司的双臂机器人的特点和功能。');
+        await robot.speak('另外，我们公司还正在开发虚实结合机器人平台，将虚拟现实和实体机器人相结合，为用户提供更多的交互体验。');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""是的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+    ",magicModifyPhase-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:41:20,"<code>
+await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+</code>
+
+<description>
+根据用户的需求，我修改了以下几点：
+1. 在介绍作品展示区的时候，我按照用户的要求完整地介绍了双臂机器人的特点和功能。
+2. 在介绍公司正在开发的项目时，我按照用户的要求详细地介绍了虚实结合的机器人平台，并询问用户是否对创作室感兴趣。
+3. 在询问用户是否对创作室感兴趣时，我将用户的回答从""是的""改为""好的""，以满足用户的需求。
+</description>",magicModifyPhase-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:41:20,"
+await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+",js2flow-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:41:52,"
+graph TB
+r_01([""userRequest:公司参观""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_01[""goto:作品展示区""]
+s_01[""speak:介绍双臂机器人""]
+s_02[""speak:介绍虚实结合的机器人平台""]
+a_02[""ask:询问是否对创作室感兴趣;用户回复_2""]
+c_03{""condition: 对创作室感兴趣;用户回复_2""}
+g_02[""goto:创作室""]
+s_03[""speak:告知自己看""]
+s_04[""speak:告知时间到""]
+g_03[""goto:充电桩""]
+s_05[""speak:感谢参观""]
+s_06[""speak:告知不是来参观的人员""]
+s_07[""speak:告知接待区没有人""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+c_01 --false--> s_07
+s_07 --> k_01
+a_01 --> c_02
+c_02 --true--> g_01
+c_02 --false--> s_06
+s_06 --> k_01
+g_01 --> s_01
+s_01 --> s_02
+s_02 --> a_02
+a_02 --> c_03
+c_03 --true--> g_02
+c_03 --false--> g_03
+g_02 --> s_03
+s_03 --> s_04
+s_04 --> g_03
+g_03 --> s_05
+s_05 --> k_01
+",js2flow-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:42:06,告知自己看,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:42:07,告知时间到,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:42:11,对创作室感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:42:12,询问是否对创作室感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:42:26,告知自己看,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:43:25,"
+  currentCode :
+  
+await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+
+  userInput:
+  最开始的时候请先前往用户接待区，再进行任务检测是否有人
+  ",nl2jswithContext-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:43:49,"await robot.goto('接待区');
+await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}",nl2jswithContext-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:43:49,"
+  originalcode:
+  
+await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+
+  modifiedcode:
+  await robot.goto('接待区');
+await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+  ",explainModifiedJS-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:43:53,修改后的代码在原代码的基础上添加了一行代码，即在开始执行之前，机器人会先移动到接待区。这样做的目的是为了确保机器人在开始执行任务之前已经到达接待区，以便及时接待访客。修改后的代码并没有改变机器人的行为逻辑，只是在原有逻辑的基础上添加了一个移动到接待区的步骤。因此，修改后的代码所改变的机器人行为是在开始执行任务之前，机器人会先移动到接待区。,explainModifiedJS-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:43:53,"await robot.goto('接待区');
+await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}",js2flow-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:44:23,"graph TB
+g_01[""goto:接待区""]
+r_01([""userRequest:公司参观""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_02[""goto:作品展示区""]
+s_01[""speak:介绍双臂机器人""]
+s_02[""speak:介绍虚实结合的机器人平台""]
+a_02[""ask:询问是否对创作室感兴趣;用户回复_2""]
+c_03{""condition: 对创作室感兴趣;用户回复_2""}
+g_03[""goto:创作室""]
+s_03[""speak:让参观者自己看""]
+s_04[""speak:提醒参观者时间到""]
+g_04[""goto:充电桩""]
+s_05[""speak:感谢参观""]
+s_06[""speak:告知不是参观人员""]
+s_07[""speak:告知接待区无人""]
+k_01([""end:服务结束""])
+g_01 --> r_01
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> g_02
+g_02 --> s_01
+s_01 --> s_02
+s_02 --> a_02
+a_02 --> c_03
+c_03 --true--> g_03
+g_03 --> s_03
+s_03 --> s_04
+s_04 --> g_04
+g_04 --> s_05
+s_05 --> k_01
+c_03 --false--> g_04
+c_02 --false--> s_06
+s_06 --> k_01
+c_01 --false--> s_07
+s_07 --> k_01
+",js2flow-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:44:29,公司参观,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:44:42,接待区,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:44:43,公司参观,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:44:47,接待区,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:44:49,接待区,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:44:57,接待区,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:45:06,自动布局,AutoLayout,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:45:07,"jscode:
+    await robot.goto('接待区');
+await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+    oldFlow:
+    graph TB
+g_01[""goto:接待区""]
+r_01([""userRequest:公司参观""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_02[""goto:作品展示区""]
+s_01[""speak:介绍双臂机器人""]
+s_02[""speak:介绍虚实结合的机器人平台""]
+a_02[""ask:询问是否对创作室感兴趣;用户回复_2""]
+c_03{""condition: 对创作室感兴趣;用户回复_2""}
+g_03[""goto:创作室""]
+s_03[""speak:让参观者自己看""]
+s_04[""speak:提醒参观者时间到""]
+g_04[""goto:充电桩""]
+s_05[""speak:感谢参观""]
+s_06[""speak:告知不是参观人员""]
+s_07[""speak:告知接待区无人""]
+k_01([""end:服务结束""])
+g_01 --> r_01
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> g_02
+g_02 --> s_01
+s_01 --> s_02
+s_02 --> a_02
+a_02 --> c_03
+c_03 --true--> g_03
+g_03 --> s_03
+s_03 --> s_04
+s_04 --> g_04
+g_04 --> s_05
+s_05 --> k_01
+c_03 --false--> g_04
+c_02 --false--> s_06
+s_06 --> k_01
+c_01 --false--> s_07
+s_07 --> k_01
+
+    newFlow:
+    graph TB
+g_01[""goto:接待区""]
+r_01([""userRequest:公司参观""])
+d_01[""detectHuman""]
+c_01{""condition:检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition:是来参观的人员;用户回复_1""}
+g_02[""goto:作品展示区""]
+s_01[""speak:介绍双臂机器人""]
+s_02[""speak:介绍虚实结合的机器人平台""]
+a_02[""ask:询问是否对创作室感兴趣;用户回复_2""]
+c_03{""condition:对创作室感兴趣;用户回复_2""}
+g_03[""goto:创作室""]
+s_03[""speak:让参观者自己看""]
+s_04[""speak:提醒参观者时间到""]
+g_04[""goto:充电桩""]
+s_05[""speak:感谢参观""]
+s_06[""speak:告知不是参观人员""]
+s_07[""speak:告知接待区无人""]
+k_01([""end:服务结束""])
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> g_02
+g_02 --> s_01
+s_01 --> s_02
+s_02 --> a_02
+a_02 --> c_03
+c_03 --true--> g_03
+g_03 --> s_03
+s_03 --> s_04
+s_04 --> g_04
+g_04 --> s_05
+s_05 --> k_01
+c_03 --false--> g_04
+c_02 --false--> s_06
+s_06 --> k_01
+c_01 --false--> s_07
+s_07 --> k_01
+r_01 --> g_01
+g_01 --> d_01
+
+    ",flow2js-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:45:32,"await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}",flow2js-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:45:32,"
+  originalcode:
+  await robot.goto('接待区');
+await robot.userRequest('公司参观');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+  modifiedcode:
+  await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+  ",explainModifiedJS-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:45:39,"修改后的代码将机器人的行为从一开始就改为等待用户输入""公司参观""这个关键词，而不是直接去接待区。这样做的目的是为了让机器人更加灵活，可以根据用户的需求来执行相应的行为。当用户输入了""公司参观""后，机器人会前往接待区，并检测是否有人在接待区。如果有人在接待区，机器人会询问用户是否是来公司参观的人员。如果用户回答是，机器人会带领用户前往作品展示区，并介绍作品展示区的情况。然后机器人会询问用户是否对创作室感兴趣，如果用户回答是，机器人会带领用户前往创作室，并进行一段时间的观看。观看结束后，机器人会带领用户返回充电桩，并感谢用户的参观。如果用户不是来公司参观的人员，机器人会直接告诉用户。如果接待区没有人，机器人会直接告诉用户。通过这样的修改，机器人的行为更加符合用户的需求，提供了更好的用户体验。",explainModifiedJS-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:49:38,"
+  currentCode :
+  await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+  userInput:
+  因为在介绍的时候已经有问题问“要不要一起来创作室看看呢？”，所以请不要再次询问是否对创作室感兴趣，而是直接根据在介绍后用户的回复进行下一步操作，如果参观者回复的是“好的”，就带他们去创作室并进行接下来的流程
+  ",nl2jswithContext-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:05,"await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        const isInterested = await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}",nl2jswithContext-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:05,"
+  originalcode:
+  await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        const isInterested = await robot.ask('您对我们的创作室感兴趣吗？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+  modifiedcode:
+  await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        const isInterested = await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+  ",explainModifiedJS-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:09,修改后的代码在机器人行为上没有任何改变。修改前的代码中，机器人在询问用户对创作室的兴趣后，使用了`robot.ask`函数来获取用户的回答。而修改后的代码中，机器人在询问用户对创作室的兴趣后，使用了`robot.speak`函数来直接输出机器人的话语。这个修改不会改变机器人的行为，因为机器人不需要获取用户的回答来决定下一步的动作，而是直接输出了机器人的话语。因此，修改后的代码与原始代码的机器人行为是一致的。,explainModifiedJS-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:09,"await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        const isInterested = await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}",js2flow-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:39,"graph TB
+r_01([""userRequest:公司参观""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_02[""goto:作品展示区""]
+s_01[""speak:介绍双臂机器人""]
+a_02[""ask:询问是否对虚实结合的机器人平台感兴趣;用户回复_2""]
+c_03{""condition: 对虚实结合的机器人平台感兴趣;用户回复_2""}
+g_03[""goto:创作室""]
+s_02[""speak:告知自己看""]
+s_03[""speak:告知时间到""]
+g_04[""goto:充电桩""]
+s_04[""speak:感谢参观""]
+s_05[""speak:告知不是来参观的人员""]
+s_06[""speak:告知接待区没有人""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> g_02
+g_02 --> s_01
+s_01 --> a_02
+a_02 --> c_03
+c_03 --true--> g_03
+g_03 --> s_02
+s_02 --> s_03
+s_03 --> g_04
+g_04 --> s_04
+s_04 --> k_01
+c_03 --false--> g_04
+c_02 --false--> s_05
+s_05 --> k_01
+c_01 --false--> s_06
+s_06 --> k_01
+",js2flow-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:44,询问是否对虚实结合的机器人平台感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:45,介绍双臂机器人,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:45,对虚实结合的机器人平台感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:46,对虚实结合的机器人平台感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:47,对虚实结合的机器人平台感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:50:48,询问是否对虚实结合的机器人平台感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:52:18,对虚实结合的机器人平台感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:52:23,对虚实结合的机器人平台感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:52:25,"selectedNodes:
+    IF: 对虚实结合的机器人平台感兴趣;用户回复_2
+    flow:
+    graph TB
+r_01([""userRequest:公司参观""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_02[""goto:作品展示区""]
+s_01[""speak:介绍双臂机器人""]
+a_02[""ask:询问是否对虚实结合的机器人平台感兴趣;用户回复_2""]
+c_03{""condition: 对虚实结合的机器人平台感兴趣;用户回复_2""}
+g_03[""goto:创作室""]
+s_02[""speak:告知自己看""]
+s_03[""speak:告知时间到""]
+g_04[""goto:充电桩""]
+s_04[""speak:感谢参观""]
+s_05[""speak:告知不是来参观的人员""]
+s_06[""speak:告知接待区没有人""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> g_02
+g_02 --> s_01
+s_01 --> a_02
+a_02 --> c_03
+c_03 --true--> g_03
+g_03 --> s_02
+s_02 --> s_03
+s_03 --> g_04
+g_04 --> s_04
+s_04 --> k_01
+c_03 --false--> g_04
+c_02 --false--> s_05
+s_05 --> k_01
+c_01 --false--> s_06
+s_06 --> k_01
+
+    jscode:
+    await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        const isInterested = await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+    ",magicModify-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:52:31,"你所选中的节点包括：""对虚实结合的机器人平台感兴趣;用户回复_2"" 
+
+在整个服务中的作用是根据用户的回复判断是否对虚实结合的机器人平台感兴趣。如果用户回复是""好的""，则机器人会前往创作室，并向用户介绍创作室的情况。然后机器人会等待一段时间，然后再向用户告知时间到了。如果用户回复不是""好的""，则机器人会直接前往充电桩，并向用户表达感谢参观的话语。
+
+你可以进一步询问我关于这个节点的信息，我会给你提供更多的信息。或者你可以让我直接修改这个节点的行为。或者结束节点调试。",magicModify-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:52:40,询问是否对虚实结合的机器人平台感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:52:41,询问是否对虚实结合的机器人平台感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:52:41,询问是否对虚实结合的机器人平台感兴趣;用户回复_2,nodeClick,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:54:59,"selectedNodes:
+    IF: 对虚实结合的机器人平台感兴趣;用户回复_2
+    flow:
+    graph TB
+r_01([""userRequest:公司参观""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_02[""goto:作品展示区""]
+s_01[""speak:介绍双臂机器人""]
+a_02[""ask:询问是否对虚实结合的机器人平台感兴趣;用户回复_2""]
+c_03{""condition: 对虚实结合的机器人平台感兴趣;用户回复_2""}
+g_03[""goto:创作室""]
+s_02[""speak:告知自己看""]
+s_03[""speak:告知时间到""]
+g_04[""goto:充电桩""]
+s_04[""speak:感谢参观""]
+s_05[""speak:告知不是来参观的人员""]
+s_06[""speak:告知接待区没有人""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> g_02
+g_02 --> s_01
+s_01 --> a_02
+a_02 --> c_03
+c_03 --true--> g_03
+g_03 --> s_02
+s_02 --> s_03
+s_03 --> g_04
+g_04 --> s_04
+s_04 --> k_01
+c_03 --false--> g_04
+c_02 --false--> s_05
+s_05 --> k_01
+c_01 --false--> s_06
+s_06 --> k_01
+
+    jscode:
+    await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        const isInterested = await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发，要不要一起来创作室看看呢？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+        }
+
+        await robot.goto('充电桩');
+        await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+    ",magicModifyPhase-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:55:35,"<code>
+await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发。');
+        const isInterested = await robot.ask('要不要来参观一下呢？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+            await robot.goto('充电桩');
+            await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+        }else{
+            await robot.goto('充电桩');
+        }
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+</code>
+
+<description>
+修改了双臂机器人的介绍内容，并在介绍结束后增加了对虚实结合的机器人平台的介绍。在介绍结束后询问用户是否要参观创作室，如果用户回答好的，机器人会引导他们前往创作室并执行后续操作，如果用户回答其他的，机器人会返回充电桩。
+</description>",magicModifyPhase-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:55:35,"
+await robot.userRequest('公司参观');
+await robot.goto('接待区');
+const isPresent = await robot.detectHuman();
+
+if(isPresent){
+    const isVisitor = await robot.ask('您是来公司参观的人员吗？');
+
+    if(isVisitor==""是的""){
+        await robot.goto('作品展示区');
+        await robot.speak('这里是一个双臂机器人，他的手臂可以上下移动，并可以三百六十度旋转身体。');
+        await robot.speak('公司目前还在开发虚实结合的机器人平台，可以满足不同家具场景下的模拟测试。虚实结合的场景主要在创作室进行研发。');
+        const isInterested = await robot.ask('要不要来参观一下呢？');
+
+        if(isInterested==""好的""){
+            await robot.goto('创作室');
+            await robot.speak('我也不懂，自己看吧！');
+            await new Promise(resolve => setTimeout(resolve, 10000));
+            await robot.speak('差不多了，撤退吧');
+            await robot.goto('充电桩');
+            await robot.speak('感谢您的参观，如果还有其他问题，请随时提问。');
+        }else{
+            await robot.goto('充电桩');
+        }
+
+    }else{
+        await robot.speak('很抱歉，您不是来公司参观的人员。');
+    }
+
+}else{
+    await robot.speak('很抱歉，目前接待区没有人。');
+}
+",js2flow-start,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24
+11:56:10,"
+graph TB
+r_01([""userRequest:公司参观""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是来参观的人员;用户回复_1""]
+c_02{""condition: 是来参观的人员;用户回复_1""}
+g_02[""goto:作品展示区""]
+s_01[""speak:介绍双臂机器人""]
+s_02[""speak:介绍公司研发项目""]
+a_02[""ask:询问是否对创作室感兴趣;用户回复_2""]
+c_03{""condition: 对创作室感兴趣;用户回复_2""}
+g_03[""goto:创作室""]
+s_03[""speak:让参观者自行参观""]
+s_04[""speak:提醒参观者参观时间结束""]
+g_04[""goto:充电桩""]
+s_05[""speak:感谢参观者的参观""]
+g_05[""goto:充电桩""]
+s_06[""speak:告知不是参观者""]
+s_07[""speak:告知接待区没有人""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> g_02
+g_02 --> s_01
+s_01 --> s_02
+s_02 --> a_02
+a_02 --> c_03
+c_03 --true--> g_03
+g_03 --> s_03
+s_03 --> s_04
+s_04 --> g_04
+g_04 --> s_05
+s_05 --> k_01
+c_03 --false--> g_05
+g_05 --> k_01
+c_02 --false--> s_06
+s_06 --> k_01
+c_01 --false--> s_07
+s_07 --> k_01
+",js2flow-finished,eefcecfd-a5a4-4e41-a896-fbc16af6aa9c,08-20-11-19-24

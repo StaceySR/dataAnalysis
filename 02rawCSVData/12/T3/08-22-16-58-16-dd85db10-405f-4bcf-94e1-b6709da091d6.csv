@@ -1,0 +1,93 @@
+time,content,type,sessionID,createdAt
+16:58:16,start a new session,start,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:02:05,我的机器人个性化服务定制需求：当机器人被告知“谁”要去“目的地”后，机器人在检测到人时询问：“你是否是“谁””，如果回答是“是”，机器人说：“正在接引”，并前往“目的地”。,authoringNEW-start,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:02:09,"<require>
+1. 当机器人被告知“谁”要去“目的地”后，机器人在检测到人时询问：“你是否是“谁””
+2. 如果回答是“是”，机器人说：“正在接引”
+3. 机器人前往“目的地”
+</require>",authoring-finished,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:02:22,我的机器人个性化服务定制需求：当机器人被告知“谁”要去“目的地”后，机器人在检测到人时询问：“你是否是“谁””，如果回答是“是”，机器人说：“正在接引”，并前往“目的地”。,authoringNEW-start,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:02:24,<end>完成</end>,authoring-finished,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:02:24,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 当机器人被告知“谁”要去“目的地”后，机器人在检测到人时询问：“你是否是“谁””
+2. 如果回答是“是”，机器人说：“正在接引”
+3. 机器人前往“目的地”
+
+        ",nl2js-start,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:02:29,"
+  await robot.userRequest('接引服务');
+  const person = await robot.ask('请告诉我谁要去目的地');
+  const destination = await robot.ask('请告诉我目的地是哪里');
+  
+  await robot.detectHuman();
+  const isPerson = await robot.ask('你是否是' + person);
+  
+  if(isPerson == '是'){
+      await robot.speak('正在接引');
+      await robot.goto(destination);
+  }else{
+      await robot.speak('抱歉，您不是' + person + '，无法提供接引服务');
+  }",nl2js-finished,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:02:29,"
+  await robot.userRequest('接引服务');
+  const person = await robot.ask('请告诉我谁要去目的地');
+  const destination = await robot.ask('请告诉我目的地是哪里');
+  
+  await robot.detectHuman();
+  const isPerson = await robot.ask('你是否是' + person);
+  
+  if(isPerson == '是'){
+      await robot.speak('正在接引');
+      await robot.goto(destination);
+  }else{
+      await robot.speak('抱歉，您不是' + person + '，无法提供接引服务');
+  }",js2NLexplain-start,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:02:35,"服务启动关键词：接引服务
+服务流程：
+1. 机器人首先接收到用户要进行接引服务的请求。
+2. 机器人会问用户是谁要去目的地。
+3. 得到用户的回答后，机器人会问用户目的地是哪里。
+4. 机器人会检测周围是否有人。
+5. 机器人会问用户是否是之前提到的那个人。
+   - 如果用户回答是，机器人会说“正在接引”，然后去目的地。
+   - 如果用户回答不是，机器人会说“抱歉，您不是之前提到的那个人，无法提供接引服务”。
+6. 无论结果如何，机器人都会进行相应的回答。",js2NLexplain-finished,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:02:35,"
+  await robot.userRequest('接引服务');
+  const person = await robot.ask('请告诉我谁要去目的地');
+  const destination = await robot.ask('请告诉我目的地是哪里');
+  
+  await robot.detectHuman();
+  const isPerson = await robot.ask('你是否是' + person);
+  
+  if(isPerson == '是'){
+      await robot.speak('正在接引');
+      await robot.goto(destination);
+  }else{
+      await robot.speak('抱歉，您不是' + person + '，无法提供接引服务');
+  }",js2flow-start,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:03:08,"
+graph TB
+r_01([""userRequest:接引服务""])
+a_01[""ask:询问需要接引的人;用户回复1""]
+a_02[""ask:询问目的地;用户回复2""]
+d_01[""detectHuman""]
+a_03[""ask:确认当前人员是否是需要接引的人;用户回复3""]
+c_01{""condition: 判断当前人员是否是需要接引的人;用户回复3""}
+s_01[""speak:告知正在接引;用户回复1;用户回复2""]
+g_01[""goto:用户回复2""]
+s_02[""speak:告知当前人员不是需要接引的人;用户回复1""]
+k_01([""end:服务结束""])
+r_01 --> a_01
+a_01 --> a_02
+a_02 --> d_01
+d_01 --> a_03
+a_03 --> c_01
+c_01 --true--> s_01
+s_01 --> g_01
+g_01 --> k_01
+c_01 --false--> s_02
+s_02 --> k_01
+",js2flow-finished,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16
+17:03:29,自动布局,AutoLayout,dd85db10-405f-4bcf-94e1-b6709da091d6,08-22-16-58-16

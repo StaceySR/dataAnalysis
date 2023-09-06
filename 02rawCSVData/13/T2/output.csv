@@ -1,0 +1,52 @@
+type,time
+start,19:27:58
+authoringNEW-start,19:34:35
+authoring-finished,19:34:41
+authoringNEW-start,19:35:05
+authoring-finished,19:35:07
+nl2js-start,19:35:07
+nl2js-finished,19:35:12
+js2NLexplain-start,19:35:12
+js2NLexplain-finished,19:35:19
+js2flow-start,19:35:19
+js2flow-finished,19:35:39
+nodeClick,19:37:01
+nodeClick,19:37:12
+nodeClick,19:37:33
+nodeClick,19:37:48
+nodeClick,19:38:03
+nodeClick,19:38:33
+nodeClick,19:38:45
+nodeClick,19:38:45
+Node update,19:38:56
+Node update,19:39:36
+Node update,19:39:40
+nodeClick,19:39:42
+nodeClick,19:39:46
+nodeClick,19:39:46
+nodeClick,19:39:47
+Node update,19:39:51
+Node update,19:39:51
+nodeClick,19:39:52
+nodeClick,19:40:05
+nodeClick,19:40:06
+magicModify-start,19:40:08
+magicModify-finished,19:40:17
+magicModifyPhase-start,19:41:05
+magicModifyPhase-finished,19:41:32
+js2flow-start,19:41:32
+js2flow-finished,19:41:59
+start,19:42:38
+authoringNEW-start,19:45:26
+authoring-finished,19:45:33
+authoringNEW-start,19:45:43
+authoring-finished,19:45:44
+nl2js-start,19:45:44
+nl2js-finished,19:45:51
+js2NLexplain-start,19:45:51
+js2NLexplain-finished,19:45:59
+js2flow-start,19:45:59
+js2flow-finished,19:46:34
+nodeClick,19:46:39
+nodeClick,19:46:40
+nodeClick,19:46:40

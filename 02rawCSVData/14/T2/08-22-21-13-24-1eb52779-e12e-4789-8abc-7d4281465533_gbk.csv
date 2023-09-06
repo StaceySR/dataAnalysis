@@ -1,0 +1,451 @@
+time,content,type,sessionID,createdAt
+21:13:24,start a new session,start,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:20:11,我的机器人个性化服务定制需求：在接待区接待客人，先在接待区询问客人需求，先参观在作品展示区的双臂机器人，还是在创作时的虚实结合机器人，如果客人想要先参观作品展示区的双臂机器人，那么就带领客人路线为先到作品展示区，介绍作品展示区的双臂机器人可以上下移动，并且360度旋转身体，再带客人依次去会客厅、员工办公区、领导办公室、创作室（介绍虚实结合机器人可以满足不同场景下的而漠视测试）、会议室，最后回到接待区。如果客人回答想要先参观再创作室的机器人，那么直接带客人从接待区出发，到员工办公区、领导办公室，再到创作室介绍机器人之后，再到会议室、会客厅、作品展示区介绍机器人，最后回到接待区。最后结束都要跟客人说谢谢您的参观,authoringNEW-start,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:20:22,"<require>
+1. 在接待区接待客人。
+2. 先在接待区询问客人需求。
+3. 根据客人的选择，先参观作品展示区的双臂机器人，还是在创作时的虚实结合机器人。
+4. 如果客人选择先参观作品展示区的双臂机器人，则按照以下路线带领客人参观：
+    a. 作品展示区的双臂机器人：介绍双臂机器人可以上下移动，并且360度旋转身体。
+    b. 会客厅
+    c. 员工办公区
+    d. 领导办公室
+    e. 创作室：介绍虚实结合机器人可以满足不同场景下的需求。
+    f. 会议室
+    g. 回到接待区
+5. 如果客人选择先参观创作室的机器人，则按照以下路线带领客人参观：
+    a. 员工办公区
+    b. 领导办公室
+    c. 创作室：介绍机器人的创作过程。
+    d. 会议室
+    e. 会客厅
+    f. 作品展示区：介绍作品展示区的机器人。
+    g. 回到接待区
+6. 结束参观时，向客人表示感谢。
+</require>",authoring-finished,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:21:37,我的机器人个性化服务定制需求：在接待区接待客人，先在接待区询问客人需求，先参观在作品展示区的双臂机器人，还是在创作时的虚实结合机器人，如果客人想要先参观作品展示区的双臂机器人，那么就带领客人路线为先到作品展示区，介绍作品展示区的双臂机器人可以上下移动，并且360度旋转身体，再带客人依次去会客厅、员工办公区、领导办公室、创作室（介绍虚实结合机器人可以满足不同场景下的而漠视测试）、会议室，最后回到接待区。如果客人回答想要先参观再创作室的机器人，那么直接带客人从接待区出发，到员工办公区、领导办公室，再到创作室介绍机器人之后，再到会议室、会客厅、作品展示区介绍机器人，最后回到接待区。最后结束都要跟客人说谢谢您的参观,authoringNEW-start,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:21:39,<end>完成</end>,authoring-finished,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:21:39,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 在接待区接待客人。
+2. 先在接待区询问客人需求。
+3. 根据客人的选择，先参观作品展示区的双臂机器人，还是在创作时的虚实结合机器人。
+4. 如果客人选择先参观作品展示区的双臂机器人，则按照以下路线带领客人参观：
+    a. 作品展示区的双臂机器人：介绍双臂机器人可以上下移动，并且360度旋转身体。
+    b. 会客厅
+    c. 员工办公区
+    d. 领导办公室
+    e. 创作室：介绍虚实结合机器人可以满足不同场景下的需求。
+    f. 会议室
+    g. 回到接待区
+5. 如果客人选择先参观创作室的机器人，则按照以下路线带领客人参观：
+    a. 员工办公区
+    b. 领导办公室
+    c. 创作室：介绍机器人的创作过程。
+    d. 会议室
+    e. 会客厅
+    f. 作品展示区：介绍作品展示区的机器人。
+    g. 回到接待区
+6. 结束参观时，向客人表示感谢。
+
+        ",nl2js-start,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:21:52,"
+  await robot.userRequest('参观机器人展示');
+  await robot.goto('接待区');
+  await robot.speak('欢迎光临，请问有什么可以帮助您的？');
+  const choice = await robot.ask('您想先参观作品展示区的双臂机器人还是创作时的虚实结合机器人？');
+  
+  if(choice == '作品展示区的双臂机器人'){
+      await robot.goto('作品展示区');
+      await robot.speak('这是作品展示区的双臂机器人，它可以上下移动，并且可以360度旋转身体。');
+      await robot.goto('会客厅');
+      await robot.goto('员工办公区');
+      await robot.goto('领导办公室');
+      await robot.goto('创作室');
+      await robot.speak('这是创作室的虚实结合机器人，它可以满足不同场景下的需求。');
+      await robot.goto('会议室');
+      await robot.goto('接待区');
+  
+  }else if(choice == '创作时的虚实结合机器人'){
+      await robot.goto('员工办公区');
+      await robot.goto('领导办公室');
+      await robot.goto('创作室');
+      await robot.speak('这是创作室的机器人，它可以展示机器人的创作过程。');
+      await robot.goto('会议室');
+      await robot.goto('会客厅');
+      await robot.goto('作品展示区');
+      await robot.speak('这是作品展示区的机器人。');
+      await robot.goto('接待区');
+  }
+  
+  await robot.speak('参观结束，感谢您的光临。');",nl2js-finished,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:21:52,"
+  await robot.userRequest('参观机器人展示');
+  await robot.goto('接待区');
+  await robot.speak('欢迎光临，请问有什么可以帮助您的？');
+  const choice = await robot.ask('您想先参观作品展示区的双臂机器人还是创作时的虚实结合机器人？');
+  
+  if(choice == '作品展示区的双臂机器人'){
+      await robot.goto('作品展示区');
+      await robot.speak('这是作品展示区的双臂机器人，它可以上下移动，并且可以360度旋转身体。');
+      await robot.goto('会客厅');
+      await robot.goto('员工办公区');
+      await robot.goto('领导办公室');
+      await robot.goto('创作室');
+      await robot.speak('这是创作室的虚实结合机器人，它可以满足不同场景下的需求。');
+      await robot.goto('会议室');
+      await robot.goto('接待区');
+  
+  }else if(choice == '创作时的虚实结合机器人'){
+      await robot.goto('员工办公区');
+      await robot.goto('领导办公室');
+      await robot.goto('创作室');
+      await robot.speak('这是创作室的机器人，它可以展示机器人的创作过程。');
+      await robot.goto('会议室');
+      await robot.goto('会客厅');
+      await robot.goto('作品展示区');
+      await robot.speak('这是作品展示区的机器人。');
+      await robot.goto('接待区');
+  }
+  
+  await robot.speak('参观结束，感谢您的光临。');",js2NLexplain-start,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:22:06,"服务启动关键词：参观机器人展示
+服务流程：
+1. 机器人接收到用户要参观机器人展示的请求。
+2. 机器人会去接待区。
+3. 到达接待区后，机器人会说：“欢迎光临，请问有什么可以帮助您的？”
+4. 机器人会问用户想先参观作品展示区的双臂机器人还是创作时的虚实结合机器人。
+5. 根据用户的选择，机器人会进行相应的行动：
+   - 如果用户选择参观作品展示区的双臂机器人，机器人会先去作品展示区，然后说：“这是作品展示区的双臂机器人，它可以上下移动，并且可以360度旋转身体。”接着，机器人会依次去会客厅、员工办公区、领导办公室、创作室，并说：“这是创作室的虚实结合机器人，它可以满足不同场景下的需求。”最后，机器人会去会议室，然后回到接待区。
+   - 如果用户选择参观创作时的虚实结合机器人，机器人会先去员工办公区，然后去领导办公室，再去创作室，并说：“这是创作室的机器人，它可以展示机器人的创作过程。”接着，机器人会去会议室，然后去会客厅、作品展示区，并说：“这是作品展示区的机器人。”最后，机器人会回到接待区。
+6. 无论用户选择哪个机器人参观，机器人都会说：“参观结束，感谢您的光临。”",js2NLexplain-finished,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:22:06,"
+  await robot.userRequest('参观机器人展示');
+  await robot.goto('接待区');
+  await robot.speak('欢迎光临，请问有什么可以帮助您的？');
+  const choice = await robot.ask('您想先参观作品展示区的双臂机器人还是创作时的虚实结合机器人？');
+  
+  if(choice == '作品展示区的双臂机器人'){
+      await robot.goto('作品展示区');
+      await robot.speak('这是作品展示区的双臂机器人，它可以上下移动，并且可以360度旋转身体。');
+      await robot.goto('会客厅');
+      await robot.goto('员工办公区');
+      await robot.goto('领导办公室');
+      await robot.goto('创作室');
+      await robot.speak('这是创作室的虚实结合机器人，它可以满足不同场景下的需求。');
+      await robot.goto('会议室');
+      await robot.goto('接待区');
+  
+  }else if(choice == '创作时的虚实结合机器人'){
+      await robot.goto('员工办公区');
+      await robot.goto('领导办公室');
+      await robot.goto('创作室');
+      await robot.speak('这是创作室的机器人，它可以展示机器人的创作过程。');
+      await robot.goto('会议室');
+      await robot.goto('会客厅');
+      await robot.goto('作品展示区');
+      await robot.speak('这是作品展示区的机器人。');
+      await robot.goto('接待区');
+  }
+  
+  await robot.speak('参观结束，感谢您的光临。');",js2flow-start,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:23:24,"
+  graph TB
+  r_01([""userRequest:参观机器人展示""])
+  g_01[""goto:接待区""]
+  s_01[""speak:欢迎光临，请问有什么可以帮助您的？""]
+  a_01[""ask:询问用户想先参观哪个区域的机器人;用户回复""]
+  c_01{""condition: 用户选择参观作品展示区的双臂机器人;用户回复""}
+  g_02[""goto:作品展示区""]
+  s_02[""speak:介绍作品展示区的双臂机器人""]
+  g_03[""goto:会客厅""]
+  g_04[""goto:员工办公区""]
+  g_05[""goto:领导办公室""]
+  g_06[""goto:创作室""]
+  s_03[""speak:介绍创作室的虚实结合机器人""]
+  g_07[""goto:会议室""]
+  g_08[""goto:接待区""]
+  c_02{""condition: 用户选择参观创作时的虚实结合机器人;用户回复""}
+  g_09[""goto:员工办公区""]
+  g_10[""goto:领导办公室""]
+  g_11[""goto:创作室""]
+  s_04[""speak:介绍创作室的机器人""]
+  g_12[""goto:会议室""]
+  g_13[""goto:会客厅""]
+  g_14[""goto:作品展示区""]
+  s_05[""speak:介绍作品展示区的机器人""]
+  g_15[""goto:接待区""]
+  s_06[""speak:告知参观结束，感谢光临""]
+  k_01([""end:服务结束""])
+  r_01 --> g_01
+  g_01 --> s_01
+  s_01 --> a_01
+  a_01 --> c_01
+  c_01 --true--> g_02
+  g_02 --> s_02
+  s_02 --> g_03
+  g_03 --> g_04
+  g_04 --> g_05
+  g_05 --> g_06
+  g_06 --> s_03
+  s_03 --> g_07
+  g_07 --> g_08
+  g_08 --> s_06
+  c_01 --false--> c_02
+  c_02 --true--> g_09
+  g_09 --> g_10
+  g_10 --> g_11
+  g_11 --> s_04
+  s_04 --> g_12
+  g_12 --> g_13
+  g_13 --> g_14
+  g_14 --> s_05
+  s_05 --> g_15
+  g_15 --> s_06
+  s_06 --> k_01
+  c_02 --false--> s_06
+",js2flow-finished,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:23:33,用户选择参观作品展示区的双臂机器人;用户回复,nodeClick,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:23:37,询问用户想先参观哪个区域的机器人;用户回复,nodeClick,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:23:38,用户选择参观作品展示区的双臂机器人;用户回复,nodeClick,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:26:50,参观机器人展示,nodeClick,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:26:51,参观机器人展示,nodeClick,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:26:55,"{'label': '', 'name': 'USERREQUEST', 'tooltip': '参观机器人展示', 'variable': '', 'action': '参观机器人展示'}",Node update,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:26:58,"jscode:
+    
+  await robot.userRequest('参观机器人展示');
+  await robot.goto('接待区');
+  await robot.speak('欢迎光临，请问有什么可以帮助您的？');
+  const choice = await robot.ask('您想先参观作品展示区的双臂机器人还是创作时的虚实结合机器人？');
+  
+  if(choice == '作品展示区的双臂机器人'){
+      await robot.goto('作品展示区');
+      await robot.speak('这是作品展示区的双臂机器人，它可以上下移动，并且可以360度旋转身体。');
+      await robot.goto('会客厅');
+      await robot.goto('员工办公区');
+      await robot.goto('领导办公室');
+      await robot.goto('创作室');
+      await robot.speak('这是创作室的虚实结合机器人，它可以满足不同场景下的需求。');
+      await robot.goto('会议室');
+      await robot.goto('接待区');
+  
+  }else if(choice == '创作时的虚实结合机器人'){
+      await robot.goto('员工办公区');
+      await robot.goto('领导办公室');
+      await robot.goto('创作室');
+      await robot.speak('这是创作室的机器人，它可以展示机器人的创作过程。');
+      await robot.goto('会议室');
+      await robot.goto('会客厅');
+      await robot.goto('作品展示区');
+      await robot.speak('这是作品展示区的机器人。');
+      await robot.goto('接待区');
+  }
+  
+  await robot.speak('参观结束，感谢您的光临。');
+    oldFlow:
+    
+  graph TB
+  r_01([""userRequest:参观机器人展示""])
+  g_01[""goto:接待区""]
+  s_01[""speak:欢迎光临，请问有什么可以帮助您的？""]
+  a_01[""ask:询问用户想先参观哪个区域的机器人;用户回复""]
+  c_01{""condition: 用户选择参观作品展示区的双臂机器人;用户回复""}
+  g_02[""goto:作品展示区""]
+  s_02[""speak:介绍作品展示区的双臂机器人""]
+  g_03[""goto:会客厅""]
+  g_04[""goto:员工办公区""]
+  g_05[""goto:领导办公室""]
+  g_06[""goto:创作室""]
+  s_03[""speak:介绍创作室的虚实结合机器人""]
+  g_07[""goto:会议室""]
+  g_08[""goto:接待区""]
+  c_02{""condition: 用户选择参观创作时的虚实结合机器人;用户回复""}
+  g_09[""goto:员工办公区""]
+  g_10[""goto:领导办公室""]
+  g_11[""goto:创作室""]
+  s_04[""speak:介绍创作室的机器人""]
+  g_12[""goto:会议室""]
+  g_13[""goto:会客厅""]
+  g_14[""goto:作品展示区""]
+  s_05[""speak:介绍作品展示区的机器人""]
+  g_15[""goto:接待区""]
+  s_06[""speak:告知参观结束，感谢光临""]
+  k_01([""end:服务结束""])
+  r_01 --> g_01
+  g_01 --> s_01
+  s_01 --> a_01
+  a_01 --> c_01
+  c_01 --true--> g_02
+  g_02 --> s_02
+  s_02 --> g_03
+  g_03 --> g_04
+  g_04 --> g_05
+  g_05 --> g_06
+  g_06 --> s_03
+  s_03 --> g_07
+  g_07 --> g_08
+  g_08 --> s_06
+  c_01 --false--> c_02
+  c_02 --true--> g_09
+  g_09 --> g_10
+  g_10 --> g_11
+  g_11 --> s_04
+  s_04 --> g_12
+  g_12 --> g_13
+  g_13 --> g_14
+  g_14 --> s_05
+  s_05 --> g_15
+  g_15 --> s_06
+  s_06 --> k_01
+  c_02 --false--> s_06
+
+    newFlow:
+    graph TB
+r_01([""userRequest:参观""])
+g_01[""goto:接待区""]
+s_01[""speak:欢迎光临，请问有什么可以帮助您的？""]
+a_01[""ask:询问用户想先参观哪个区域的机器人;用户回复""]
+c_01{""condition:用户选择参观作品展示区的双臂机器人;用户回复""}
+g_02[""goto:作品展示区""]
+s_02[""speak:介绍作品展示区的双臂机器人""]
+g_03[""goto:会客厅""]
+g_04[""goto:员工办公区""]
+g_05[""goto:领导办公室""]
+g_06[""goto:创作室""]
+s_03[""speak:介绍创作室的虚实结合机器人""]
+g_07[""goto:会议室""]
+g_08[""goto:接待区""]
+c_02{""condition:用户选择参观创作时的虚实结合机器人;用户回复""}
+g_09[""goto:员工办公区""]
+g_10[""goto:领导办公室""]
+g_11[""goto:创作室""]
+s_04[""speak:介绍创作室的机器人""]
+g_12[""goto:会议室""]
+g_13[""goto:会客厅""]
+g_14[""goto:作品展示区""]
+s_05[""speak:介绍作品展示区的机器人""]
+g_15[""goto:接待区""]
+s_06[""speak:告知参观结束，感谢光临""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> s_01
+s_01 --> a_01
+a_01 --> c_01
+c_01 --true--> g_02
+g_02 --> s_02
+s_02 --> g_03
+g_03 --> g_04
+g_04 --> g_05
+g_05 --> g_06
+g_06 --> s_03
+s_03 --> g_07
+g_07 --> g_08
+g_08 --> s_06
+c_01 --false--> c_02
+c_02 --true--> g_09
+g_09 --> g_10
+g_10 --> g_11
+g_11 --> s_04
+s_04 --> g_12
+g_12 --> g_13
+g_13 --> g_14
+g_14 --> s_05
+s_05 --> g_15
+g_15 --> s_06
+s_06 --> k_01
+c_02 --false--> s_06
+
+    ",flow2js-start,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:27:51,"await robot.userRequest('参观');
+await robot.goto('接待区');
+await robot.speak('欢迎光临，请问有什么可以帮助您的？');
+const choice = await robot.ask('您想先参观作品展示区的双臂机器人还是创作时的虚实结合机器人？');
+
+if(choice == '作品展示区的双臂机器人'){
+    await robot.goto('作品展示区');
+    await robot.speak('这是作品展示区的双臂机器人，它可以上下移动，并且可以360度旋转身体。');
+    await robot.goto('会客厅');
+    await robot.goto('员工办公区');
+    await robot.goto('领导办公室');
+    await robot.goto('创作室');
+    await robot.speak('这是创作室的虚实结合机器人，它可以满足不同场景下的需求。');
+    await robot.goto('会议室');
+    await robot.goto('接待区');
+
+}else if(choice == '创作时的虚实结合机器人'){
+    await robot.goto('员工办公区');
+    await robot.goto('领导办公室');
+    await robot.goto('创作室');
+    await robot.speak('这是创作室的机器人，它可以展示机器人的创作过程。');
+    await robot.goto('会议室');
+    await robot.goto('会客厅');
+    await robot.goto('作品展示区');
+    await robot.speak('这是作品展示区的机器人。');
+    await robot.goto('接待区');
+}
+
+await robot.speak('参观结束，感谢您的光临。');",flow2js-finished,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:27:51,"
+  originalcode:
+  
+  await robot.userRequest('参观机器人展示');
+  await robot.goto('接待区');
+  await robot.speak('欢迎光临，请问有什么可以帮助您的？');
+  const choice = await robot.ask('您想先参观作品展示区的双臂机器人还是创作时的虚实结合机器人？');
+  
+  if(choice == '作品展示区的双臂机器人'){
+      await robot.goto('作品展示区');
+      await robot.speak('这是作品展示区的双臂机器人，它可以上下移动，并且可以360度旋转身体。');
+      await robot.goto('会客厅');
+      await robot.goto('员工办公区');
+      await robot.goto('领导办公室');
+      await robot.goto('创作室');
+      await robot.speak('这是创作室的虚实结合机器人，它可以满足不同场景下的需求。');
+      await robot.goto('会议室');
+      await robot.goto('接待区');
+  
+  }else if(choice == '创作时的虚实结合机器人'){
+      await robot.goto('员工办公区');
+      await robot.goto('领导办公室');
+      await robot.goto('创作室');
+      await robot.speak('这是创作室的机器人，它可以展示机器人的创作过程。');
+      await robot.goto('会议室');
+      await robot.goto('会客厅');
+      await robot.goto('作品展示区');
+      await robot.speak('这是作品展示区的机器人。');
+      await robot.goto('接待区');
+  }
+  
+  await robot.speak('参观结束，感谢您的光临。');
+  modifiedcode:
+  await robot.userRequest('参观');
+await robot.goto('接待区');
+await robot.speak('欢迎光临，请问有什么可以帮助您的？');
+const choice = await robot.ask('您想先参观作品展示区的双臂机器人还是创作时的虚实结合机器人？');
+
+if(choice == '作品展示区的双臂机器人'){
+    await robot.goto('作品展示区');
+    await robot.speak('这是作品展示区的双臂机器人，它可以上下移动，并且可以360度旋转身体。');
+    await robot.goto('会客厅');
+    await robot.goto('员工办公区');
+    await robot.goto('领导办公室');
+    await robot.goto('创作室');
+    await robot.speak('这是创作室的虚实结合机器人，它可以满足不同场景下的需求。');
+    await robot.goto('会议室');
+    await robot.goto('接待区');
+
+}else if(choice == '创作时的虚实结合机器人'){
+    await robot.goto('员工办公区');
+    await robot.goto('领导办公室');
+    await robot.goto('创作室');
+    await robot.speak('这是创作室的机器人，它可以展示机器人的创作过程。');
+    await robot.goto('会议室');
+    await robot.goto('会客厅');
+    await robot.goto('作品展示区');
+    await robot.speak('这是作品展示区的机器人。');
+    await robot.goto('接待区');
+}
+
+await robot.speak('参观结束，感谢您的光临。');
+  ",explainModifiedJS-start,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24
+21:27:55,修改后的代码与原始代码相比，没有改变机器人的行为。修改后的代码仍然是一个个性化机器人服务的服务执行逻辑，机器人会根据用户的选择导航到不同的地点，并根据选择展示不同的机器人。最后，机器人会结束参观并表示感谢。因此，修改后的代码没有改变机器人的行为。,explainModifiedJS-finished,1eb52779-e12e-4789-8abc-7d4281465533,08-22-21-13-24

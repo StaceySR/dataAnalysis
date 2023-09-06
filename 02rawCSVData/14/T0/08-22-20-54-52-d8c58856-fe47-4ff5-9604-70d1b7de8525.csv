@@ -1,0 +1,84 @@
+time,content,type,sessionID,createdAt
+20:54:52,start a new session,start,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:54:57,我的机器人个性化服务定制需求： 去员工办公区拿苹果到接待区 ,authoringNEW-start,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:54:59,"<require>
+1. 去员工办公区拿苹果到接待区
+</require>",authoring-finished,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:55:07,我的机器人个性化服务定制需求： 去员工办公区拿苹果到接待区 ,authoringNEW-start,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:55:08,<end>完成</end>,authoring-finished,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:55:08,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 去员工办公区拿苹果到接待区
+
+        ",nl2js-start,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:55:13,"
+  await robot.userRequest('拿苹果');
+  await robot.goto('员工办公区');
+  await robot.speak('请问有苹果吗？');
+  const reply = await robot.ask('请问有苹果吗？');
+  
+  if(reply == '有'){
+      await robot.goto('接待区');
+      await robot.speak('这是您要的苹果');
+  }else{
+      await robot.speak('很抱歉，员工办公区没有苹果');
+  }",nl2js-finished,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:55:13,"
+  await robot.userRequest('拿苹果');
+  await robot.goto('员工办公区');
+  await robot.speak('请问有苹果吗？');
+  const reply = await robot.ask('请问有苹果吗？');
+  
+  if(reply == '有'){
+      await robot.goto('接待区');
+      await robot.speak('这是您要的苹果');
+  }else{
+      await robot.speak('很抱歉，员工办公区没有苹果');
+  }",js2NLexplain-start,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:55:18,"服务启动关键词：拿苹果
+服务流程：
+1. 机器人首先接收到用户要拿苹果的请求。
+2. 机器人会去员工办公区。
+3. 到达员工办公区后，机器人会说：“请问有苹果吗？”
+4. 机器人会等待用户的回答。
+5. 如果用户回答是“有”，机器人会去接待区。
+6. 到达接待区后，机器人会说：“这是您要的苹果”。
+7. 如果用户回答是其他内容（比如“没有”），机器人会说：“很抱歉，员工办公区没有苹果”。",js2NLexplain-finished,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:55:19,"
+  await robot.userRequest('拿苹果');
+  await robot.goto('员工办公区');
+  await robot.speak('请问有苹果吗？');
+  const reply = await robot.ask('请问有苹果吗？');
+  
+  if(reply == '有'){
+      await robot.goto('接待区');
+      await robot.speak('这是您要的苹果');
+  }else{
+      await robot.speak('很抱歉，员工办公区没有苹果');
+  }",js2flow-start,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:55:49,"
+  graph TB
+  r_01([""userRequest:拿苹果""])
+  g_01[""goto:员工办公区""]
+  s_01[""speak:询问是否有苹果""]
+  a_01[""ask:询问是否有苹果;用户回复""]
+  c_01{""condition: 判断是否有苹果;用户回复""}
+  g_02[""goto:接待区""]
+  s_02[""speak:告知这是您要的苹果""]
+  s_03[""speak:告知员工办公区没有苹果""]
+  k_01([""end:服务结束""])
+  r_01 --> g_01
+  g_01 --> s_01
+  s_01 --> a_01
+  a_01 --> c_01
+  c_01 --""有""--> g_02
+  g_02 --> s_02
+  s_02 --> k_01
+  c_01 --""没有""--> s_03
+  s_03 --> k_01
+",js2flow-finished,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:58:17,判断是否有苹果;用户回复,nodeClick,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:58:19,判断是否有苹果;用户回复,nodeClick,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:58:19,判断是否有苹果;用户回复,nodeClick,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:58:24,"{'label': '', 'name': 'IF', 'tooltip': '判断是否有苹果;用户回复', 'variable': ' 用户回复', 'action': '判断是否有苹果'}",Node update,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52
+20:58:28,"{'label': '', 'name': 'IF', 'tooltip': '判断是否有苹果;用户回复', 'variable': ' 用户回复', 'action': '判断是否有苹果'}",Node update,d8c58856-fe47-4ff5-9604-70d1b7de8525,08-22-20-54-52

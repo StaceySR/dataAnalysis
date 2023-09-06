@@ -1,0 +1,144 @@
+time,content,type,sessionID,createdAt
+19:12:01,start a new session,start,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:15:22,我的机器人个性化服务定制需求：当用户说“每一个人都下班啦”的时候，机器人按顺序巡查以下四个地点：员工办公区、接待区、作品展示区、会客厅。并同时进行语音提示早点下班，当检测到仍有人员滞留时，提示“下班回家啦，请尽快离开办公室”，巡视一圈后，自动返回充电桩。,authoringNEW-start,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:15:26,"<require>
+1. 当用户说“每一个人都下班啦”的时候，机器人按顺序巡查以下四个地点：员工办公区、接待区、作品展示区、会客厅。
+2. 进行语音提示早点下班。
+3. 当检测到仍有人员滞留时，提示“下班回家啦，请尽快离开办公室”。
+4. 巡视一圈后，自动返回充电桩。
+</require>",authoring-finished,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:15:37,我的机器人个性化服务定制需求：当用户说“每一个人都下班啦”的时候，机器人按顺序巡查以下四个地点：员工办公区、接待区、作品展示区、会客厅。并同时进行语音提示早点下班，当检测到仍有人员滞留时，提示“下班回家啦，请尽快离开办公室”，巡视一圈后，自动返回充电桩。,authoringNEW-start,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:15:38,<end>完成</end>,authoring-finished,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:15:38,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 当用户说“每一个人都下班啦”的时候，机器人按顺序巡查以下四个地点：员工办公区、接待区、作品展示区、会客厅。
+2. 进行语音提示早点下班。
+3. 当检测到仍有人员滞留时，提示“下班回家啦，请尽快离开办公室”。
+4. 巡视一圈后，自动返回充电桩。
+
+        ",nl2js-start,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:15:44,"
+  await robot.userRequest('下班巡视');
+  
+  const locations = ['员工办公区', '接待区', '作品展示区', '会客厅'];
+  let isPeopleRemaining = false;
+  
+  for(let i = 0; i < locations.length; i++){
+      await robot.goto(locations[i]);
+      const isHumanDetected = await robot.detectHuman();
+  
+      if(isHumanDetected){
+          isPeopleRemaining = true;
+          await robot.speak('下班回家啦，请尽快离开办公室');
+      }
+  }
+  
+  await robot.goto('充电桩');
+  
+  if(!isPeopleRemaining){
+      await robot.speak('每一个人都下班啦，早点下班');
+  }",nl2js-finished,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:15:44,"
+  await robot.userRequest('下班巡视');
+  
+  const locations = ['员工办公区', '接待区', '作品展示区', '会客厅'];
+  let isPeopleRemaining = false;
+  
+  for(let i = 0; i < locations.length; i++){
+      await robot.goto(locations[i]);
+      const isHumanDetected = await robot.detectHuman();
+  
+      if(isHumanDetected){
+          isPeopleRemaining = true;
+          await robot.speak('下班回家啦，请尽快离开办公室');
+      }
+  }
+  
+  await robot.goto('充电桩');
+  
+  if(!isPeopleRemaining){
+      await robot.speak('每一个人都下班啦，早点下班');
+  }",js2NLexplain-start,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:15:51,"服务启动关键词：下班巡视
+服务流程：
+1. 机器人接收到用户要进行下班巡视的请求。
+2. 机器人会按照预定义的顺序依次前往员工办公区、接待区、作品展示区和会客厅。
+3. 在每个地点，机器人会检测是否有人。
+   - 如果检测到有人，机器人会说：“下班回家啦，请尽快离开办公室”。
+   - 如果没有检测到人，机器人会继续前往下一个地点。
+4. 最后，机器人会前往充电桩。
+5. 如果在巡视过程中没有检测到人，机器人会说：“每一个人都下班啦，早点下班”。",js2NLexplain-finished,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:15:51,"
+  await robot.userRequest('下班巡视');
+  
+  const locations = ['员工办公区', '接待区', '作品展示区', '会客厅'];
+  let isPeopleRemaining = false;
+  
+  for(let i = 0; i < locations.length; i++){
+      await robot.goto(locations[i]);
+      const isHumanDetected = await robot.detectHuman();
+  
+      if(isHumanDetected){
+          isPeopleRemaining = true;
+          await robot.speak('下班回家啦，请尽快离开办公室');
+      }
+  }
+  
+  await robot.goto('充电桩');
+  
+  if(!isPeopleRemaining){
+      await robot.speak('每一个人都下班啦，早点下班');
+  }",js2flow-start,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:24,自动布局,AutoLayout,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:24,"
+graph TB
+r_01([""userRequest:下班巡视""])
+id_01[""infoDeclare:地点列表""]
+ia_01[""infoAssign:将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”;地点列表""]
+id_02[""infoDeclare:是否有人留在办公室""]
+ia_02[""infoAssign:初始化为没有人留在办公室;是否有人留在办公室""]
+
+f_01{{""forLoop:地点列表""}}
+g_01[""goto:地点列表[i]""]
+c_01{""condition: 检测到人;人员检测结果""}
+s_01[""speak:告知当前位置有人需要离开""]
+ia_03[""infoAssign:将是否有人留在办公室赋值为真;是否有人留在办公室""]
+j_01{{""loopEnd:循环结束""}}
+
+g_02[""goto:充电桩""]
+c_02{""condition: 没有人留在办公室;是否有人留在办公室""}
+s_02[""speak:告知所有人都已经下班""]
+k_01([""end:服务结束""])
+
+r_01 --> id_01 
+id_01 --> ia_01
+ia_01 --> id_02
+id_02 --> ia_02
+ia_02 --> f_01
+f_01 --""处理当前position信息""--> g_01
+f_01 --""完成遍历循环""--> j_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> ia_03
+ia_03 --> f_01
+c_01 --false--> f_01
+j_01 --> g_02
+g_02 --> c_02
+c_02 --true--> s_02
+s_02 --> k_01
+c_02 --false--> k_01
+",js2flow-finished,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:28,将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”;地点列表,nodeClick,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:28,将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”;地点列表,nodeClick,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:28,将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”;地点列表,nodeClick,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:29,将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”;地点列表,nodeClick,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:29,将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”;地点列表,nodeClick,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:33,将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”;地点列表,nodeClick,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:34,将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”;地点列表,nodeClick,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:34,将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”;地点列表,nodeClick,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:41,自动布局,AutoLayout,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:46,"{'label': '', 'name': 'INFOASSIGN', 'tooltip': '将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”;地点列表', 'variable': ' 地点列表', 'action': '将地点列表赋值为“员工办公区，接待区，作品展示区，会客厅”'}",Node update,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:49,自动布局,AutoLayout,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:51,自动布局,AutoLayout,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01
+19:16:53,自动布局,AutoLayout,db7a01ff-2930-47b4-a402-a93578c425c3,08-19-19-12-01

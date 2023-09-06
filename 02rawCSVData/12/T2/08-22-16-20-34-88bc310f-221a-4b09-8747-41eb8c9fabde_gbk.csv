@@ -1,0 +1,109 @@
+time,content,type,sessionID,createdAt
+16:20:34,start a new session,start,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:20:52,"我的机器人个性化服务定制需求： 走到会客厅，再
+走到作品展示区，再走到接待区，再走到员工办公区 ",authoringNEW-start,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:20:55,"<require>
+1. 走到会客厅
+2. 走到作品展示区
+3. 走到接待区
+4. 走到员工办公区
+</require>",authoring-finished,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:22:41,"我的机器人个性化服务定制需求： 走到会客厅，再
+走到作品展示区，再走到接待区，再走到员工办公区 ",authoringNEW-start,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:22:45,"<modifiedrequire>
+1. 走到会客厅
+2. 走到作品展示区
+3. 走到接待区
+4. 走到员工办公区
+5. 如果检测到有人存在，对这个人说“请在下班后尽快离开办公室”
+</modifiedrequire>",authoring-finished,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:23:11,"我的机器人个性化服务定制需求： 走到会客厅，再
+走到作品展示区，再走到接待区，再走到员工办公区 ",authoringNEW-start,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:23:12,<end>完成</end>,authoring-finished,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:23:13,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 走到会客厅
+2. 走到作品展示区
+3. 走到接待区
+4. 走到员工办公区
+5. 如果检测到有人存在，对这个人说“请在下班后尽快离开办公室”
+
+        ",nl2js-start,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:23:17,"
+  await robot.userRequest('服务需求');
+  
+  await robot.goto('会客厅');
+  await robot.goto('作品展示区');
+  await robot.goto('接待区');
+  await robot.goto('员工办公区');
+  
+  const isPresent = await robot.detectHuman();
+  if(isPresent){
+      await robot.speak('请在下班后尽快离开办公室');
+  }",nl2js-finished,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:23:17,"
+  await robot.userRequest('服务需求');
+  
+  await robot.goto('会客厅');
+  await robot.goto('作品展示区');
+  await robot.goto('接待区');
+  await robot.goto('员工办公区');
+  
+  const isPresent = await robot.detectHuman();
+  if(isPresent){
+      await robot.speak('请在下班后尽快离开办公室');
+  }",js2NLexplain-start,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:23:23,"服务启动关键词：服务需求
+服务流程：
+1. 机器人首先接收到用户的服务需求请求。
+2. 机器人会先去会客厅。
+3. 然后，机器人会去作品展示区。
+4. 接下来，机器人会去接待区。
+5. 最后，机器人会去员工办公区。
+6. 到达员工办公区后，机器人会检测是否有人在办公室里。
+   - 如果有人在办公室里，机器人会告诉他们在下班后尽快离开办公室。
+7. 无论是否有人在办公室里，机器人都会结束服务。",js2NLexplain-finished,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:23:23,"
+  await robot.userRequest('服务需求');
+  
+  await robot.goto('会客厅');
+  await robot.goto('作品展示区');
+  await robot.goto('接待区');
+  await robot.goto('员工办公区');
+  
+  const isPresent = await robot.detectHuman();
+  if(isPresent){
+      await robot.speak('请在下班后尽快离开办公室');
+  }",js2flow-start,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:23:46,"
+  graph TB
+  r_01([""userRequest:服务需求""])
+  g_01[""goto:会客厅""]
+  g_02[""goto:作品展示区""]
+  g_03[""goto:接待区""]
+  g_04[""goto:员工办公区""]
+  d_01[""detectHuman""]
+  c_01{""condition: 检测到人;人员检测结果""}
+  s_01[""speak:告知下班后尽快离开办公室""]
+  k_01([""end:服务结束""])
+  r_01 --> g_01
+  g_01 --> g_02
+  g_02 --> g_03
+  g_03 --> g_04
+  g_04 --> d_01
+  d_01 --> c_01
+  c_01 --true--> s_01
+  c_01 --false--> k_01
+  s_01 --> k_01
+",js2flow-finished,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:23:59,人物检测,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:24:28,人物检测,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:24:29,检测到人;人员检测结果,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:24:30,告知下班后尽快离开办公室,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:24:46,人物检测,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:24:47,检测到人;人员检测结果,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:24:48,告知下班后尽快离开办公室,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:24:57,告知下班后尽快离开办公室,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:25:59,人物检测,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:26:00,检测到人;人员检测结果,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34
+16:26:01,告知下班后尽快离开办公室,nodeClick,88bc310f-221a-4b09-8747-41eb8c9fabde,08-22-16-20-34

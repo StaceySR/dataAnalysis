@@ -1,0 +1,188 @@
+time,content,type,sessionID,createdAt
+09:46:23,start a new session,start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:46:49,我的机器人个性化服务定制需求：检测人体，询问参观地点,authoringNEW-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:46:50,"<require>
+1. 检测人体
+2. 询问参观地点
+</require>",authoring-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:47:19,我的机器人个性化服务定制需求：检测人体，询问参观地点,authoringNEW-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:47:22,"<modifiedrequire>
+1. 检测人体
+2. 前往参观地点
+3. 前往作品展示区
+</modifiedrequire>",authoring-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:47:51,我的机器人个性化服务定制需求：检测人体，询问参观地点,authoringNEW-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:47:53,"<modifiedrequire>
+1. 检测人体
+</modifiedrequire>",authoring-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:48:30,我的机器人个性化服务定制需求：检测人体，询问参观地点,authoringNEW-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:48:33,"<modifiedrequire>
+1. 检测人体
+2. 询问参观地点
+3. 前往参观地点
+4. 前往作品展示区
+</modifiedrequire>",authoring-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:48:59,我的机器人个性化服务定制需求：检测人体，询问参观地点,authoringNEW-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:49:02,"<modifiedrequire>
+1. 检测人体
+2. 询问参观地点
+3. 前往参观地点
+4. 前往作品展示区
+5. 介绍产品：这是一个双臂机器人
+</modifiedrequire>",authoring-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:49:31,我的机器人个性化服务定制需求：检测人体，询问参观地点,authoringNEW-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:49:34,"<modifiedrequire>
+1. 检测人体
+2. 询问参观地点
+3. 前往参观地点
+4. 前往作品展示区
+5. 介绍产品：这是一个双臂机器人
+6. 前往创作室
+7. 介绍：这里可以进行虚实结合实验
+</modifiedrequire>",authoring-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:49:48,我的机器人个性化服务定制需求：检测人体，询问参观地点,authoringNEW-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:49:52,"<modifiedrequire>
+1. 检测人体
+2. 询问参观地点
+3. 前往参观地点
+4. 前往作品展示区
+5. 介绍产品：这是一个双臂机器人
+6. 前往创作室
+7. 介绍：这里可以进行虚实结合实验
+8. 返回会客厅
+</modifiedrequire>",authoring-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:50:03,我的机器人个性化服务定制需求：检测人体，询问参观地点,authoringNEW-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:50:05,<end>完成</end>,authoring-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:50:05,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 检测人体
+2. 询问参观地点
+3. 前往参观地点
+4. 前往作品展示区
+5. 介绍产品：这是一个双臂机器人
+6. 前往创作室
+7. 介绍：这里可以进行虚实结合实验
+8. 返回会客厅
+
+        ",nl2js-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:50:10,"
+  await robot.userRequest('参观服务');
+  
+  const isHuman = await robot.detectHuman();
+  if(isHuman){
+      const location = await robot.ask('您想参观哪个地点？');
+  
+      await robot.goto(location);
+  
+      if(location === '作品展示区'){
+          await robot.speak('欢迎参观作品展示区');
+          await robot.speak('这是一个双臂机器人');
+      }else if(location === '创作室'){
+          await robot.speak('欢迎参观创作室');
+          await robot.speak('这里可以进行虚实结合实验');
+      }
+  
+      await robot.goto('会客厅');
+  
+  }else{
+      await robot.speak('很抱歉，当前没有检测到人体');
+  }",nl2js-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:50:10,"
+  await robot.userRequest('参观服务');
+  
+  const isHuman = await robot.detectHuman();
+  if(isHuman){
+      const location = await robot.ask('您想参观哪个地点？');
+  
+      await robot.goto(location);
+  
+      if(location === '作品展示区'){
+          await robot.speak('欢迎参观作品展示区');
+          await robot.speak('这是一个双臂机器人');
+      }else if(location === '创作室'){
+          await robot.speak('欢迎参观创作室');
+          await robot.speak('这里可以进行虚实结合实验');
+      }
+  
+      await robot.goto('会客厅');
+  
+  }else{
+      await robot.speak('很抱歉，当前没有检测到人体');
+  }",js2NLexplain-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:50:17,"服务启动关键词：参观服务
+服务流程：
+1. 机器人首先接收到用户要参观的请求。
+2. 机器人会检测周围是否有人。
+3. 如果检测到有人，机器人会问用户想参观哪个地点。
+4. 得到用户的回答后，机器人会去到用户指定的地点。
+5. 如果用户选择参观的地点是作品展示区，机器人会欢迎用户参观，并介绍展示区内的双臂机器人。
+6. 如果用户选择参观的地点是创作室，机器人会欢迎用户参观，并介绍创作室内可以进行虚实结合实验。
+7. 无论用户选择参观的地点是哪里，机器人都会回到会客厅。
+8. 如果没有检测到人体，机器人会告诉用户很抱歉，当前没有检测到人体。",js2NLexplain-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:50:17,"
+  await robot.userRequest('参观服务');
+  
+  const isHuman = await robot.detectHuman();
+  if(isHuman){
+      const location = await robot.ask('您想参观哪个地点？');
+  
+      await robot.goto(location);
+  
+      if(location === '作品展示区'){
+          await robot.speak('欢迎参观作品展示区');
+          await robot.speak('这是一个双臂机器人');
+      }else if(location === '创作室'){
+          await robot.speak('欢迎参观创作室');
+          await robot.speak('这里可以进行虚实结合实验');
+      }
+  
+      await robot.goto('会客厅');
+  
+  }else{
+      await robot.speak('很抱歉，当前没有检测到人体');
+  }",js2flow-start,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:50:52,"
+graph TB
+r_01([""userRequest:参观服务""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果""}
+a_01[""ask:询问用户想参观的地点;用户回复""]
+g_01[""goto:用户回复""]
+c_02{""condition: 判断用户是否选择参观作品展示区;用户回复""}
+s_01[""speak:欢迎用户参观作品展示区""]
+s_02[""speak:介绍作品展示区""]
+c_03{""condition: 判断用户是否选择参观创作室;用户回复""}
+s_03[""speak:欢迎用户参观创作室""]
+s_04[""speak:介绍创作室""]
+g_02[""goto:会客厅""]
+s_05[""speak:告知没有检测到人""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> g_01
+g_01 --> c_02
+c_02 --true--> s_01
+s_01 --> s_02
+s_02 --> g_02
+c_02 --false--> c_03
+c_03 --true--> s_03
+s_03 --> s_04
+s_04 --> g_02
+c_03 --false--> g_02
+g_02 --> k_01
+c_01 --false--> s_05
+s_05 --> k_01
+",js2flow-finished,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:51:08,判断用户是否选择参观作品展示区;用户回复,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:51:35,判断用户是否选择参观作品展示区;用户回复,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:51:36,判断用户是否选择参观作品展示区;用户回复,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:51:38,判断用户是否选择参观作品展示区;用户回复,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:51:42,判断用户是否选择参观作品展示区;用户回复,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:51:57,询问用户想参观的地点;用户回复,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:52:00,欢迎用户参观作品展示区,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:52:03,欢迎用户参观创作室,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:52:08,判断用户是否选择参观作品展示区;用户回复,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:52:13,判断用户是否选择参观作品展示区;用户回复,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:52:13,判断用户是否选择参观作品展示区;用户回复,nodeClick,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23
+09:52:19,"{'label': '', 'name': 'IF', 'tooltip': '判断用户是否选择参观作品展示区;用户回复', 'variable': ' 用户回复', 'action': '判断用户是否选择参观作品展示区'}",Node update,6607053e-4cca-4ee5-a935-56b124499fe6,08-22-09-46-23

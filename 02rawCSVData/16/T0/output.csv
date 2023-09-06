@@ -1,0 +1,45 @@
+type,time
+start,18:06:15
+newNodeAdd,18:15:28
+nodeClick,18:15:30
+nodeClick,18:15:30
+Node update -- variable,18:15:42
+Node update,18:15:44
+nodeClick,18:15:46
+start,18:16:08
+authoringNEW-start,18:18:57
+authoring-finished,18:19:00
+authoringNEW-start,18:19:22
+authoring-finished,18:19:24
+authoringNEW-start,18:21:31
+authoring-finished,18:21:34
+authoringNEW-start,18:21:43
+authoring-finished,18:21:45
+nl2js-start,18:21:45
+nl2js-finished,18:21:49
+js2NLexplain-start,18:21:49
+js2NLexplain-finished,18:21:56
+js2flow-start,18:21:56
+js2flow-finished,18:22:11
+newNodeAdd,18:23:45
+nodeClick,18:23:55
+magicModify-start,18:23:56
+nodeClick,18:23:58
+nodeClick,18:24:03
+nodeClick,18:24:06
+magicModify-finished,18:24:06
+nodeClick,18:24:06
+nodeClick,18:24:06
+nodeClick,18:24:45
+nodeClick,18:24:49
+nodeClick,18:24:50
+AutoLayout,18:24:53
+start,18:40:04
+newNodeAdd,18:41:39
+nodeClick,18:41:41
+nodeClick,18:41:42
+nodeClick,18:41:42
+nodeClick,18:41:46
+nodeClick,18:41:48
+nodeClick,18:41:49
+Node update -- variable,18:41:57

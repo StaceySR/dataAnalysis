@@ -1,0 +1,12 @@
+type,time
+start,12:05:43
+authoringNEW-start,12:15:44
+authoring-finished,12:15:52
+authoringNEW-start,12:16:59
+authoring-finished,12:17:00
+nl2js-start,12:17:00
+nl2js-finished,12:17:10
+js2NLexplain-start,12:17:10
+js2NLexplain-finished,12:17:19
+js2flow-start,12:17:19
+js2flow-finished,12:18:07

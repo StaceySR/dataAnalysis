@@ -1,0 +1,671 @@
+time,content,type,sessionID,createdAt
+21:13:57,start a new session,start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:20:54,我的机器人个性化服务定制需求：设计一个访客引导服务，比如行政部门的小张预约了张师傅来修会议室的空调。机器人进行人物检测后，询问他是不是张师傅，如果是说，张师傅你好，请跟我来会议室。到达会议室后说，会议室已到达，叮当叮当先离开了。回到接待处。,authoringNEW-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:21:01,"<require>
+1. 设计一个访客引导服务，包括人物检测和引导功能。
+2. 当机器人检测到访客时，询问访客的身份。
+3. 如果访客是张师傅，机器人应该说：“张师傅你好，请跟我来会议室。”
+4. 当机器人带领张师傅到达会议室后，机器人应该说：“会议室已到达，叮当叮当先离开了。”
+5. 机器人应该回到接待处。
+</require>",authoring-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:21:17,我的机器人个性化服务定制需求：设计一个访客引导服务，比如行政部门的小张预约了张师傅来修会议室的空调。机器人进行人物检测后，询问他是不是张师傅，如果是说，张师傅你好，请跟我来会议室。到达会议室后说，会议室已到达，叮当叮当先离开了。回到接待处。,authoringNEW-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:21:19,<end>完成</end>,authoring-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:21:19,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 设计一个访客引导服务，包括人物检测和引导功能。
+2. 当机器人检测到访客时，询问访客的身份。
+3. 如果访客是张师傅，机器人应该说：“张师傅你好，请跟我来会议室。”
+4. 当机器人带领张师傅到达会议室后，机器人应该说：“会议室已到达，叮当叮当先离开了。”
+5. 机器人应该回到接待处。
+
+        ",nl2js-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:21:26,"
+  await robot.userRequest('访客引导');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      const identity = await robot.ask('请问您是谁？');
+  
+      if(identity==""张师傅""){
+          await robot.speak('张师傅你好，请跟我来会议室。');
+          await robot.goto('会议室');
+          await robot.speak('会议室已到达，叮当叮当先离开了。');
+      }else{
+          await robot.speak('您好，请问有什么可以帮助您的？');
+      }
+  
+  }else{
+      await robot.speak('没有检测到访客。');
+  }
+  
+  await robot.goto('接待区');",nl2js-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:21:26,"
+  await robot.userRequest('访客引导');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      const identity = await robot.ask('请问您是谁？');
+  
+      if(identity==""张师傅""){
+          await robot.speak('张师傅你好，请跟我来会议室。');
+          await robot.goto('会议室');
+          await robot.speak('会议室已到达，叮当叮当先离开了。');
+      }else{
+          await robot.speak('您好，请问有什么可以帮助您的？');
+      }
+  
+  }else{
+      await robot.speak('没有检测到访客。');
+  }
+  
+  await robot.goto('接待区');",js2NLexplain-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:21:38,"服务启动关键词：访客引导
+服务流程：
+1. 机器人首先接收到用户要进行访客引导的请求。
+2. 机器人会检测是否有人。
+3. 如果检测到有人，机器人会问访客的身份。
+4. 得到访客的回答后，机器人会根据身份进行相应的引导。
+   - 如果访客是张师傅，机器人会跟他说：“张师傅你好，请跟我来会议室。”然后，机器人会带他去会议室，并告诉他会议室已经到达，然后离开。
+   - 如果访客不是张师傅，机器人会跟他说：“您好，请问有什么可以帮助您的？”
+5. 如果没有检测到访客，机器人会告诉用户没有检测到访客。
+6. 最后，机器人会去接待区。",js2NLexplain-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:21:38,"
+  await robot.userRequest('访客引导');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      const identity = await robot.ask('请问您是谁？');
+  
+      if(identity==""张师傅""){
+          await robot.speak('张师傅你好，请跟我来会议室。');
+          await robot.goto('会议室');
+          await robot.speak('会议室已到达，叮当叮当先离开了。');
+      }else{
+          await robot.speak('您好，请问有什么可以帮助您的？');
+      }
+  
+  }else{
+      await robot.speak('没有检测到访客。');
+  }
+  
+  await robot.goto('接待区');",js2flow-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:22:11,"
+graph TB
+r_01([""userRequest:访客引导""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问访客身份""]
+c_02{""condition: 访客身份是张师傅;用户回复_1""}
+s_01[""speak:告知张师傅跟随前往会议室""]
+g_01[""goto:会议室""]
+s_02[""speak:告知已到达会议室""]
+s_03[""speak:询问访客需要帮助的事情""]
+s_04[""speak:告知没有检测到访客""]
+g_02[""goto:接待区""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> s_01
+s_01 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+c_02 --false--> s_03
+s_03 --> g_02
+c_01 --false--> s_04
+s_04 --> g_02
+g_02 --> k_01",js2flow-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:22:35,告知没有检测到访客,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:22:45,接待区,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:24:15,"
+  currentCode :
+  
+  await robot.userRequest('访客引导');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      const identity = await robot.ask('请问您是谁？');
+  
+      if(identity==""张师傅""){
+          await robot.speak('张师傅你好，请跟我来会议室。');
+          await robot.goto('会议室');
+          await robot.speak('会议室已到达，叮当叮当先离开了。');
+      }else{
+          await robot.speak('您好，请问有什么可以帮助您的？');
+      }
+  
+  }else{
+      await robot.speak('没有检测到访客。');
+  }
+  
+  await robot.goto('接待区');
+  userInput:
+  设计一个访客引导服务，员工先告诉机器人访客信息。比如行政部门的小张预约了张师傅来修会议室的空调。然后机器人进行人物检测后，询问访客是不是张师傅，如果是说，张师傅你好，请跟我来会议室。到达会议室后说，会议室已到达，叮当叮当先离开了。回到接待处。
+  ",nl2jswithContext-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:24:35,"await robot.userRequest('访客引导');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask('请问您是张师傅吗？');
+    if(identity==""是""){
+        await robot.speak('张师傅你好，请跟我来会议室。');
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak('对不起，我找的是张师傅。');
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');",nl2jswithContext-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:24:35,"
+  originalcode:
+  
+  await robot.userRequest('访客引导');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      const identity = await robot.ask('请问您是谁？');
+  
+      if(identity==""张师傅""){
+          await robot.speak('张师傅你好，请跟我来会议室。');
+          await robot.goto('会议室');
+          await robot.speak('会议室已到达，叮当叮当先离开了。');
+      }else{
+          await robot.speak('您好，请问有什么可以帮助您的？');
+      }
+  
+  }else{
+      await robot.speak('没有检测到访客。');
+  }
+  
+  await robot.goto('接待区');
+  modifiedcode:
+  await robot.userRequest('访客引导');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask('请问您是张师傅吗？');
+    if(identity==""是""){
+        await robot.speak('张师傅你好，请跟我来会议室。');
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak('对不起，我找的是张师傅。');
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');
+  ",explainModifiedJS-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:24:43,修改后的代码在原有的基础上增加了一个问题的询问，即询问访客是否是张师傅。如果访客回答是，机器人会带领张师傅去会议室，并发出到达会议室的提示语；如果访客回答不是，机器人会发出找错人的提示语。无论访客是否是张师傅，机器人都会发出没有检测到访客的提示语，并前往接待区。因此，修改后的代码相比于原代码，增加了对访客身份的判断和相应的回应。,explainModifiedJS-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:24:43,"await robot.userRequest('访客引导');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask('请问您是张师傅吗？');
+    if(identity==""是""){
+        await robot.speak('张师傅你好，请跟我来会议室。');
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak('对不起，我找的是张师傅。');
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');",js2flow-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:25:18,"
+graph TB
+r_01([""userRequest:访客引导""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问访客身份;用户回复_1""]
+c_02{""condition: 访客确认是张师傅;用户回复_1""}
+s_01[""speak:告知张师傅跟随前往会议室""]
+g_01[""goto:会议室""]
+s_02[""speak:告知已到达会议室""]
+s_03[""speak:告知访客不是张师傅""]
+s_04[""speak:告知没有检测到访客""]
+g_02[""goto:接待区""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> s_01
+s_01 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+c_02 --false--> s_03
+s_03 --> g_02
+c_01 --false--> s_04
+s_04 --> g_02
+g_02 --> k_01
+",js2flow-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:26:46,"
+  currentCode :
+  await robot.userRequest('访客引导');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask('请问您是张师傅吗？');
+    if(identity==""是""){
+        await robot.speak('张师傅你好，请跟我来会议室。');
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak('对不起，我找的是张师傅。');
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');
+  userInput:
+  设计一个访客引导服务，允许员工先告诉机器人访客信息。比如，行政部门的小张告诉机器人预约了张师傅来修会议室的空调。然后机器人对来访人进行人物检测后，询问访客是不是张师傅，如果是说，张师傅你好，请跟我来会议室。到达会议室后说，会议室已到达，叮当叮当先离开了。回到接待处。 
+  ",nl2jswithContext-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:27:08,"await robot.userRequest('预约访客引导');
+const visitorInfo = await robot.ask('请问您预约了哪位访客来访？');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask(`请问您是${visitorInfo}吗？`);
+    if(identity==""是""){
+        await robot.speak(`${visitorInfo}你好，请跟我来会议室。`);
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak(`对不起，我找的是${visitorInfo}。`);
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');",nl2jswithContext-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:27:08,"
+  originalcode:
+  await robot.userRequest('访客引导');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask('请问您是张师傅吗？');
+    if(identity==""是""){
+        await robot.speak('张师傅你好，请跟我来会议室。');
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak('对不起，我找的是张师傅。');
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');
+  modifiedcode:
+  await robot.userRequest('预约访客引导');
+const visitorInfo = await robot.ask('请问您预约了哪位访客来访？');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask(`请问您是${visitorInfo}吗？`);
+    if(identity==""是""){
+        await robot.speak(`${visitorInfo}你好，请跟我来会议室。`);
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak(`对不起，我找的是${visitorInfo}。`);
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');
+  ",explainModifiedJS-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:27:16,"await robot.userRequest('预约访客引导');
+const visitorInfo = await robot.ask('请问您预约了哪位访客来访？');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask(`请问您是${visitorInfo}吗？`);
+    if(identity==""是""){
+        await robot.speak(`${visitorInfo}你好，请跟我来会议室。`);
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak(`对不起，我找的是${visitorInfo}。`);
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');",js2flow-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:27:16,"修改后的代码在原有的基础上增加了一个步骤，即询问用户预约了哪位访客来访。这样做的目的是为了更好地了解访客的身份信息。修改后的代码会先询问用户预约的访客是谁，然后再检测是否有人。如果有人，会再次询问用户是否是预约的访客，并根据用户的回答进行相应的操作。如果没有人，则会输出""没有检测到访客""的提示信息。最后，无论是否有人，机器人都会前往接待区。",explainModifiedJS-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:27:54,"
+graph TB
+r_01([""userRequest:预约访客引导""])
+a_01[""ask:询问预约访客的信息;用户回复1""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果1""}
+a_02[""ask:询问访客身份确认;用户回复2""]
+c_02{""condition: 访客确认身份;用户回复2""}
+s_01[""speak:引导访客前往会议室;用户回复1""]
+g_01[""goto:会议室""]
+s_02[""speak:告知已到达会议室""]
+s_03[""speak:告知访客不是预约访客;用户回复1""]
+s_04[""speak:告知没有检测到访客""]
+g_02[""goto:接待区""]
+k_01([""end:服务结束""])
+r_01 --> a_01
+a_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_02
+a_02 --> c_02
+c_02 --true--> s_01
+s_01 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+c_02 --false--> s_03
+s_03 --> g_02
+c_01 --false--> s_04
+s_04 --> g_02
+g_02 --> k_01
+",js2flow-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:28:20,告知没有检测到访客,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:28:27,告知没有检测到访客,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:28:35,询问预约访客的信息;用户回复1,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:28:43,检测到人;人员检测结果1,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:29:00,询问预约访客的信息;用户回复1,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:29:06,询问预约访客的信息;用户回复1,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:29:50,"
+  currentCode :
+  await robot.userRequest('预约访客引导');
+const visitorInfo = await robot.ask('请问您预约了哪位访客来访？');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask(`请问您是${visitorInfo}吗？`);
+    if(identity==""是""){
+        await robot.speak(`${visitorInfo}你好，请跟我来会议室。`);
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak(`对不起，我找的是${visitorInfo}。`);
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');
+  userInput:
+  设计一个访客引导服务，允许员工先告诉机器人访客信息。比如，行政部门的小张告诉机器人预约了张师傅来修会议室的空调。然后机器人对来访人进行人物检测后，询问访客是不是张师傅，如果是说，张师傅你好，请跟我来会议室。到达会议室后说，会议室已到达，叮当叮当先离开了。回到接待处。  
+  ",nl2jswithContext-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:30:17,"await robot.userRequest('预约访客引导');
+const visitorInfo = await robot.ask('请问您预约了哪位访客来访？');
+const visitorTask = await robot.ask('请问访客来访的目的是什么？');
+await robot.speak(`好的，我已经知道${visitorInfo}将来访，目的是${visitorTask}。`);
+
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask(`请问您是${visitorInfo}吗？`);
+    if(identity==""是""){
+        await robot.speak(`${visitorInfo}你好，请跟我来会议室。`);
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak(`对不起，我找的是${visitorInfo}。`);
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');",nl2jswithContext-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:30:17,"
+  originalcode:
+  await robot.userRequest('预约访客引导');
+const visitorInfo = await robot.ask('请问您预约了哪位访客来访？');
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask(`请问您是${visitorInfo}吗？`);
+    if(identity==""是""){
+        await robot.speak(`${visitorInfo}你好，请跟我来会议室。`);
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak(`对不起，我找的是${visitorInfo}。`);
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');
+  modifiedcode:
+  await robot.userRequest('预约访客引导');
+const visitorInfo = await robot.ask('请问您预约了哪位访客来访？');
+const visitorTask = await robot.ask('请问访客来访的目的是什么？');
+await robot.speak(`好的，我已经知道${visitorInfo}将来访，目的是${visitorTask}。`);
+
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask(`请问您是${visitorInfo}吗？`);
+    if(identity==""是""){
+        await robot.speak(`${visitorInfo}你好，请跟我来会议室。`);
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak(`对不起，我找的是${visitorInfo}。`);
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');
+  ",explainModifiedJS-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:30:25,"await robot.userRequest('预约访客引导');
+const visitorInfo = await robot.ask('请问您预约了哪位访客来访？');
+const visitorTask = await robot.ask('请问访客来访的目的是什么？');
+await robot.speak(`好的，我已经知道${visitorInfo}将来访，目的是${visitorTask}。`);
+
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask(`请问您是${visitorInfo}吗？`);
+    if(identity==""是""){
+        await robot.speak(`${visitorInfo}你好，请跟我来会议室。`);
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak(`对不起，我找的是${visitorInfo}。`);
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');",js2flow-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:30:25,修改后的代码在原有的基础上增加了一段对访客来访目的的询问，机器人会询问用户访客来访的目的是什么，并将用户的回答保存在visitorTask变量中。然后，机器人会使用robot.speak函数将访客的信息和目的进行语音输出。这样修改后的代码在机器人行为上增加了对访客目的的了解和输出。除此之外，修改后的代码并没有改变原有的机器人行为，机器人仍然会检测是否有人，询问访客的身份，并根据身份进行相应的回应。最后，机器人会前往接待区。,explainModifiedJS-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:31:07,"
+graph TB
+r_01([""userRequest:预约访客引导""])
+a_01[""ask:询问预约访客的信息;访客信息""]
+a_02[""ask:询问访客来访的目的;访客任务""]
+s_01[""speak:告知已知访客信息和访客任务;访客信息;访客任务""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果""}
+a_03[""ask:询问访客身份;访客身份""]
+c_02{""condition: 访客身份确认;访客身份""}
+s_02[""speak:引导访客前往会议室;访客信息""]
+g_01[""goto:会议室""]
+s_03[""speak:告知已到达会议室""]
+s_04[""speak:告知找错人;访客信息""]
+s_05[""speak:告知没有检测到访客""]
+g_02[""goto:接待区""]
+k_01([""end:服务结束""])
+r_01 --> a_01
+a_01 --> a_02
+a_02 --> s_01
+s_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_03
+a_03 --> c_02
+c_02 --true--> s_02
+s_02 --> g_01
+g_01 --> s_03
+s_03 --> g_02
+g_02 --> k_01
+c_02 --false--> s_04
+s_04 --> g_02
+c_01 --false--> s_05
+s_05 --> g_02
+",js2flow-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:31:28,询问预约访客的信息;访客信息,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:31:29,"selectedNodes:
+    ASK: 询问预约访客的信息;访客信息
+    flow:
+    
+graph TB
+r_01([""userRequest:预约访客引导""])
+a_01[""ask:询问预约访客的信息;访客信息""]
+a_02[""ask:询问访客来访的目的;访客任务""]
+s_01[""speak:告知已知访客信息和访客任务;访客信息;访客任务""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果""}
+a_03[""ask:询问访客身份;访客身份""]
+c_02{""condition: 访客身份确认;访客身份""}
+s_02[""speak:引导访客前往会议室;访客信息""]
+g_01[""goto:会议室""]
+s_03[""speak:告知已到达会议室""]
+s_04[""speak:告知找错人;访客信息""]
+s_05[""speak:告知没有检测到访客""]
+g_02[""goto:接待区""]
+k_01([""end:服务结束""])
+r_01 --> a_01
+a_01 --> a_02
+a_02 --> s_01
+s_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_03
+a_03 --> c_02
+c_02 --true--> s_02
+s_02 --> g_01
+g_01 --> s_03
+s_03 --> g_02
+g_02 --> k_01
+c_02 --false--> s_04
+s_04 --> g_02
+c_01 --false--> s_05
+s_05 --> g_02
+
+    jscode:
+    await robot.userRequest('预约访客引导');
+const visitorInfo = await robot.ask('请问您预约了哪位访客来访？');
+const visitorTask = await robot.ask('请问访客来访的目的是什么？');
+await robot.speak(`好的，我已经知道${visitorInfo}将来访，目的是${visitorTask}。`);
+
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask(`请问您是${visitorInfo}吗？`);
+    if(identity==""是""){
+        await robot.speak(`${visitorInfo}你好，请跟我来会议室。`);
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak(`对不起，我找的是${visitorInfo}。`);
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');
+    ",magicModify-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:31:36,"你所选中的节点包括：""ask:询问预约访客的信息;访客信息"" 
+
+在整个服务中的作用是询问用户预约访客的信息，并获取访客信息作为参数。具体的机器人行为是向用户发起询问，等待用户输入访客信息，并将输入的访客信息作为参数传递给后续的机器人行为。
+
+你可以进一步询问我关于这个节点的信息，我会给你提供更多的信息。或者你可以让我直接修改这个节点的行为。或者结束节点调试。",magicModify-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:32:04,"selectedNodes:
+    ASK: 询问预约访客的信息;访客信息
+    flow:
+    
+graph TB
+r_01([""userRequest:预约访客引导""])
+a_01[""ask:询问预约访客的信息;访客信息""]
+a_02[""ask:询问访客来访的目的;访客任务""]
+s_01[""speak:告知已知访客信息和访客任务;访客信息;访客任务""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果""}
+a_03[""ask:询问访客身份;访客身份""]
+c_02{""condition: 访客身份确认;访客身份""}
+s_02[""speak:引导访客前往会议室;访客信息""]
+g_01[""goto:会议室""]
+s_03[""speak:告知已到达会议室""]
+s_04[""speak:告知找错人;访客信息""]
+s_05[""speak:告知没有检测到访客""]
+g_02[""goto:接待区""]
+k_01([""end:服务结束""])
+r_01 --> a_01
+a_01 --> a_02
+a_02 --> s_01
+s_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_03
+a_03 --> c_02
+c_02 --true--> s_02
+s_02 --> g_01
+g_01 --> s_03
+s_03 --> g_02
+g_02 --> k_01
+c_02 --false--> s_04
+s_04 --> g_02
+c_01 --false--> s_05
+s_05 --> g_02
+
+    jscode:
+    await robot.userRequest('预约访客引导');
+const visitorInfo = await robot.ask('请问您预约了哪位访客来访？');
+const visitorTask = await robot.ask('请问访客来访的目的是什么？');
+await robot.speak(`好的，我已经知道${visitorInfo}将来访，目的是${visitorTask}。`);
+
+const isHuman = await robot.detectHuman();
+
+if(isHuman){
+    const identity = await robot.ask(`请问您是${visitorInfo}吗？`);
+    if(identity==""是""){
+        await robot.speak(`${visitorInfo}你好，请跟我来会议室。`);
+        await robot.goto('会议室');
+        await robot.speak('会议室已到达，叮当叮当先离开了。');
+    }else{
+        await robot.speak(`对不起，我找的是${visitorInfo}。`);
+    }
+
+}else{
+    await robot.speak('没有检测到访客。');
+}
+
+await robot.goto('接待区');
+    ",magicModifyPhase-start,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:32:07,<end>结束对节点的调试</end>,magicModifyPhase-finished,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:33:08,告知没有检测到访客,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:33:14,询问访客身份;访客身份,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57
+21:34:05,检测到人;人员检测结果,nodeClick,ad307f48-5e8d-4fc6-b698-0f715ef2f8ea,08-24-21-13-57

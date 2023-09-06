@@ -1,0 +1,70 @@
+time,content,type,sessionID,createdAt
+18:51:38,start a new session,start,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:51:44,我的机器人个性化服务定制需求： 在客户提出关键词“参观创作室”后，引导客户前往创作室，并在停留两分钟后自动返回充电桩。 ,authoringNEW-start,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:51:47,"<require>
+1. 在客户提出关键词“参观创作室”后，引导客户前往创作室。
+2. 在客户到达创作室后，停留两分钟。
+3. 在停留两分钟后，自动引导客户返回充电桩。
+</require>",authoring-finished,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:51:54,我的机器人个性化服务定制需求： 在客户提出关键词“参观创作室”后，引导客户前往创作室，并在停留两分钟后自动返回充电桩。 ,authoringNEW-start,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:51:55,<end>完成</end>,authoring-finished,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:51:55,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 在客户提出关键词“参观创作室”后，引导客户前往创作室。
+2. 在客户到达创作室后，停留两分钟。
+3. 在停留两分钟后，自动引导客户返回充电桩。
+
+        ",nl2js-start,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:51:59,"
+  await robot.userRequest('参观创作室');
+  await robot.goto('创作室');
+  await robot.speak('欢迎参观创作室');
+  await new Promise(resolve => setTimeout(resolve, 120000)); // 停留两分钟
+  await robot.goto('充电桩');
+  await robot.speak('参观结束，请跟我回到充电桩');
+",nl2js-finished,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:51:59,"
+  await robot.userRequest('参观创作室');
+  await robot.goto('创作室');
+  await robot.speak('欢迎参观创作室');
+  await new Promise(resolve => setTimeout(resolve, 120000)); // 停留两分钟
+  await robot.goto('充电桩');
+  await robot.speak('参观结束，请跟我回到充电桩');
+",js2NLexplain-start,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:52:04,"服务启动关键词：参观创作室
+服务流程：
+1. 机器人接收到用户要参观创作室的请求。
+2. 机器人会前往创作室。
+3. 到达创作室后，机器人会说：“欢迎参观创作室”。
+4. 机器人会停留两分钟，等待用户参观。
+5. 两分钟后，机器人会前往充电桩。
+6. 到达充电桩后，机器人会说：“参观结束，请跟我回到充电桩”。
+7. 服务结束。",js2NLexplain-finished,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:52:04,"
+  await robot.userRequest('参观创作室');
+  await robot.goto('创作室');
+  await robot.speak('欢迎参观创作室');
+  await new Promise(resolve => setTimeout(resolve, 120000)); // 停留两分钟
+  await robot.goto('充电桩');
+  await robot.speak('参观结束，请跟我回到充电桩');
+",js2flow-start,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:52:19,"
+graph TB
+r_01([""userRequest:参观创作室""])
+g_01[""goto:创作室""]
+s_01[""speak:欢迎参观创作室""]
+id_01[""infoDeclare:停留时间""]
+ia_01[""infoAssign:停留时间赋值为120000毫秒;停留时间""]
+g_02[""goto:充电桩""]
+s_02[""speak:告知参观结束，引导用户回到充电桩""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> s_01
+s_01 --> id_01
+id_01 --> ia_01
+ia_01 --> g_02
+g_02 --> s_02
+s_02 --> k_01
+",js2flow-finished,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:52:46,停留时间赋值为120000毫秒;停留时间,nodeClick,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38
+18:52:47,停留时间赋值为120000毫秒;停留时间,nodeClick,a1ec78a5-a7ae-4c70-bbe8-7515d06af116,08-19-18-51-38

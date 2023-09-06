@@ -1,0 +1,433 @@
+time,content,type,sessionID,createdAt
+19:16:26,start a new session,start,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:20:14,我的机器人个性化服务定制需求：1. 走到接待区，进行人物检测，如果检测到人则进行问好，并告知本次参观的目的地为作品展示区。 2. 前往作品展示区，对双臂机器人和机器人测试平台进行介绍，请自行撰写1-2句话对上述两个内容进行介绍 3. 介绍完后询问用户是否对讲解有问题，如果用户回答包含“没有“则进入下一步 ；如果用户回复含有“双臂机器人”或者“机器人测试平台”，则对对应的内容进行介绍，介绍完后再次询问是否有问题，如果用户回答包含“没有“则进入下一步 。4. 告知参观者本次参观结束，即将回到接待区 5. 回到接待区，感谢参观者,authoringNEW-start,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:20:28,"<require>
+1. 走到接待区，进行人物检测，如果检测到人则进行问好，并告知本次参观的目的地为作品展示区。
+2. 前往作品展示区，对双臂机器人进行介绍：双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。
+3. 介绍完后询问用户是否对讲解有问题，如果用户回答包含“没有“则进入下一步；如果用户回复含有“双臂机器人”或者“机器人测试平台”，则对对应的内容进行介绍，介绍完后再次询问是否有问题，如果用户回答包含“没有“则进入下一步。
+4. 告知参观者本次参观结束，即将回到接待区。
+5. 回到接待区，感谢参观者。
+</require>",authoring-finished,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:21:00,我的机器人个性化服务定制需求：1. 走到接待区，进行人物检测，如果检测到人则进行问好，并告知本次参观的目的地为作品展示区。 2. 前往作品展示区，对双臂机器人和机器人测试平台进行介绍，请自行撰写1-2句话对上述两个内容进行介绍 3. 介绍完后询问用户是否对讲解有问题，如果用户回答包含“没有“则进入下一步 ；如果用户回复含有“双臂机器人”或者“机器人测试平台”，则对对应的内容进行介绍，介绍完后再次询问是否有问题，如果用户回答包含“没有“则进入下一步 。4. 告知参观者本次参观结束，即将回到接待区 5. 回到接待区，感谢参观者,authoringNEW-start,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:21:02,<end>完成</end>,authoring-finished,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:21:02,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 走到接待区，进行人物检测，如果检测到人则进行问好，并告知本次参观的目的地为作品展示区。
+2. 前往作品展示区，对双臂机器人进行介绍：双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。
+3. 介绍完后询问用户是否对讲解有问题，如果用户回答包含“没有“则进入下一步；如果用户回复含有“双臂机器人”或者“机器人测试平台”，则对对应的内容进行介绍，介绍完后再次询问是否有问题，如果用户回答包含“没有“则进入下一步。
+4. 告知参观者本次参观结束，即将回到接待区。
+5. 回到接待区，感谢参观者。
+
+        ",nl2js-start,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:21:24,"
+  await robot.userRequest('参观双臂机器人');
+  await robot.goto('接待区');
+  const isPersonDetected = await robot.detectHuman();
+  
+  if(isPersonDetected){
+      await robot.speak('您好！欢迎来到我们的实验室。本次参观的目的地是作品展示区。');
+  }
+  
+  await robot.goto('作品展示区');
+  await robot.speak('这里是我们的双臂机器人和机器人测试平台。双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+  
+  let hasQuestion = await robot.ask('对于以上介绍，您有任何问题吗？');
+  
+  if(hasQuestion.includes('没有')){
+      await robot.speak('好的，接下来我们将回到接待区。');
+  }else if(hasQuestion.includes('双臂机器人')){
+      await robot.speak('双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。');
+      hasQuestion = await robot.ask('还有其他问题吗？');
+  }else if(hasQuestion.includes('机器人测试平台')){
+      await robot.speak('机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+      hasQuestion = await robot.ask('还有其他问题吗？');
+  }
+  
+  if(hasQuestion.includes('没有')){
+      await robot.speak('好的，接下来我们将回到接待区。');
+  }
+  
+  await robot.goto('接待区');
+  await robot.speak('感谢您的参观，希望您对我们的实验室有更深入的了解。');
+",nl2js-finished,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:21:24,"
+  await robot.userRequest('参观双臂机器人');
+  await robot.goto('接待区');
+  const isPersonDetected = await robot.detectHuman();
+  
+  if(isPersonDetected){
+      await robot.speak('您好！欢迎来到我们的实验室。本次参观的目的地是作品展示区。');
+  }
+  
+  await robot.goto('作品展示区');
+  await robot.speak('这里是我们的双臂机器人和机器人测试平台。双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+  
+  let hasQuestion = await robot.ask('对于以上介绍，您有任何问题吗？');
+  
+  if(hasQuestion.includes('没有')){
+      await robot.speak('好的，接下来我们将回到接待区。');
+  }else if(hasQuestion.includes('双臂机器人')){
+      await robot.speak('双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。');
+      hasQuestion = await robot.ask('还有其他问题吗？');
+  }else if(hasQuestion.includes('机器人测试平台')){
+      await robot.speak('机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+      hasQuestion = await robot.ask('还有其他问题吗？');
+  }
+  
+  if(hasQuestion.includes('没有')){
+      await robot.speak('好的，接下来我们将回到接待区。');
+  }
+  
+  await robot.goto('接待区');
+  await robot.speak('感谢您的参观，希望您对我们的实验室有更深入的了解。');
+",js2NLexplain-start,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:21:39,"服务启动关键词：参观双臂机器人
+服务流程：
+1. 机器人接收到用户参观双臂机器人的请求。
+2. 机器人会带领用户前往接待区。
+3. 机器人会检测是否有人在接待区。
+4. 如果有人在接待区，机器人会向用户打招呼，并告诉用户参观的目的地是作品展示区。
+5. 机器人会带领用户前往作品展示区，并向用户介绍双臂机器人和机器人测试平台。
+6. 机器人会询问用户是否有任何问题。
+   - 如果用户回答没有问题，机器人会告诉用户接下来会回到接待区。
+   - 如果用户提到双臂机器人，机器人会详细介绍双臂机器人，并再次询问用户是否还有其他问题。
+   - 如果用户提到机器人测试平台，机器人会详细介绍机器人测试平台，并再次询问用户是否还有其他问题。
+7. 如果用户回答没有问题，机器人会告诉用户接下来会回到接待区。
+8. 机器人会带领用户回到接待区，并向用户表示感谢，并希望用户对实验室有更深入的了解。",js2NLexplain-finished,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:21:39,"
+  await robot.userRequest('参观双臂机器人');
+  await robot.goto('接待区');
+  const isPersonDetected = await robot.detectHuman();
+  
+  if(isPersonDetected){
+      await robot.speak('您好！欢迎来到我们的实验室。本次参观的目的地是作品展示区。');
+  }
+  
+  await robot.goto('作品展示区');
+  await robot.speak('这里是我们的双臂机器人和机器人测试平台。双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+  
+  let hasQuestion = await robot.ask('对于以上介绍，您有任何问题吗？');
+  
+  if(hasQuestion.includes('没有')){
+      await robot.speak('好的，接下来我们将回到接待区。');
+  }else if(hasQuestion.includes('双臂机器人')){
+      await robot.speak('双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。');
+      hasQuestion = await robot.ask('还有其他问题吗？');
+  }else if(hasQuestion.includes('机器人测试平台')){
+      await robot.speak('机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+      hasQuestion = await robot.ask('还有其他问题吗？');
+  }
+  
+  if(hasQuestion.includes('没有')){
+      await robot.speak('好的，接下来我们将回到接待区。');
+  }
+  
+  await robot.goto('接待区');
+  await robot.speak('感谢您的参观，希望您对我们的实验室有更深入的了解。');
+",js2flow-start,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:22:27,"
+graph TB
+r_01([""userRequest:参观双臂机器人""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+s_01[""speak:欢迎语""]
+g_02[""goto:作品展示区""]
+s_02[""speak:介绍双臂机器人和机器人测试平台""]
+a_01[""ask:询问用户是否有问题;用户回复_1""]
+c_02{""condition: 用户回复是否包含'没有';用户回复_1""}
+s_03[""speak:告知下一步行动""]
+c_03{""condition: 用户回复是否包含'双臂机器人';用户回复_1""}
+s_04[""speak:回答关于双臂机器人的问题""]
+a_02[""ask:再次询问用户是否有问题;用户回复_2""]
+c_04{""condition: 用户回复是否包含'机器人测试平台';用户回复_1""}
+s_05[""speak:回答关于机器人测试平台的问题""]
+a_03[""ask:再次询问用户是否有问题;用户回复_3""]
+c_05{""condition: 用户回复是否包含'没有';用户回复_2或用户回复_3""}
+s_06[""speak:告知下一步行动""]
+g_03[""goto:接待区""]
+s_07[""speak:结束语""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> a_01
+a_01 --> c_02
+c_02 --true--> s_03
+c_02 --false--> c_03
+c_03 --true--> s_04
+s_04 --> a_02
+a_02 --> c_05
+c_03 --false--> c_04
+c_04 --true--> s_05
+s_05 --> a_03
+a_03 --> c_05
+c_04 --false--> c_05
+c_05 --true--> s_06
+s_06 --> g_03
+g_03 --> s_07
+s_07 --> k_01
+c_05 --false--> s_06
+c_01 --false--> g_02
+",js2flow-finished,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:22:33,参观双臂机器人,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:22:33,参观双臂机器人,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:22:37,"{'label': '', 'name': 'USERREQUEST', 'tooltip': '参观双臂机器人', 'variable': '', 'action': '参观双臂机器人'}",Node update,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:22:56,告知下一步行动,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:23:10,告知下一步行动,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:23:13,告知下一步行动,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:23:13,告知下一步行动,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:23:16,"{'label': '', 'name': 'SPEAK', 'tooltip': '告知下一步行动', 'variable': '', 'action': '告知下一步行动'}",Node update,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:23:31,SPEAK,newNodeAdd,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:23:34,说话,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:23:34,说话,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:23:46,用户回复是否包含'没有';用户回复_1,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:23:47,用户回复是否包含'没有';用户回复_1,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:23:52,用户回复是否包含'没有';用户回复_1,nodeClick,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:25:16,"jscode:
+    
+  await robot.userRequest('参观双臂机器人');
+  await robot.goto('接待区');
+  const isPersonDetected = await robot.detectHuman();
+  
+  if(isPersonDetected){
+      await robot.speak('您好！欢迎来到我们的实验室。本次参观的目的地是作品展示区。');
+  }
+  
+  await robot.goto('作品展示区');
+  await robot.speak('这里是我们的双臂机器人和机器人测试平台。双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+  
+  let hasQuestion = await robot.ask('对于以上介绍，您有任何问题吗？');
+  
+  if(hasQuestion.includes('没有')){
+      await robot.speak('好的，接下来我们将回到接待区。');
+  }else if(hasQuestion.includes('双臂机器人')){
+      await robot.speak('双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。');
+      hasQuestion = await robot.ask('还有其他问题吗？');
+  }else if(hasQuestion.includes('机器人测试平台')){
+      await robot.speak('机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+      hasQuestion = await robot.ask('还有其他问题吗？');
+  }
+  
+  if(hasQuestion.includes('没有')){
+      await robot.speak('好的，接下来我们将回到接待区。');
+  }
+  
+  await robot.goto('接待区');
+  await robot.speak('感谢您的参观，希望您对我们的实验室有更深入的了解。');
+
+    oldFlow:
+    
+graph TB
+r_01([""userRequest:参观双臂机器人""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+s_01[""speak:欢迎语""]
+g_02[""goto:作品展示区""]
+s_02[""speak:介绍双臂机器人和机器人测试平台""]
+a_01[""ask:询问用户是否有问题;用户回复_1""]
+c_02{""condition: 用户回复是否包含'没有';用户回复_1""}
+s_03[""speak:告知下一步行动""]
+c_03{""condition: 用户回复是否包含'双臂机器人';用户回复_1""}
+s_04[""speak:回答关于双臂机器人的问题""]
+a_02[""ask:再次询问用户是否有问题;用户回复_2""]
+c_04{""condition: 用户回复是否包含'机器人测试平台';用户回复_1""}
+s_05[""speak:回答关于机器人测试平台的问题""]
+a_03[""ask:再次询问用户是否有问题;用户回复_3""]
+c_05{""condition: 用户回复是否包含'没有';用户回复_2或用户回复_3""}
+s_06[""speak:告知下一步行动""]
+g_03[""goto:接待区""]
+s_07[""speak:结束语""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> a_01
+a_01 --> c_02
+c_02 --true--> s_03
+c_02 --false--> c_03
+c_03 --true--> s_04
+s_04 --> a_02
+a_02 --> c_05
+c_03 --false--> c_04
+c_04 --true--> s_05
+s_05 --> a_03
+a_03 --> c_05
+c_04 --false--> c_05
+c_05 --true--> s_06
+s_06 --> g_03
+g_03 --> s_07
+s_07 --> k_01
+c_05 --false--> s_06
+c_01 --false--> g_02
+
+    newFlow:
+    graph TB
+r_01([""userRequest:参观""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition:检测到人;人员检测结果_1""}
+s_01[""speak:欢迎语""]
+g_02[""goto:作品展示区""]
+s_02[""speak:介绍双臂机器人和机器人测试平台""]
+a_01[""ask:询问用户是否有问题;用户回复_1""]
+c_02{""condition:用户回复是否包含'没有';用户回复_1""}
+c_03{""condition:用户回复是否包含'双臂机器人';用户回复_1""}
+s_04[""speak:回答关于双臂机器人的问题""]
+a_02[""ask:再次询问用户是否有问题;用户回复_2""]
+c_04{""condition:用户回复是否包含'机器人测试平台';用户回复_1""}
+s_05[""speak:回答关于机器人测试平台的问题""]
+a_03[""ask:再次询问用户是否有问题;用户回复_3""]
+c_05{""condition:用户回复是否包含'没有';用户回复_2或用户回复_3""}
+s_06[""speak:告知下一步行动""]
+g_03[""goto:接待区""]
+s_07[""speak:结束语""]
+k_01([""end:服务结束""])
+c_02 --> s_06
+c_05 --> c_03
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> a_01
+a_01 --> c_02
+c_02 --false--> c_03
+c_03 --true--> s_04
+s_04 --> a_02
+a_02 --> c_05
+c_03 --false--> c_04
+c_04 --true--> s_05
+s_05 --> a_03
+a_03 --> c_05
+c_04 --false--> c_05
+c_05 --true--> s_06
+s_06 --> g_03
+g_03 --> s_07
+s_07 --> k_01
+c_05 --false--> s_06
+c_01 --false--> g_02
+
+    ",flow2js-start,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:26:14,"await robot.userRequest('参观');
+await robot.goto('接待区');
+const isPersonDetected = await robot.detectHuman();
+
+if(isPersonDetected){
+    await robot.speak('您好！欢迎来到我们的实验室。本次参观的目的地是作品展示区。');
+}
+
+await robot.goto('作品展示区');
+await robot.speak('这里是我们的双臂机器人和机器人测试平台。双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+
+let hasQuestion = await robot.ask('对于以上介绍，您有任何问题吗？');
+
+if(hasQuestion.includes('没有')){
+    await robot.speak('好的，接下来我们将回到接待区。');
+}else if(hasQuestion.includes('双臂机器人')){
+    await robot.speak('双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。');
+    hasQuestion = await robot.ask('还有其他问题吗？');
+}else if(hasQuestion.includes('机器人测试平台')){
+    await robot.speak('机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+    hasQuestion = await robot.ask('还有其他问题吗？');
+}
+
+if(hasQuestion.includes('没有')){
+    await robot.speak('好的，接下来我们将回到接待区。');
+}else if(hasQuestion.includes('双臂机器人')){
+    await robot.speak('双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。');
+    hasQuestion = await robot.ask('还有其他问题吗？');
+}else if(hasQuestion.includes('机器人测试平台')){
+    await robot.speak('机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+    hasQuestion = await robot.ask('还有其他问题吗？');
+}
+
+if(hasQuestion.includes('没有')){
+    await robot.speak('好的，接下来我们将回到接待区。');
+}
+
+await robot.goto('接待区');
+await robot.speak('感谢您的参观，希望您对我们的实验室有更深入的了解。');",flow2js-finished,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:26:14,"
+  originalcode:
+  
+  await robot.userRequest('参观双臂机器人');
+  await robot.goto('接待区');
+  const isPersonDetected = await robot.detectHuman();
+  
+  if(isPersonDetected){
+      await robot.speak('您好！欢迎来到我们的实验室。本次参观的目的地是作品展示区。');
+  }
+  
+  await robot.goto('作品展示区');
+  await robot.speak('这里是我们的双臂机器人和机器人测试平台。双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+  
+  let hasQuestion = await robot.ask('对于以上介绍，您有任何问题吗？');
+  
+  if(hasQuestion.includes('没有')){
+      await robot.speak('好的，接下来我们将回到接待区。');
+  }else if(hasQuestion.includes('双臂机器人')){
+      await robot.speak('双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。');
+      hasQuestion = await robot.ask('还有其他问题吗？');
+  }else if(hasQuestion.includes('机器人测试平台')){
+      await robot.speak('机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+      hasQuestion = await robot.ask('还有其他问题吗？');
+  }
+  
+  if(hasQuestion.includes('没有')){
+      await robot.speak('好的，接下来我们将回到接待区。');
+  }
+  
+  await robot.goto('接待区');
+  await robot.speak('感谢您的参观，希望您对我们的实验室有更深入的了解。');
+
+  modifiedcode:
+  await robot.userRequest('参观');
+await robot.goto('接待区');
+const isPersonDetected = await robot.detectHuman();
+
+if(isPersonDetected){
+    await robot.speak('您好！欢迎来到我们的实验室。本次参观的目的地是作品展示区。');
+}
+
+await robot.goto('作品展示区');
+await robot.speak('这里是我们的双臂机器人和机器人测试平台。双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+
+let hasQuestion = await robot.ask('对于以上介绍，您有任何问题吗？');
+
+if(hasQuestion.includes('没有')){
+    await robot.speak('好的，接下来我们将回到接待区。');
+}else if(hasQuestion.includes('双臂机器人')){
+    await robot.speak('双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。');
+    hasQuestion = await robot.ask('还有其他问题吗？');
+}else if(hasQuestion.includes('机器人测试平台')){
+    await robot.speak('机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+    hasQuestion = await robot.ask('还有其他问题吗？');
+}
+
+if(hasQuestion.includes('没有')){
+    await robot.speak('好的，接下来我们将回到接待区。');
+}else if(hasQuestion.includes('双臂机器人')){
+    await robot.speak('双臂机器人是一种具有双臂的机器人，可以模拟人类的双臂动作，广泛应用于工业生产、医疗护理等领域。');
+    hasQuestion = await robot.ask('还有其他问题吗？');
+}else if(hasQuestion.includes('机器人测试平台')){
+    await robot.speak('机器人测试平台是一种用于测试和验证机器人性能的设备，可以对机器人进行各种功能和性能测试。');
+    hasQuestion = await robot.ask('还有其他问题吗？');
+}
+
+if(hasQuestion.includes('没有')){
+    await robot.speak('好的，接下来我们将回到接待区。');
+}
+
+await robot.goto('接待区');
+await robot.speak('感谢您的参观，希望您对我们的实验室有更深入的了解。');
+  ",explainModifiedJS-start,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26
+19:26:24,修改后的代码与原代码相比，没有改变机器人的行为。修改后的代码仍然是一个个性化机器人服务的服务执行逻辑，机器人会根据用户的请求参观实验室，并根据用户的问题进行回答和解释。机器人会先前往接待区，然后检测是否有人，如果有人则会欢迎并引导用户前往作品展示区。在作品展示区，机器人会介绍双臂机器人和机器人测试平台的功能和应用，并询问用户是否有问题。根据用户的回答，机器人会进行相应的回答和解释。最后，机器人会回到接待区并感谢用户的参观。因此，修改后的代码并没有改变机器人的行为。,explainModifiedJS-finished,e58d0427-b82f-4209-a810-4aaf0881834c,08-23-19-16-26

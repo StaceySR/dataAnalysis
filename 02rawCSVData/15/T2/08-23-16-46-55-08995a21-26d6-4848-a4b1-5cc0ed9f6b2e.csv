@@ -1,0 +1,10 @@
+time,content,type,sessionID,createdAt
+16:46:55,start a new session,start,08995a21-26d6-4848-a4b1-5cc0ed9f6b2e,08-23-16-46-55
+16:47:04,我的机器人个性化服务定制需求：观介绍,authoringNEW-start,08995a21-26d6-4848-a4b1-5cc0ed9f6b2e,08-23-16-46-55
+16:47:09,"<require>
+1. 提供机器人的基本信息，包括机器人的名称、外观、功能等。
+2. 介绍机器人的技术原理和工作原理。
+3. 介绍机器人的应用场景和使用方法。
+4. 提供机器人的相关案例和成功故事。
+5. 介绍机器人的售后服务和技术支持。
+</require>",authoring-finished,08995a21-26d6-4848-a4b1-5cc0ed9f6b2e,08-23-16-46-55

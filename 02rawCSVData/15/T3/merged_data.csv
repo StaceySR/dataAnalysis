@@ -1,0 +1,95 @@
+time,content,type,sessionID,createdAt
+16:53:22,start a new session,start,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:54:30,我的机器人个性化服务定制需求：导引服务,authoringNEW-start,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:54:31,"<require>
+1. 导引服务
+</require>",authoring-finished,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:57:35,我的机器人个性化服务定制需求：导引服务,authoringNEW-start,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:57:41,"<require>
+1. 导引服务：
+   - 前往接待室
+   - 在接待室检测到人后说""请问是修会议室空调的师傅吗？""
+   - 得到回答""张师傅""
+   - 前往会议室
+   - 说""会议室已到，您辛苦了""
+</require>",authoring-finished,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:57:54,我的机器人个性化服务定制需求：导引服务,authoringNEW-start,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:57:55,<end>完成</end>,authoring-finished,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:57:55,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 导引服务：
+   - 前往接待室
+   - 在接待室检测到人后说""请问是修会议室空调的师傅吗？""
+   - 得到回答""张师傅""
+   - 前往会议室
+   - 说""会议室已到，您辛苦了""
+
+        ",nl2js-start,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:58:05,"
+  await robot.userRequest('导引服务');
+  await robot.goto('接待区');
+  const isPresent = await robot.detectHuman();
+  if(isPresent){
+      await robot.speak('请问是修会议室空调的师傅吗？');
+      const name = await robot.ask('请问您是哪位师傅？');
+      await robot.goto('会议室');
+      await robot.speak('会议室已到，' + name + '师傅，您辛苦了');
+  }else{
+      await robot.speak('接待区没有人');
+  }",nl2js-finished,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:58:05,"
+  await robot.userRequest('导引服务');
+  await robot.goto('接待区');
+  const isPresent = await robot.detectHuman();
+  if(isPresent){
+      await robot.speak('请问是修会议室空调的师傅吗？');
+      const name = await robot.ask('请问您是哪位师傅？');
+      await robot.goto('会议室');
+      await robot.speak('会议室已到，' + name + '师傅，您辛苦了');
+  }else{
+      await robot.speak('接待区没有人');
+  }",js2NLexplain-start,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:58:14,"服务启动关键词：导引服务
+服务流程：
+1. 机器人首先接收到用户要进行导引服务的请求。
+2. 机器人会去接待区。
+3. 到达接待区后，机器人会检测是否有人在接待区。
+4. 如果接待区有人，机器人会问是否是修会议室空调的师傅。
+   - 如果是，机器人会问师傅的名字。
+   - 然后，机器人会去会议室，并告诉师傅会议室已经到达，并称赞师傅辛苦了。
+5. 如果接待区没有人，机器人会告诉用户接待区没有人。",js2NLexplain-finished,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:58:14,"
+  await robot.userRequest('导引服务');
+  await robot.goto('接待区');
+  const isPresent = await robot.detectHuman();
+  if(isPresent){
+      await robot.speak('请问是修会议室空调的师傅吗？');
+      const name = await robot.ask('请问您是哪位师傅？');
+      await robot.goto('会议室');
+      await robot.speak('会议室已到，' + name + '师傅，您辛苦了');
+  }else{
+      await robot.speak('接待区没有人');
+  }",js2flow-start,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22
+16:58:54,"
+  graph TB
+  r_01([""userRequest:导引服务""])
+  g_01[""goto:接待区""]
+  d_01[""detectHuman""]
+  c_01{""condition: 检测到人;人员检测结果""}
+  s_01[""speak:询问是否是修理空调的师傅""]
+  a_01[""ask:询问师傅的名字;用户回复""]
+  g_02[""goto:会议室""]
+  s_02[""speak:告知已到达会议室并称呼师傅;用户回复""]
+  s_03[""speak:告知接待区没有人""]
+  k_01([""end:服务结束""])
+  r_01 --> g_01
+  g_01 --> d_01
+  d_01 --> c_01
+  c_01 --true--> s_01
+  s_01 --> a_01
+  a_01 --> g_02
+  g_02 --> s_02
+  s_02 --> k_01
+  c_01 --false--> s_03
+  s_03 --> k_01
+",js2flow-finished,3f2e7509-4dce-491a-a6fa-d1b5b76a9652,08-23-16-53-22

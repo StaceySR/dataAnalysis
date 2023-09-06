@@ -1,0 +1,185 @@
+time,content,type,sessionID,createdAt
+16:37:29,start a new session,start,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29
+16:43:29,我的机器人个性化服务定制需求：先去充电桩，如果检测到有人，询问是否需要参观服务。如果回答是，询问用户需要先去接待区还是先去作品展示区。如果用户回答先去接待区，就去接待区，说：“接待区介绍”，再去作品展示区，说：“作品展示区介绍”。如果用户回答先去作品展示区，就去作品展示区，说：“作品展示区介绍”，再去接待区，说：“接待区介绍”。最后，说：“参观完成”，然后返回充电桩。,authoringNEW-start,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29
+16:43:35,"<require>
+1. 充电桩
+2. 检测到有人时询问是否需要参观服务
+3. 如果回答是，询问用户需要先去接待区还是先去作品展示区
+4. 如果用户回答先去接待区，去接待区并说：“接待区介绍”，再去作品展示区并说：“作品展示区介绍”
+5. 如果用户回答先去作品展示区，去作品展示区并说：“作品展示区介绍”，再去接待区并说：“接待区介绍”
+6. 最后，说：“参观完成”，然后返回充电桩
+</require>",authoring-finished,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29
+16:44:04,我的机器人个性化服务定制需求：先去充电桩，如果检测到有人，询问是否需要参观服务。如果回答是，询问用户需要先去接待区还是先去作品展示区。如果用户回答先去接待区，就去接待区，说：“接待区介绍”，再去作品展示区，说：“作品展示区介绍”。如果用户回答先去作品展示区，就去作品展示区，说：“作品展示区介绍”，再去接待区，说：“接待区介绍”。最后，说：“参观完成”，然后返回充电桩。,authoringNEW-start,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29
+16:44:06,<end>完成</end>,authoring-finished,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29
+16:44:06,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 充电桩
+2. 检测到有人时询问是否需要参观服务
+3. 如果回答是，询问用户需要先去接待区还是先去作品展示区
+4. 如果用户回答先去接待区，去接待区并说：“接待区介绍”，再去作品展示区并说：“作品展示区介绍”
+5. 如果用户回答先去作品展示区，去作品展示区并说：“作品展示区介绍”，再去接待区并说：“接待区介绍”
+6. 最后，说：“参观完成”，然后返回充电桩
+
+        ",nl2js-start,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29
+16:44:14,"
+  await robot.userRequest('参观服务');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      const answer = await robot.ask('您是否需要参观服务？');
+  
+      if(answer==""是""){
+          const locationAnswer = await robot.ask('您想先去接待区还是先去作品展示区？');
+  
+          if(locationAnswer==""接待区""){
+              await robot.goto('接待区');
+              await robot.speak('接待区介绍');
+              await robot.goto('作品展示区');
+              await robot.speak('作品展示区介绍');
+  
+          }else if(locationAnswer==""作品展示区""){
+              await robot.goto('作品展示区');
+              await robot.speak('作品展示区介绍');
+              await robot.goto('接待区');
+              await robot.speak('接待区介绍');
+          }
+  
+          await robot.speak('参观完成');
+  
+      }else{
+          await robot.speak('好的，欢迎下次再来');
+      }
+  
+  }else{
+      await robot.speak('没有检测到有人');
+  }
+  
+  await robot.goto('充电桩');",nl2js-finished,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29
+16:44:14,"
+  await robot.userRequest('参观服务');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      const answer = await robot.ask('您是否需要参观服务？');
+  
+      if(answer==""是""){
+          const locationAnswer = await robot.ask('您想先去接待区还是先去作品展示区？');
+  
+          if(locationAnswer==""接待区""){
+              await robot.goto('接待区');
+              await robot.speak('接待区介绍');
+              await robot.goto('作品展示区');
+              await robot.speak('作品展示区介绍');
+  
+          }else if(locationAnswer==""作品展示区""){
+              await robot.goto('作品展示区');
+              await robot.speak('作品展示区介绍');
+              await robot.goto('接待区');
+              await robot.speak('接待区介绍');
+          }
+  
+          await robot.speak('参观完成');
+  
+      }else{
+          await robot.speak('好的，欢迎下次再来');
+      }
+  
+  }else{
+      await robot.speak('没有检测到有人');
+  }
+  
+  await robot.goto('充电桩');",js2NLexplain-start,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29
+16:44:24,"服务启动关键词：参观服务
+服务流程：
+1. 机器人首先接收到用户要参观的请求。
+2. 机器人会检测周围是否有人。
+3. 如果检测到有人，机器人会问用户是否需要参观服务。
+4. 得到用户的回答后，机器人会继续询问用户想先去接待区还是作品展示区。
+5. 根据用户的回答，机器人会先去相应的地方，并进行介绍。
+   - 如果用户选择先去接待区，机器人会先去接待区，然后进行接待区的介绍，接着去作品展示区，并进行作品展示区的介绍。
+   - 如果用户选择先去作品展示区，机器人会先去作品展示区，然后进行作品展示区的介绍，接着去接待区，并进行接待区的介绍。
+6. 参观完成后，机器人会告诉用户参观完成。
+7. 如果用户不需要参观服务，机器人会告诉用户欢迎下次再来。
+8. 如果没有检测到有人，机器人会告诉用户没有检测到有人。
+9. 最后，机器人会去充电桩充电。",js2NLexplain-finished,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29
+16:44:24,"
+  await robot.userRequest('参观服务');
+  const isHuman = await robot.detectHuman();
+  
+  if(isHuman){
+      const answer = await robot.ask('您是否需要参观服务？');
+  
+      if(answer==""是""){
+          const locationAnswer = await robot.ask('您想先去接待区还是先去作品展示区？');
+  
+          if(locationAnswer==""接待区""){
+              await robot.goto('接待区');
+              await robot.speak('接待区介绍');
+              await robot.goto('作品展示区');
+              await robot.speak('作品展示区介绍');
+  
+          }else if(locationAnswer==""作品展示区""){
+              await robot.goto('作品展示区');
+              await robot.speak('作品展示区介绍');
+              await robot.goto('接待区');
+              await robot.speak('接待区介绍');
+          }
+  
+          await robot.speak('参观完成');
+  
+      }else{
+          await robot.speak('好的，欢迎下次再来');
+      }
+  
+  }else{
+      await robot.speak('没有检测到有人');
+  }
+  
+  await robot.goto('充电桩');",js2flow-start,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29
+16:45:31,"
+graph TB
+r_01([""userRequest:参观服务""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问用户是否需要参观服务;用户回复_1""]
+c_02{""condition: 用户回复为“是”;用户回复_1""}
+a_02[""ask:询问用户想先去接待区还是先去作品展示区;用户回复_2""]
+c_03{""condition: 用户回复为“接待区”;用户回复_2""}
+g_01[""goto:接待区""]
+s_01[""speak:介绍接待区""]
+g_02[""goto:作品展示区""]
+s_02[""speak:介绍作品展示区""]
+c_04{""condition: 用户回复为“作品展示区”;用户回复_2""}
+g_03[""goto:作品展示区""]
+s_03[""speak:介绍作品展示区""]
+g_04[""goto:接待区""]
+s_04[""speak:介绍接待区""]
+s_05[""speak:告知参观完成""]
+s_06[""speak:告知欢迎下次再来""]
+s_07[""speak:告知没有检测到有人""]
+g_05[""goto:充电桩""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> c_03
+c_03 --true--> g_01
+g_01 --> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> s_05
+a_02 --> c_04
+c_04 --true--> g_03
+g_03 --> s_03
+s_03 --> g_04
+g_04 --> s_04
+s_04 --> s_05
+c_02 --false--> s_06
+c_01 --false--> s_07
+s_05 --> g_05
+s_06 --> g_05
+s_07 --> g_05
+g_05 --> k_01
+",js2flow-finished,7fb3caee-c3a1-4177-9e22-e7930ae25b40,08-22-16-37-29

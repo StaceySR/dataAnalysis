@@ -1,0 +1,498 @@
+time,content,type,sessionID,createdAt
+18:55:54,start a new session,start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:57:57,"我的机器人个性化服务定制需求：当附近检测到有客户时，主动向客户打招呼，说;""欢迎来到CDI实验室，请问您想参观哪里呢“，同时询问是否有需要帮助之处。根据客户回答的场所，引导客户前去。",authoringNEW-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:58:00,"<require>
+1. 当附近检测到有客户时，主动向客户打招呼，说：""欢迎来到CDI实验室，请问您想参观哪里呢？""
+2. 同时询问客户是否有需要帮助之处。
+3. 根据客户回答的场所，引导客户前去。
+</require>",authoring-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:58:55,"我的机器人个性化服务定制需求：当附近检测到有客户时，主动向客户打招呼，说;""欢迎来到CDI实验室，请问您想参观哪里呢“，同时询问是否有需要帮助之处。根据客户回答的场所，引导客户前去。",authoringNEW-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:58:59,"<modifiedrequire>
+1. 当附近检测到有客户时，主动向客户打招呼，说：""欢迎来到CDI实验室，请问您想参观哪里呢？""
+2. 同时询问客户是否有需要帮助之处。
+3. 根据客户回答的场所，引导客户前去。
+4. 到达指定地点后，介绍所在区域名称。
+5. 返回充电桩。
+</modifiedrequire>",authoring-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:59:10,"我的机器人个性化服务定制需求：当附近检测到有客户时，主动向客户打招呼，说;""欢迎来到CDI实验室，请问您想参观哪里呢“，同时询问是否有需要帮助之处。根据客户回答的场所，引导客户前去。",authoringNEW-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:59:12,<end>完成</end>,authoring-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:59:12,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 当附近检测到有客户时，主动向客户打招呼，说：""欢迎来到CDI实验室，请问您想参观哪里呢？""
+2. 同时询问客户是否有需要帮助之处。
+3. 根据客户回答的场所，引导客户前去。
+4. 到达指定地点后，介绍所在区域名称。
+5. 返回充电桩。
+
+        ",nl2js-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:59:17,"
+  await robot.userRequest('实验室导览');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+      const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+  
+      if(helpNeeded==""有""){
+          const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+          await robot.goto(location);
+          await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+      }
+  
+  }else{
+      await robot.speak('附近没有客户');
+  }
+  
+  await robot.goto('充电桩');
+  await robot.speak('任务完成，返回充电桩。');",nl2js-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:59:17,"
+  await robot.userRequest('实验室导览');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+      const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+  
+      if(helpNeeded==""有""){
+          const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+          await robot.goto(location);
+          await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+      }
+  
+  }else{
+      await robot.speak('附近没有客户');
+  }
+  
+  await robot.goto('充电桩');
+  await robot.speak('任务完成，返回充电桩。');",js2NLexplain-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:59:24,"服务启动关键词：实验室导览
+服务流程：
+1. 机器人首先接收到用户要进行实验室导览的请求。
+2. 机器人会检测周围是否有人。
+3. 如果检测到有人，机器人会欢迎用户来到CDI实验室，并询问用户想参观哪里。
+4. 机器人会问用户是否需要帮助。
+   - 如果用户需要帮助，机器人会询问用户想参观的具体地方。
+     - 机器人会前往用户指定的地方，并告诉用户他们现在所在的位置和该位置的区域。
+   - 如果用户不需要帮助，机器人会直接结束导览。
+5. 如果检测不到人，机器人会告诉用户附近没有客户。
+6. 最后，机器人会前往充电桩，并告诉用户任务完成，返回充电桩。",js2NLexplain-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:59:24,"
+  await robot.userRequest('实验室导览');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+      const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+  
+      if(helpNeeded==""有""){
+          const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+          await robot.goto(location);
+          await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+      }
+  
+  }else{
+      await robot.speak('附近没有客户');
+  }
+  
+  await robot.goto('充电桩');
+  await robot.speak('任务完成，返回充电桩。');",js2flow-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+18:59:48,"
+graph TB
+r_01([""userRequest:实验室导览""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果""}
+s_01[""speak:欢迎来到CDI实验室，请问您想参观哪里呢？""]
+a_01[""ask:询问用户是否需要帮助;用户回复1""]
+c_02{""condition: 用户需要帮助;用户回复1""}
+a_02[""ask:询问用户想参观的地方;用户回复2""]
+g_01[""goto:用户回复2""]
+s_02[""speak:告知用户当前位置;用户回复2""]
+s_03[""speak:附近没有客户""]
+g_02[""goto:充电桩""]
+s_04[""speak:任务完成，返回充电桩""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+c_02 --false--> g_02
+c_01 --false--> s_03
+s_03 --> g_02
+g_02 --> s_04
+s_04 --> k_01
+",js2flow-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:01:17,用户需要帮助;用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:01:17,用户需要帮助;用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:01:31,"{'label': '', 'name': 'IF', 'tooltip': '用户需要帮助;用户回复1', 'variable': ' 用户回复1', 'action': '想要'}",Node update,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:01:37,"{'label': '', 'name': 'IF', 'tooltip': '用户需要帮助;用户回复1', 'variable': ' 用户回复1', 'action': '想要'}",Node update,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:01:40,"jscode:
+    
+  await robot.userRequest('实验室导览');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+      const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+  
+      if(helpNeeded==""有""){
+          const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+          await robot.goto(location);
+          await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+      }
+  
+  }else{
+      await robot.speak('附近没有客户');
+  }
+  
+  await robot.goto('充电桩');
+  await robot.speak('任务完成，返回充电桩。');
+    oldFlow:
+    
+graph TB
+r_01([""userRequest:实验室导览""])
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果""}
+s_01[""speak:欢迎来到CDI实验室，请问您想参观哪里呢？""]
+a_01[""ask:询问用户是否需要帮助;用户回复1""]
+c_02{""condition: 用户需要帮助;用户回复1""}
+a_02[""ask:询问用户想参观的地方;用户回复2""]
+g_01[""goto:用户回复2""]
+s_02[""speak:告知用户当前位置;用户回复2""]
+s_03[""speak:附近没有客户""]
+g_02[""goto:充电桩""]
+s_04[""speak:任务完成，返回充电桩""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+c_02 --false--> g_02
+c_01 --false--> s_03
+s_03 --> g_02
+g_02 --> s_04
+s_04 --> k_01
+
+    newFlow:
+    graph TB
+r_01([""userRequest:实验室导览""])
+d_01[""detectHuman""]
+c_01{""condition:检测到人;人员检测结果""}
+s_01[""speak:欢迎来到CDI实验室，请问您想参观哪里呢？""]
+a_01[""ask:询问用户是否需要帮助;用户回复1""]
+c_02{""condition:用户需要帮助;用户回复1""}
+a_02[""ask:询问用户想参观的地方;用户回复2""]
+g_01[""goto:用户回复2""]
+s_02[""speak:告知用户当前位置;用户回复2""]
+s_03[""speak:附近没有客户""]
+g_02[""goto:充电桩""]
+s_04[""speak:任务完成，返回充电桩""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+c_02 --false--> g_02
+c_01 --false--> s_03
+s_03 --> g_02
+g_02 --> s_04
+s_04 --> k_01
+
+    ",flow2js-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:01:54,"await robot.userRequest('实验室导览');
+const isHumanDetected = await robot.detectHuman();
+
+if(isHumanDetected){
+    await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+    const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+
+    if(helpNeeded==""有""){
+        const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+        await robot.goto(location);
+        await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+    }
+
+}else{
+    await robot.speak('附近没有客户');
+}
+
+await robot.goto('充电桩');
+await robot.speak('任务完成，返回充电桩。');",flow2js-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:01:54,"
+  originalcode:
+  
+  await robot.userRequest('实验室导览');
+  const isHumanDetected = await robot.detectHuman();
+  
+  if(isHumanDetected){
+      await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+      const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+  
+      if(helpNeeded==""有""){
+          const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+          await robot.goto(location);
+          await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+      }
+  
+  }else{
+      await robot.speak('附近没有客户');
+  }
+  
+  await robot.goto('充电桩');
+  await robot.speak('任务完成，返回充电桩。');
+  modifiedcode:
+  await robot.userRequest('实验室导览');
+const isHumanDetected = await robot.detectHuman();
+
+if(isHumanDetected){
+    await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+    const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+
+    if(helpNeeded==""有""){
+        const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+        await robot.goto(location);
+        await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+    }
+
+}else{
+    await robot.speak('附近没有客户');
+}
+
+await robot.goto('充电桩');
+await robot.speak('任务完成，返回充电桩。');
+  ",explainModifiedJS-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:02:00,"修改后的代码与原代码相比，没有改变机器人的行为。机器人仍然会先等待用户输入""实验室导览""来启动服务，然后检测是否有人存在。如果有人存在，机器人会欢迎用户并询问用户想参观的地方，如果用户需要帮助，机器人会根据用户的回答前往指定的地方，并告诉用户当前所在的位置。如果没有人存在，机器人会说附近没有客户。最后，无论是否有人存在，机器人都会前往充电桩并说任务完成。因此，修改后的代码并没有改变机器人的行为。",explainModifiedJS-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:02:13,用户需要帮助;用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:02:15,"selectedNodes:
+    IF: 用户需要帮助;用户回复1
+    flow:
+    graph TB
+r_01([""userRequest:实验室导览""])
+d_01[""detectHuman""]
+c_01{""condition:检测到人;人员检测结果""}
+s_01[""speak:欢迎来到CDI实验室，请问您想参观哪里呢？""]
+a_01[""ask:询问用户是否需要帮助;用户回复1""]
+c_02{""condition:用户需要帮助;用户回复1""}
+a_02[""ask:询问用户想参观的地方;用户回复2""]
+g_01[""goto:用户回复2""]
+s_02[""speak:告知用户当前位置;用户回复2""]
+s_03[""speak:附近没有客户""]
+g_02[""goto:充电桩""]
+s_04[""speak:任务完成，返回充电桩""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+c_02 --false--> g_02
+c_01 --false--> s_03
+s_03 --> g_02
+g_02 --> s_04
+s_04 --> k_01
+
+    jscode:
+    await robot.userRequest('实验室导览');
+const isHumanDetected = await robot.detectHuman();
+
+if(isHumanDetected){
+    await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+    const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+
+    if(helpNeeded==""有""){
+        const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+        await robot.goto(location);
+        await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+    }
+
+}else{
+    await robot.speak('附近没有客户');
+}
+
+await robot.goto('充电桩');
+await robot.speak('任务完成，返回充电桩。');
+    ",magicModify-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:02:20,"你所选中的节点包括：""IF: 用户需要帮助;用户回复1"" 
+
+在整个服务中的作用是根据用户的回复判断是否需要帮助。具体的逻辑是，当用户回复1表示需要帮助时，机器人会询问用户想参观的地方，并根据用户的回复前往相应的地点。机器人还会告知用户当前位置和所在区域。
+
+你可以进一步询问我关于这个节点的信息，我会给你提供更多的信息。或者你可以让我直接修改这个节点的行为。或者结束节点调试。",magicModify-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:03:36,用户需要帮助;用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:03:38,用户需要帮助;用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:03:38,用户需要帮助;用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:03:45,"{'label': '', 'name': 'IF', 'tooltip': '用户需要帮助;用户回复1', 'variable': ' 用户回复1', 'action': '需要'}",Node update,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:04:03,需要; 用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:04:04,需要; 用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:04:04,需要; 用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:04:23,"jscode:
+    await robot.userRequest('实验室导览');
+const isHumanDetected = await robot.detectHuman();
+
+if(isHumanDetected){
+    await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+    const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+
+    if(helpNeeded==""有""){
+        const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+        await robot.goto(location);
+        await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+    }
+
+}else{
+    await robot.speak('附近没有客户');
+}
+
+await robot.goto('充电桩');
+await robot.speak('任务完成，返回充电桩。');
+    oldFlow:
+    graph TB
+r_01([""userRequest:实验室导览""])
+d_01[""detectHuman""]
+c_01{""condition:检测到人;人员检测结果""}
+s_01[""speak:欢迎来到CDI实验室，请问您想参观哪里呢？""]
+a_01[""ask:询问用户是否需要帮助;用户回复1""]
+c_02{""condition:用户需要帮助;用户回复1""}
+a_02[""ask:询问用户想参观的地方;用户回复2""]
+g_01[""goto:用户回复2""]
+s_02[""speak:告知用户当前位置;用户回复2""]
+s_03[""speak:附近没有客户""]
+g_02[""goto:充电桩""]
+s_04[""speak:任务完成，返回充电桩""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+c_02 --false--> g_02
+c_01 --false--> s_03
+s_03 --> g_02
+g_02 --> s_04
+s_04 --> k_01
+
+    newFlow:
+    graph TB
+r_01([""userRequest:实验室导览""])
+d_01[""detectHuman""]
+c_01{""condition:检测到人;人员检测结果""}
+s_01[""speak:欢迎来到CDI实验室，请问您想参观哪里呢？""]
+a_01[""ask:询问用户是否需要帮助;用户回复1""]
+c_02{""condition:需要; 用户回复1""}
+a_02[""ask:询问用户想参观的地方;用户回复2""]
+g_01[""goto:用户回复2""]
+s_02[""speak:告知用户当前位置;用户回复2""]
+s_03[""speak:附近没有客户""]
+g_02[""goto:充电桩""]
+s_04[""speak:任务完成，返回充电桩""]
+k_01([""end:服务结束""])
+r_01 --> d_01
+d_01 --> c_01
+c_01 --true--> s_01
+s_01 --> a_01
+a_01 --> c_02
+c_02 --true--> a_02
+a_02 --> g_01
+g_01 --> s_02
+s_02 --> g_02
+c_02 --false--> g_02
+c_01 --false--> s_03
+s_03 --> g_02
+g_02 --> s_04
+s_04 --> k_01
+
+    ",flow2js-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:04:38,"await robot.userRequest('实验室导览');
+const isHumanDetected = await robot.detectHuman();
+
+if(isHumanDetected){
+    await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+    const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+
+    if(helpNeeded==""需要""){
+        const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+        await robot.goto(location);
+        await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+    }
+
+}else{
+    await robot.speak('附近没有客户');
+}
+
+await robot.goto('充电桩');
+await robot.speak('任务完成，返回充电桩。');",flow2js-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:04:38,"
+  originalcode:
+  await robot.userRequest('实验室导览');
+const isHumanDetected = await robot.detectHuman();
+
+if(isHumanDetected){
+    await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+    const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+
+    if(helpNeeded==""有""){
+        const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+        await robot.goto(location);
+        await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+    }
+
+}else{
+    await robot.speak('附近没有客户');
+}
+
+await robot.goto('充电桩');
+await robot.speak('任务完成，返回充电桩。');
+  modifiedcode:
+  await robot.userRequest('实验室导览');
+const isHumanDetected = await robot.detectHuman();
+
+if(isHumanDetected){
+    await robot.speak('欢迎来到CDI实验室，请问您想参观哪里呢？');
+    const helpNeeded = await robot.ask('您有需要帮助的地方吗？');
+
+    if(helpNeeded==""需要""){
+        const location = await robot.ask('请告诉我您想参观的地方是哪里？');
+        await robot.goto(location);
+        await robot.speak('您现在在'+location+'，这里是'+location+'区域。');
+    }
+
+}else{
+    await robot.speak('附近没有客户');
+}
+
+await robot.goto('充电桩');
+await robot.speak('任务完成，返回充电桩。');
+  ",explainModifiedJS-start,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:04:41,"修改后的代码在用户需要帮助时，将询问用户是否需要帮助的问题改为了""您有需要帮助的地方吗？""。这样修改后的代码在用户需要帮助时会询问用户是否需要帮助，而不是直接询问用户想参观的地方。这样修改后的代码会更加友好和灵活，能够更好地满足用户的需求。",explainModifiedJS-finished,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:08:04,实验室导览,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:08:28,需要; 用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:08:30,需要; 用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:08:30,需要; 用户回复1,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:08:46,询问用户想参观的地方;用户回复2,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:08:46,询问用户想参观的地方;用户回复2,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:08:48,用户回复2,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:08:58,告知用户当前位置;用户回复2,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:08:59,告知用户当前位置;用户回复2,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:08:59,告知用户当前位置;用户回复2,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54
+19:09:02,任务完成，返回充电桩,nodeClick,578d5444-4e48-4c56-8969-547682c4618f,08-19-18-55-54

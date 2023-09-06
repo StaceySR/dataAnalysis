@@ -1,0 +1,435 @@
+time,content,type,sessionID,createdAt
+19:30:22,start a new session,start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:36:29,我的机器人个性化服务定制需求：我需要定制一个引领人到指定地点的流程，需求如下：1. 到达接待区，进行人物检测，检测到人后询问对方是否为空调维修的张师傅，如果对方回答否，则请对方在接待室稍作休息，如果回答是则进行下一步 2. 告知张师傅自己即将引领对方去会议室进行空调维修，移动到会议室 3. 告知已移动到会议室，请张师傅进行维修 4. 回到接待区,authoringNEW-start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:36:37,"<require>
+1. 到达接待区，进行人物检测，检测到人后询问对方是否为空调维修的张师傅，如果对方回答否，则请对方在接待室稍作休息，如果回答是则进行下一步
+2. 告知张师傅自己即将引领对方去会议室进行空调维修，移动到会议室
+3. 告知已移动到会议室，请张师傅进行维修
+4. 回到接待区
+</require>",authoring-finished,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:36:49,我的机器人个性化服务定制需求：我需要定制一个引领人到指定地点的流程，需求如下：1. 到达接待区，进行人物检测，检测到人后询问对方是否为空调维修的张师傅，如果对方回答否，则请对方在接待室稍作休息，如果回答是则进行下一步 2. 告知张师傅自己即将引领对方去会议室进行空调维修，移动到会议室 3. 告知已移动到会议室，请张师傅进行维修 4. 回到接待区,authoringNEW-start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:36:50,<end>完成</end>,authoring-finished,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:36:50,"
+        实现一个的服务，该服务需要满足以下需求：
+1. 到达接待区，进行人物检测，检测到人后询问对方是否为空调维修的张师傅，如果对方回答否，则请对方在接待室稍作休息，如果回答是则进行下一步
+2. 告知张师傅自己即将引领对方去会议室进行空调维修，移动到会议室
+3. 告知已移动到会议室，请张师傅进行维修
+4. 回到接待区
+
+        ",nl2js-start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:37:02,"
+  await robot.userRequest('空调维修');
+  await robot.goto('接待区');
+  const isPersonDetected = await robot.detectHuman();
+  
+  if(isPersonDetected){
+      const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+  
+      if(isRepairman==""是""){
+          await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+          await robot.goto('会议室');
+          await robot.speak('我们已经到达会议室，请张师傅进行维修');
+          await robot.goto('接待区');
+          await robot.speak('维修完成，感谢张师傅的帮助');
+  
+      }else{
+          await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+      }
+  
+  }else{
+      await robot.speak('接待区没有人，请稍后再来');
+  }",nl2js-finished,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:37:02,"
+  await robot.userRequest('空调维修');
+  await robot.goto('接待区');
+  const isPersonDetected = await robot.detectHuman();
+  
+  if(isPersonDetected){
+      const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+  
+      if(isRepairman==""是""){
+          await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+          await robot.goto('会议室');
+          await robot.speak('我们已经到达会议室，请张师傅进行维修');
+          await robot.goto('接待区');
+          await robot.speak('维修完成，感谢张师傅的帮助');
+  
+      }else{
+          await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+      }
+  
+  }else{
+      await robot.speak('接待区没有人，请稍后再来');
+  }",js2NLexplain-start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:37:15,"服务启动关键词：空调维修
+服务流程：
+1. 机器人接收到用户要进行空调维修的请求。
+2. 机器人会去接待区。
+3. 机器人会检测是否有人在接待区。
+4. 如果有人在接待区，机器人会问这个人是不是空调维修的张师傅。
+   - 如果他回答是，机器人会告诉他跟着机器人去会议室进行空调维修。
+     - 机器人会带他去会议室。
+     - 机器人会告诉他们已经到达会议室，并让张师傅进行维修。
+     - 机器人会带他们回到接待区。
+     - 机器人会告诉用户维修完成，并感谢张师傅的帮助。
+   - 如果他回答不是，机器人会告诉他非常抱歉，他不是空调维修的张师傅，请在接待室稍作休息。
+5. 如果接待区没有人，机器人会告诉用户接待区没有人，请稍后再来。",js2NLexplain-finished,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:37:16,"
+  await robot.userRequest('空调维修');
+  await robot.goto('接待区');
+  const isPersonDetected = await robot.detectHuman();
+  
+  if(isPersonDetected){
+      const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+  
+      if(isRepairman==""是""){
+          await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+          await robot.goto('会议室');
+          await robot.speak('我们已经到达会议室，请张师傅进行维修');
+          await robot.goto('接待区');
+          await robot.speak('维修完成，感谢张师傅的帮助');
+  
+      }else{
+          await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+      }
+  
+  }else{
+      await robot.speak('接待区没有人，请稍后再来');
+  }",js2flow-start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:37:49,"
+graph TB
+r_01([""userRequest:空调维修""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是空调维修的张师傅;用户回复_1""]
+c_02{""condition: 是空调维修的张师傅;用户回复_1""}
+s_01[""speak:告知将引领去会议室进行空调维修""]
+g_02[""goto:会议室""]
+s_02[""speak:告知已经到达会议室""]
+g_03[""goto:接待区""]
+s_03[""speak:告知维修完成""]
+s_04[""speak:告知不是空调维修的张师傅""]
+s_05[""speak:告知接待区没有人""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> g_03
+g_03 --> s_03
+s_03 --> k_01
+c_02 --false--> s_04
+s_04 --> k_01
+c_01 --false--> s_05
+s_05 --> k_01
+",js2flow-finished,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:38:16,"
+  currentCode :
+  
+  await robot.userRequest('空调维修');
+  await robot.goto('接待区');
+  const isPersonDetected = await robot.detectHuman();
+  
+  if(isPersonDetected){
+      const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+  
+      if(isRepairman==""是""){
+          await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+          await robot.goto('会议室');
+          await robot.speak('我们已经到达会议室，请张师傅进行维修');
+          await robot.goto('接待区');
+          await robot.speak('维修完成，感谢张师傅的帮助');
+  
+      }else{
+          await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+      }
+  
+  }else{
+      await robot.speak('接待区没有人，请稍后再来');
+  }
+  userInput:
+  5 如果没有检测到人 则直接到服务结束步骤
+  ",nl2jswithContext-start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:38:37,"await robot.userRequest('空调维修');
+await robot.goto('接待区');
+const isPersonDetected = await robot.detectHuman();
+
+if(isPersonDetected){
+    const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+
+    if(isRepairman==""是""){
+        await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+        await robot.goto('会议室');
+        await robot.speak('我们已经到达会议室，请张师傅进行维修');
+        await robot.goto('接待区');
+        await robot.speak('维修完成，感谢张师傅的帮助');
+
+    }else{
+        await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+    }
+
+}else{
+    await robot.speak('服务结束');
+}",nl2jswithContext-finished,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:38:37,"
+  originalcode:
+  
+  await robot.userRequest('空调维修');
+  await robot.goto('接待区');
+  const isPersonDetected = await robot.detectHuman();
+  
+  if(isPersonDetected){
+      const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+  
+      if(isRepairman==""是""){
+          await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+          await robot.goto('会议室');
+          await robot.speak('我们已经到达会议室，请张师傅进行维修');
+          await robot.goto('接待区');
+          await robot.speak('维修完成，感谢张师傅的帮助');
+  
+      }else{
+          await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+      }
+  
+  }else{
+      await robot.speak('接待区没有人，请稍后再来');
+  }
+  modifiedcode:
+  await robot.userRequest('空调维修');
+await robot.goto('接待区');
+const isPersonDetected = await robot.detectHuman();
+
+if(isPersonDetected){
+    const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+
+    if(isRepairman==""是""){
+        await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+        await robot.goto('会议室');
+        await robot.speak('我们已经到达会议室，请张师傅进行维修');
+        await robot.goto('接待区');
+        await robot.speak('维修完成，感谢张师傅的帮助');
+
+    }else{
+        await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+    }
+
+}else{
+    await robot.speak('服务结束');
+}
+  ",explainModifiedJS-start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:38:42,"修改后的代码在原代码的基础上，只是在最后添加了一句话""await robot.speak('服务结束');""。这句话的作用是在没有检测到人的情况下，机器人会说出""服务结束""。这样修改后的代码在原代码的基础上，增加了一个机器人行为，即在没有人的情况下结束服务。",explainModifiedJS-finished,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:38:42,"await robot.userRequest('空调维修');
+await robot.goto('接待区');
+const isPersonDetected = await robot.detectHuman();
+
+if(isPersonDetected){
+    const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+
+    if(isRepairman==""是""){
+        await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+        await robot.goto('会议室');
+        await robot.speak('我们已经到达会议室，请张师傅进行维修');
+        await robot.goto('接待区');
+        await robot.speak('维修完成，感谢张师傅的帮助');
+
+    }else{
+        await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+    }
+
+}else{
+    await robot.speak('服务结束');
+}",js2flow-start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:39:10,"
+graph TB
+r_01([""userRequest:空调维修""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是空调维修的张师傅;用户回复_1""]
+c_02{""condition: 是空调维修的张师傅;用户回复_1""}
+s_01[""speak:告知张师傅跟随前往会议室""]
+g_02[""goto:会议室""]
+s_02[""speak:告知张师傅已经到达会议室""]
+g_03[""goto:接待区""]
+s_03[""speak:告知维修完成""]
+s_04[""speak:告知非张师傅在接待室等待""]
+s_05[""speak:告知服务结束""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> g_03
+g_03 --> s_03
+s_03 --> k_01
+c_02 --false--> s_04
+s_04 --> k_01
+c_01 --false--> s_05
+s_05 --> k_01
+",js2flow-finished,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:39:16,"jscode:
+    await robot.userRequest('空调维修');
+await robot.goto('接待区');
+const isPersonDetected = await robot.detectHuman();
+
+if(isPersonDetected){
+    const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+
+    if(isRepairman==""是""){
+        await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+        await robot.goto('会议室');
+        await robot.speak('我们已经到达会议室，请张师傅进行维修');
+        await robot.goto('接待区');
+        await robot.speak('维修完成，感谢张师傅的帮助');
+
+    }else{
+        await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+    }
+
+}else{
+    await robot.speak('服务结束');
+}
+    oldFlow:
+    
+graph TB
+r_01([""userRequest:空调维修""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition: 检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是空调维修的张师傅;用户回复_1""]
+c_02{""condition: 是空调维修的张师傅;用户回复_1""}
+s_01[""speak:告知张师傅跟随前往会议室""]
+g_02[""goto:会议室""]
+s_02[""speak:告知张师傅已经到达会议室""]
+g_03[""goto:接待区""]
+s_03[""speak:告知维修完成""]
+s_04[""speak:告知非张师傅在接待室等待""]
+s_05[""speak:告知服务结束""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> g_03
+g_03 --> s_03
+s_03 --> k_01
+c_02 --false--> s_04
+s_04 --> k_01
+c_01 --false--> s_05
+s_05 --> k_01
+
+    newFlow:
+    graph TB
+r_01([""userRequest:空调维修""])
+g_01[""goto:接待区""]
+d_01[""detectHuman""]
+c_01{""condition:检测到人;人员检测结果_1""}
+a_01[""ask:询问是否是空调维修的张师傅;用户回复_1""]
+c_02{""condition:是空调维修的张师傅;用户回复_1""}
+s_01[""speak:告知张师傅跟随前往会议室""]
+g_02[""goto:会议室""]
+s_02[""speak:告知张师傅已经到达会议室""]
+g_03[""goto:接待区""]
+s_03[""speak:告知维修完成""]
+s_04[""speak:告知非张师傅在接待室等待""]
+s_05[""speak:告知服务结束""]
+k_01([""end:服务结束""])
+r_01 --> g_01
+g_01 --> d_01
+d_01 --> c_01
+c_01 --true--> a_01
+a_01 --> c_02
+c_02 --true--> s_01
+s_01 --> g_02
+g_02 --> s_02
+s_02 --> g_03
+g_03 --> s_03
+s_03 --> k_01
+c_02 --false--> s_04
+s_04 --> k_01
+c_01 --false--> s_05
+s_05 --> k_01
+
+    ",flow2js-start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:39:38,"await robot.userRequest('空调维修');
+await robot.goto('接待区');
+const isPersonDetected = await robot.detectHuman();
+
+if(isPersonDetected){
+    const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+
+    if(isRepairman==""是""){
+        await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+        await robot.goto('会议室');
+        await robot.speak('我们已经到达会议室，请张师傅进行维修');
+        await robot.goto('接待区');
+        await robot.speak('维修完成，感谢张师傅的帮助');
+
+    }else{
+        await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+    }
+
+}else{
+    await robot.speak('服务结束');
+}",flow2js-finished,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:39:38,"
+  originalcode:
+  await robot.userRequest('空调维修');
+await robot.goto('接待区');
+const isPersonDetected = await robot.detectHuman();
+
+if(isPersonDetected){
+    const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+
+    if(isRepairman==""是""){
+        await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+        await robot.goto('会议室');
+        await robot.speak('我们已经到达会议室，请张师傅进行维修');
+        await robot.goto('接待区');
+        await robot.speak('维修完成，感谢张师傅的帮助');
+
+    }else{
+        await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+    }
+
+}else{
+    await robot.speak('服务结束');
+}
+  modifiedcode:
+  await robot.userRequest('空调维修');
+await robot.goto('接待区');
+const isPersonDetected = await robot.detectHuman();
+
+if(isPersonDetected){
+    const isRepairman = await robot.ask('您是空调维修的张师傅吗？');
+
+    if(isRepairman==""是""){
+        await robot.speak('请跟我来，我将引领您去会议室进行空调维修');
+        await robot.goto('会议室');
+        await robot.speak('我们已经到达会议室，请张师傅进行维修');
+        await robot.goto('接待区');
+        await robot.speak('维修完成，感谢张师傅的帮助');
+
+    }else{
+        await robot.speak('非常抱歉，您不是空调维修的张师傅，请在接待室稍作休息');
+    }
+
+}else{
+    await robot.speak('服务结束');
+}
+  ",explainModifiedJS-start,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
+19:39:45,修改后的代码与原代码相同，没有改变机器人的行为。机器人仍然会根据用户的请求进行空调维修服务，首先会前往接待区，然后检测是否有人在接待区，如果有人则询问是否是空调维修的张师傅，如果是则引领其前往会议室进行维修，维修完成后返回接待区并结束服务；如果不是空调维修的张师傅，则告知其在接待室稍作休息；如果在接待区没有检测到人，则直接结束服务。,explainModifiedJS-finished,32cd3d5b-d88f-47fb-98b6-a81950f10977,08-23-19-30-22
