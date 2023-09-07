@@ -187,3 +187,5 @@ if(choice === '双臂机器人'){
 
 await robot.speak('本次参观结束');
 await robot.goto('充电桩');",nl2jswithContext-finished,5abd2820-7d0a-4167-acbe-10931456470b,08-21-11-40-07
+,,,,
+,,,,
