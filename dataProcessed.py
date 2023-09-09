@@ -2,6 +2,8 @@ import os
 import pandas as pd
 from datetime import datetime
 import numpy as np
+
+print(np.__version__)
 import matplotlib.pyplot as plt
 from plotnine import *
 import xlwt
@@ -124,7 +126,20 @@ def processedDrawData(user_no, task_no, data):  # 将数据删减成画图需要
     return drawData
 
 
-def missingTime(data):
+def missingTime(data, first_time):
+    if data[0]['time_start_index'] != 1:
+        start_missing_record = {
+            'time_start': first_time,
+            'time_start_index': 1,
+            'time_start_type': 'nodeClick',
+            'time_end': data[0]['time_start'],
+            'time_end_index': data[0]['time_start_index'],
+            'time_end_type': 'nodeClick',
+            'time_line': str(timeCalculate(first_time, data[0]['time_start'])),
+            'time_line_type': 'TIMELINE 0: nodeClick或者其他操作'
+        }
+        # print("没有start: ", start_missing_record)
+        data.append(start_missing_record)
     for i in range(1, len(data)):
         prev_index = data[i-1]['time_end_index']
         next_index = data[i]['time_start_index']
@@ -143,7 +158,7 @@ def missingTime(data):
                 'time_end_index': missing_end_index,
                 'time_end_type': 'nodeClick',
                 'time_line': str(missing_interval),
-                'time_line_type': 'TIMELINE 0: nodeClick'
+                'time_line_type': 'TIMELINE 0: nodeClick或者其他操作'
             }
             # print(missing_record)
             data.append(missing_record)
@@ -179,6 +194,10 @@ def splitTimeline(folder_path, txtFile):
                 time_line_list = []
                 # TIMELINE 0: nodeClick或者其他操作
                 # 剩下的没被捕捉到的时间段
+                authoring_type = False
+                for i in range(len(type_values)):
+                    if 'authoring' in type_values[i]:
+                        authoring_type = True
 
                 for i in range(len(type_values)):
                     if time_start != -1:
@@ -186,10 +205,13 @@ def splitTimeline(folder_path, txtFile):
                     # TIMELINE 1: Service Program Authoring through Natural Language
                     # 一开始先找type==authoringNEW-start (start)
                     # 接下去找第一个遇到的type==js2flow-finished，timeline=authoringNEW-start--js2flow-finished
-                    if type_values[i] == 'start':
-                        time_start = time_values[i]
+                    # if type_values[i] == 'start' and authoring_type:
+                    if type_values[i] == 'authoringNEW-start' and authoring_type:
+                        time_start = time_values[i-1]
                         time_start_index = i
-                        time_start_type = 'start'
+                        # time_start_type = 'start'
+                        time_start_type = 'authoringNEW-start'
+                        authoring_type = False
 
                         for j in range(i, len(type_values)):
                             if type_values[j] == 'js2flow-finished' and time_start != -1:
@@ -369,7 +391,9 @@ def splitTimeline(folder_path, txtFile):
                 print(time_line_list)
                 # 补全缺失掉的nodeClick的时间间隔
                 if len(time_line_list) > 0:
-                    time_line_list = missingTime(time_line_list)
+                    # print(time_values[0])
+                    time_line_list = missingTime(time_line_list, time_values[0])
+                    print("补全之后：", time_line_list)
                     draw_time_line_list = processedDrawData(user_no, task_no, time_line_list)
                     txtFile.write(str(draw_time_line_list) + "\n")  # 写入数据并换行
                     # 将数据写入excel表格
@@ -587,27 +611,29 @@ def concatTask(data):
         for key_t, task in group_task:
             task_list = list(task)
             # print(key_t, task_list)
-            if len(task_list) > 1:
-                # print(len(task_list))
-                # 将同一个task下的几个数据文件拼接起来
-                user_no = task_list[0]['user_no']
-                task_no = task_list[0]['task_no']
-                drawDataTimeLine = []
-                drawDataTimeLineType = []
-                for i in range(len(task_list)):
-                    drawDataTimeLine.extend(task_list[i]['drawDataTimeLine'])
-                    drawDataTimeLine.extend([50])  # gap时间为100
+            # if len(task_list) > 1:  # 预测试T0的数据被包含
+            if task_list[0]['task_no'] != 'T0':
+                if len(task_list) > 1:  # 让预测试T0的数据不被包含
+                    # print(len(task_list))
+                    # 将同一个task下的几个数据文件拼接起来
+                    user_no = task_list[0]['user_no']
+                    task_no = task_list[0]['task_no']
+                    drawDataTimeLine = []
+                    drawDataTimeLineType = []
+                    for i in range(len(task_list)):
+                        drawDataTimeLine.extend(task_list[i]['drawDataTimeLine'])
+                        drawDataTimeLine.extend([50])  # gap时间为100
 
-                    drawDataTimeLineType.extend(task_list[i]['drawDataTimeLineType'])
-                    drawDataTimeLineType.extend(['TIMELINE 5: GAP in one task'])
-                if drawDataTimeLineType[-1] == 'TIMELINE 5: GAP in one task':
-                    drawDataTimeLine = drawDataTimeLine[:-1]
-                    drawDataTimeLineType = drawDataTimeLineType[:-1]
-                concatOne = {'user_no': user_no, 'task_no': task_no, 'drawDataTimeLine': drawDataTimeLine, 'drawDataTimeLineType': drawDataTimeLineType}
-                # print(concatOne)
-                newData.append(concatOne)
-            else:
-                newData.append(task_list[0])
+                        drawDataTimeLineType.extend(task_list[i]['drawDataTimeLineType'])
+                        drawDataTimeLineType.extend(['TIMELINE 5: GAP in one task'])
+                    if drawDataTimeLineType[-1] == 'TIMELINE 5: GAP in one task':
+                        drawDataTimeLine = drawDataTimeLine[:-1]
+                        drawDataTimeLineType = drawDataTimeLineType[:-1]
+                    concatOne = {'user_no': user_no, 'task_no': task_no, 'drawDataTimeLine': drawDataTimeLine, 'drawDataTimeLineType': drawDataTimeLineType}
+                    # print(concatOne)
+                    newData.append(concatOne)
+                else:
+                    newData.append(task_list[0])
     return newData
 
 
@@ -674,12 +700,12 @@ def visualData_user(data):
         ax.set_title(f"user_no: {key}")
 
         # 设置自定义图例项
-        custom_legend = [Line2D([], [], color='red', label='TIMELINE 0: nodeClick'),
-                         Line2D([], [], color='blue', label='TIMELINE 1: Authoring'),
-                         Line2D([], [], color='green', label='TIMELINE 2: natural language'),
-                         Line2D([], [], color='orange', label='TIMELINE 3: flowchart editing'),
-                         Line2D([], [], color='purple', label='TIMELINE 4: Magic Modfiy'),
-                         Line2D([], [], color='#EDEDED', label='TIMELINE 5: GAP in one task'),]
+        custom_legend = [Line2D([], [], color='red', label='nodeClick'),
+                         Line2D([], [], color='blue', label='Authoring'),
+                         Line2D([], [], color='green', label='Natural Language'),
+                         Line2D([], [], color='orange', label='Flowchart Editing'),
+                         Line2D([], [], color='purple', label='Magic Modfiy'),
+                         Line2D([], [], color='#EDEDED', label='GAP in one task'),]
 
         # 设置图例
         ax.legend(handles=custom_legend, fontsize=7)
@@ -732,13 +758,13 @@ def visualData_all_user(data):
     ax.set_ylabel('User')
 
     # 设置自定义图例项
-    custom_legend = [Line2D([], [], color='red', label='TIMELINE 0: nodeClick'),
-                     Line2D([], [], color='blue', label='TIMELINE 1: Authoring'),
-                     Line2D([], [], color='green', label='TIMELINE 2: natural language'),
-                     Line2D([], [], color='orange', label='TIMELINE 3: flowchart editing'),
-                     Line2D([], [], color='purple', label='TIMELINE 4: Magic Modfiy'),
-                     Line2D([], [], color='#B9B9B9', label='TIMELINE 5: GAP in one task'),
-                     Line2D([], [], color='#000000', label='TIMELINE 6: Task dividing line'),]
+    custom_legend = [Line2D([], [], color='red', label='NodeClick'),
+                     Line2D([], [], color='blue', label='Authoring'),
+                     Line2D([], [], color='green', label='Natural Language'),
+                     Line2D([], [], color='orange', label='Flowchart Edit'),
+                     Line2D([], [], color='purple', label='Magic Modify'),
+                     Line2D([], [], color='#EDEDED', label='Gap of Multiple Attempts on One Task'),
+                     Line2D([], [], color='#000000', label='Task1,2,3 Dividing Line')]
 
     # 设置图例
     ax.legend(handles=custom_legend, fontsize=10)
@@ -758,7 +784,8 @@ def eachTimeline(data):
     sheet.write(0, 3, 'timeline1:Authoring')
     sheet.write(0, 4, 'timeline2:natural language')
     sheet.write(0, 5, 'timeline3:flowchart editing')
-    sheet.write(0, 6, 'timeline4:Magic Modfiy')
+    sheet.write(0, 6, 'timeline4:Magic Modify')
+    sheet.write(0, 7, 'timeline5:Gap of Multiple Attempts on One Task（次）')
 
     # 计算每个用户在完成每个任务时的timeline类型时长统计情况
     timeline0 = 'TIMELINE 0: nodeClick或者其他操作'
@@ -766,6 +793,7 @@ def eachTimeline(data):
     timeline2 = 'TIMELINE 2: Program Modify through natural language'
     timeline3 = 'TIMELINE 3: Program Modify through flowchart editing'
     timeline4 = 'TIMELINE 4: Debug/Modify by Magic Modfiy'
+    timeline5 = 'TIMELINE 5: GAP in one task'
     for i in range(len(data)):
         print(data[i])
         # timelineTotal = []
@@ -774,6 +802,7 @@ def eachTimeline(data):
         timeline2_total = 0
         timeline3_total = 0
         timeline4_total = 0
+        timeline5_total = 0
         for j in range(len(data[i]['drawDataTimeLineType'])):
             if data[i]['drawDataTimeLineType'][j] == timeline0:
                 timeline0_total += float(data[i]['drawDataTimeLine'][j])
@@ -785,6 +814,8 @@ def eachTimeline(data):
                 timeline3_total += float(data[i]['drawDataTimeLine'][j])
             elif data[i]['drawDataTimeLineType'][j] == timeline4:
                 timeline4_total += float(data[i]['drawDataTimeLine'][j])
+            elif data[i]['drawDataTimeLineType'][j] == timeline5:
+                timeline5_total += float(data[i]['drawDataTimeLine'][j])
 
         # 向单元格写入数据
         sheet.write(i+1, 0, data[i]['user_no'])
@@ -794,9 +825,24 @@ def eachTimeline(data):
         sheet.write(i + 1, 4, timeline2_total)
         sheet.write(i + 1, 5, timeline3_total)
         sheet.write(i + 1, 6, timeline4_total)
-
+        sheet.write(i + 1, 7, timeline5_total/50)
     # 保存工作簿
-    workbook.save('每个用户在完成每个任务时的timeline类型时长统计情况.xls')
+    workbook.save('new_每个用户在完成每个任务时的timeline类型时长统计情况.xls')
+
+
+def computeAverage():
+    # 读取 Excel 表格数据
+    data = pd.read_excel('new_每个用户在完成每个任务时的timeline类型时长统计情况.xls')
+
+    # 按照 'user_no' 进行分组，并计算 'timeline0:nodeClick' 的平均值和总和
+    # grouped_data = data.groupby('user_no')['timeline0:nodeClick'].agg(['mean', 'sum'])
+    # grouped_data = data.groupby('user_no')['timeline1:Authoring'].agg(['mean', 'sum'])
+    # grouped_data = data.groupby('user_no')['timeline2:natural language'].agg(['mean', 'sum'])
+    # grouped_data = data.groupby('user_no')['timeline3:flowchart editing'].agg(['mean', 'sum'])
+    # grouped_data = data.groupby('user_no')['timeline4:Magic Modify'].agg(['mean', 'sum'])
+    grouped_data = data.groupby('user_no')['timeline5:Gap of Multiple Attempts on One Task（次）'].agg(['mean', 'sum'])
+    # 打印结果
+    print(grouped_data)
 
 
 if __name__ == '__main__':
@@ -818,7 +864,7 @@ if __name__ == '__main__':
     # # 4.切分时间段，splitTimeline
     # folder_path = "02rawCSVData"  # 替换为实际的文件夹路径
     # # 指定输出文件路径
-    # output_file = "drawData.txt"
+    # output_file = "new_drawData.txt"
     # # 打开文件并逐行写入数据
     # with open(output_file, 'w') as file:
     #     splitTimeline(folder_path, file)
@@ -826,7 +872,8 @@ if __name__ == '__main__':
 
 
     # 5.事件顺序堆叠图可视化visual
-    input_file = "drawData.txt"
+    input_file = "new_drawData.txt"
+    # input_file = "drawData.txt"
     # 逐行读取文件并处理数据
     data_list = []
     with open(input_file, 'r') as file:
@@ -838,15 +885,18 @@ if __name__ == '__main__':
     # 展示每个用户的4个task的数据
     # visualData_1(data_list)
 
-    new_data_list = concatTask(data_list)
+    new_task_data_list = concatTask(data_list)
     # 对每个用户画一张图，展示完成各任务的情况
     # visualData_user(new_data_list)
+    #
+    # # 对所有用户画一张图，展示完成所有任务的情况
+    new_user_data_list = concatUser(new_task_data_list)
+    visualData_all_user(new_user_data_list)
 
-    # 对所有用户画一张图，展示完成所有任务的情况
-    new_data_list = concatUser(new_data_list)
-    visualData_all_user(new_data_list)
+    #
+    # # 6.计算每个用户在每个task下面包含的timeline的类型及其分别的总时长。
+    # eachTimeline(new_task_data_list)
 
-
-    # 6.计算每个用户在每个task下面包含的timeline的类型及其分别的总时长。
-    # eachTimeline(data_list)
+    # 7.计算每个用户在完成所有任务时用的几个timeline的平均数和总时长。
+    # computeAverage()
 
