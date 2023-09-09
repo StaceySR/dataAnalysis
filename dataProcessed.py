@@ -126,7 +126,7 @@ def processedDrawData(user_no, task_no, data):  # 将数据删减成画图需要
     return drawData
 
 
-def missingTime(data, first_time):
+def missingTime(data, first_time, end_time, end_index):
     if data[0]['time_start_index'] != 1:
         start_missing_record = {
             'time_start': first_time,
@@ -163,6 +163,21 @@ def missingTime(data, first_time):
             # print(missing_record)
             data.append(missing_record)
         # 按照索引排序
+
+    if data[-1]['time_end'] != end_time:
+        print("最后缺失", data[-1]['time_end'], end_time)
+        start_missing_record = {
+            'time_start': data[-1]['time_end'],
+            'time_start_index': data[-1]['time_end_index'],
+            'time_start_type': 'nodeClick',
+            'time_end': end_time,
+            'time_end_index': end_index,
+            'time_end_type': 'nodeClick',
+            'time_line': str(timeCalculate(data[-1]['time_end'], end_time)),
+            'time_line_type': 'TIMELINE 0: nodeClick或者其他操作'
+        }
+        # print("没有start: ", start_missing_record)
+        data.append(start_missing_record)
     data = sorted(data, key=lambda x: x['time_start_index'])
     # print(data)
     return data
@@ -392,7 +407,7 @@ def splitTimeline(folder_path, txtFile):
                 # 补全缺失掉的nodeClick的时间间隔
                 if len(time_line_list) > 0:
                     # print(time_values[0])
-                    time_line_list = missingTime(time_line_list, time_values[0])
+                    time_line_list = missingTime(time_line_list, time_values[0], time_values[-1], len(type_values)-1)
                     print("补全之后：", time_line_list)
                     draw_time_line_list = processedDrawData(user_no, task_no, time_line_list)
                     txtFile.write(str(draw_time_line_list) + "\n")  # 写入数据并换行
@@ -827,20 +842,34 @@ def eachTimeline(data):
         sheet.write(i + 1, 6, timeline4_total)
         sheet.write(i + 1, 7, timeline5_total/50)
     # 保存工作簿
-    workbook.save('new_每个用户在完成每个任务时的timeline类型时长统计情况.xls')
+    workbook.save('new_new_每个用户在完成每个任务时的timeline类型时长统计情况.xls')
 
 
 def computeAverage():
     # 读取 Excel 表格数据
-    data = pd.read_excel('new_每个用户在完成每个任务时的timeline类型时长统计情况.xls')
+    data = pd.read_excel('new_new_每个用户在完成每个任务时的timeline类型时长统计情况.xls')
 
     # 按照 'user_no' 进行分组，并计算 'timeline0:nodeClick' 的平均值和总和
     # grouped_data = data.groupby('user_no')['timeline0:nodeClick'].agg(['mean', 'sum'])
+    # grouped_data = list(data.groupby('user_no')['timeline0:nodeClick'].agg(['mean'])['mean'])
+
     # grouped_data = data.groupby('user_no')['timeline1:Authoring'].agg(['mean', 'sum'])
+    grouped_data = list(data.groupby('user_no')['timeline1:Authoring'].agg(['mean'])['mean'])
+
     # grouped_data = data.groupby('user_no')['timeline2:natural language'].agg(['mean', 'sum'])
+    # grouped_data = list(data.groupby('user_no')['timeline2:natural language'].agg(['mean'])['mean'])
+
     # grouped_data = data.groupby('user_no')['timeline3:flowchart editing'].agg(['mean', 'sum'])
+    # grouped_data = list(data.groupby('user_no')['timeline3:flowchart editing'].agg(['mean'])['mean'])
+
     # grouped_data = data.groupby('user_no')['timeline4:Magic Modify'].agg(['mean', 'sum'])
-    grouped_data = data.groupby('user_no')['timeline5:Gap of Multiple Attempts on One Task（次）'].agg(['mean', 'sum'])
+    # grouped_data = list(data.groupby('user_no')['timeline4:Magic Modify'].agg(['mean'])['mean'])
+
+    # grouped_data = data.groupby('user_no')['timeline5:Gap of Multiple Attempts on One Task（次）'].agg(['mean', 'sum'])
+    # grouped_data = list(data.groupby('user_no')['timeline5:Gap of Multiple Attempts on One Task（次）'].agg(['mean'])['mean'])
+
+    for one_mean in grouped_data:
+        print(one_mean)
     # 打印结果
     print(grouped_data)
 
@@ -864,7 +893,7 @@ if __name__ == '__main__':
     # # 4.切分时间段，splitTimeline
     # folder_path = "02rawCSVData"  # 替换为实际的文件夹路径
     # # 指定输出文件路径
-    # output_file = "new_drawData.txt"
+    # output_file = "new_new_drawData.txt"
     # # 打开文件并逐行写入数据
     # with open(output_file, 'w') as file:
     #     splitTimeline(folder_path, file)
@@ -872,7 +901,8 @@ if __name__ == '__main__':
 
 
     # 5.事件顺序堆叠图可视化visual
-    input_file = "new_drawData.txt"
+    input_file = "new_new_drawData.txt"
+    # input_file = "new_drawData.txt"
     # input_file = "drawData.txt"
     # 逐行读取文件并处理数据
     data_list = []
@@ -888,15 +918,15 @@ if __name__ == '__main__':
     new_task_data_list = concatTask(data_list)
     # 对每个用户画一张图，展示完成各任务的情况
     # visualData_user(new_data_list)
-    #
-    # # 对所有用户画一张图，展示完成所有任务的情况
+
+    # 对所有用户画一张图，展示完成所有任务的情况
     new_user_data_list = concatUser(new_task_data_list)
     visualData_all_user(new_user_data_list)
 
     #
-    # # 6.计算每个用户在每个task下面包含的timeline的类型及其分别的总时长。
+    # 6.计算每个用户在每个task下面包含的timeline的类型及其分别的总时长。
     # eachTimeline(new_task_data_list)
 
-    # 7.计算每个用户在完成所有任务时用的几个timeline的平均数和总时长。
+    # # 7.计算每个用户在完成所有任务时用的几个timeline的平均数和总时长。
     # computeAverage()
 
